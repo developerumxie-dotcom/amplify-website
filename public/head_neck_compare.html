@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Head and Neck Exact Comparison</title>
+  <style>
+    body { margin: 0; background: #070514; color: #fff; font-family: sans-serif; padding: 20px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .card { background: #0c0824; border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; overflow: hidden; }
+    .title { padding: 12px 16px; font-weight: bold; font-size: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .crop-box { position: relative; width: 560px; height: 420px; overflow: hidden; background: #000; }
+    .crop-box img {
+      position: absolute;
+      /* Target ref is 1024x682. Head/neck is at x: 500..820, y: 180..460. Scale 2x */
+      width: 2048px;
+      height: 1364px;
+      left: -1050px;
+      top: -380px;
+    }
+    #render-container {
+      position: relative;
+      width: 560px;
+      height: 420px;
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="card">
+      <div class="title" style="color: #38bdf8;">TARGET REFERENCE (IMAGE 2) — HEAD & NECK</div>
+      <div class="crop-box">
+        <img src="/target_ref.jpg" />
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title" style="color: #ec4899;">CURRENT 3D MODEL — HEAD & NECK</div>
+      <div id="render-container"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as THREE from '/node_modules/three/build/three.module.js';
+    import { createOrigamiBird, BIRD_VERTICES } from '/src/components/origamiBirdModel.js';
+
+    const container = document.getElementById('render-container');
+    const W = 560, H = 420;
+
+    const scene = new THREE.Scene();
+    // Camera zoomed in onto the head & neck (focus at x: 1.6, y: 0.3, z: 0.5)
+    const camera = new THREE.PerspectiveCamera(22, W / H, 0.1, 100);
+    camera.position.set(1.65, 0.25, 4.2);
+    camera.lookAt(1.65, 0.25, 0.4);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(2);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.40;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    container.appendChild(renderer.domElement);
+
+    // Studio lights
+    scene.add(new THREE.AmbientLight(0x100820, 2.5));
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
+    keyLight.position.set(3, 4, 6);
+    scene.add(keyLight);
+
+    const magentaLight = new THREE.PointLight(0xFF007F, 4.5, 12);
+    magentaLight.position.set(0.5, 2.5, 2.5);
+    scene.add(magentaLight);
+
+    const cyanLight = new THREE.PointLight(0x00E5FF, 5.0, 12);
+    cyanLight.position.set(2.5, 1, 2.5);
+    scene.add(cyanLight);
+
+    const bird = createOrigamiBird();
+    scene.add(bird);
+
+    renderer.render(scene, camera);
+  </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Origami Bird Neck & Color Calibration (V5)</title>
+  <style>
+    body { margin: 0; background: #070514; color: #fff; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    .header { padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; background: #0c0824; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 20px; max-width: 1400px; margin: 0 auto; }
+    .card { background: #0f0a2e; border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden; }
+    .card-title { padding: 10px 16px; font-weight: 600; font-size: 14px; letter-spacing: 0.05em; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .viewport { position: relative; width: 680px; height: 453px; margin: 0 auto; background: #000; overflow: hidden; }
+    .viewport img { width: 100%; height: 100%; display: block; }
+    .viewport canvas { width: 100%; height: 100%; display: block; }
+    .overlay-view { position: relative; width: 680px; height: 453px; margin: 20px auto; background: #000; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div style="font-size: 16px; font-weight: 700; color: #00e5ff;">ORIGAMI BIRD V5 — PERFECT NECK GEOMETRY & EXACT COLOR LINES</div>
+    <div id="stats" style="font-size: 13px; color: #a5b4fc;">Rendering V5...</div>
+  </div>
+
+  <div class="grid">
+    <!-- Image 1 (Reference) -->
+    <div class="card">
+      <div class="card-title" style="color: #38bdf8;">ORIGINAL REFERENCE (IMAGE 1)</div>
+      <div class="viewport">
+        <img src="/user_ref_img1.jpg" />
+      </div>
+    </div>
+
+    <!-- Reconstructed Three.js Bird V5 -->
+    <div class="card">
+      <div class="card-title" style="color: #a855f7;">RECONSTRUCTED THREE.JS BIRD V5</div>
+      <div class="viewport" id="model-container"></div>
+    </div>
+  </div>
+
+  <!-- Direct Overlay -->
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px 30px;">
+    <div class="card">
+      <div class="card-title" style="color: #f43f5e;">DIRECT 50/50 BLEND OVERLAY</div>
+      <div class="overlay-view" id="overlay-container">
+        <img src="/user_ref_img1.jpg" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0.5;" />
+        <div id="overlay-canvas-mount" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as THREE from '/node_modules/three/build/three.module.js';
+
+    const W = 680, H = 453;
+
+    function buildBirdScene(containerId) {
+      const container = document.getElementById(containerId);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(36, W / H, 0.1, 100);
+      camera.position.set(0, 0, 9.8);
+      camera.lookAt(0, 0, 0);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(W, H);
+      renderer.setPixelRatio(1);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.35;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      container.appendChild(renderer.domElement);
+
+      function pixelTo3D(px, py, z = 0) {
+        const dist = camera.position.z - z;
+        const vFovRad = (camera.fov * Math.PI) / 180;
+        const halfH = dist * Math.tan(vFovRad / 2);
+        const halfW = halfH * (1024 / 682);
+
+        const x = ((px / 1024) * 2 - 1) * halfW;
+        const y = -((py / 682) * 2 - 1) * halfH;
+        return new THREE.Vector3(x, y, z);
+      }
+
+      // Exact pixel coordinates matching Image 1
+      const P = {
+        // 1. Upper-Left Wing
+        wingTip:          [246, 118,  0.05], // Sharp apex of upper-left wing
+        wingBackRim:      [280, 220, -0.22], // Deep blue outer bevel fold
+        wingGreenWhiteJct:[480, 272,  0.55], // Green / White wing / Central white fold
+        wingValley:       [438, 345,  0.42], // Wing root valley meeting yellow belly
+        
+        // 2. Dorsal Peak & Central Body
+        dorsalApex:       [520, 198,  0.35], // Top dorsal crest peak
+        chestFold:        [552, 384,  0.90], // Center chest fold
+        neckApex:         [612, 305,  0.42], // Junction where neck meets red body
+        neckThroat:       [648, 430,  0.48], // Throat junction at bottom of chest
+        
+        // 3. Right-Side Head & Beak (Folded Origami Crane Geometry)
+        headCrown:        [725, 258,  0.60], // Cyan head crown apex
+        beakTip:          [798, 336,  0.25], // Pointed horizontal beak tip
+        headCheek:        [678, 315,  0.70], // Fold on cheek / side of head
+        beakChin:         [700, 342,  0.45], // Chin crease under beak
+        
+        // 4. Lower Body & Belly
+        bellyYellowCrease:[435, 450,  0.75], // Bright yellow belly crease
+        bellyKeelBottom:  [456, 470,  0.55], // Golden yellow lower keel
+        tailOrangeValley: [375, 460,  0.35], // Orange tail fold
+        
+        // 5. Lower-Left Wing / Tail
+        lowerWingTip:     [240, 538, -0.10], // Sharp pointed lower wing tip
+        lowerWingBevel:   [290, 485,  0.05], // Outer lower wing ridge
+      };
+
+      const V = {};
+      for (const [k, [px, py, z]] of Object.entries(P)) {
+        V[k] = pixelTo3D(px, py, z);
+      }
+
+      const birdGroup = new THREE.Group();
+
+      const facetDefs = [
+        // ── A. UPPER-LEFT WING ─────────────────────────────────────────
+        // 1. Deep electric blue outer bevel facet
+        { pts: [V.wingTip, V.wingBackRim, V.wingValley], color: 0x0A2B88, emissive: 0x020833, rough: 0.18, met: 0.20 },
+        
+        // 2. Emerald Green main upper-wing facet
+        { pts: [V.wingTip, V.dorsalApex, V.wingGreenWhiteJct], color: 0x00E65A, emissive: 0x00551E, rough: 0.12, met: 0.08 },
+        
+        // 3. ESSENTIAL: Silver/White Triangular Facet directly underneath Green
+        { pts: [V.wingTip, V.wingGreenWhiteJct, V.wingValley], color: 0xE8F2F8, emissive: 0x223240, rough: 0.10, met: 0.15 },
+
+        // ── B. CENTRAL BODY (NO FLAT PINK AREA) ────────────────────────
+        // 4. ESSENTIAL: Large Pale White / Pink Central Triangular Facet
+        { pts: [V.dorsalApex, V.chestFold, V.wingGreenWhiteJct], color: 0xFDEEF5, emissive: 0x55283C, rough: 0.12, met: 0.08 },
+        // 5. Pale White / Pink lower transition
+        { pts: [V.wingGreenWhiteJct, V.chestFold, V.wingValley], color: 0xF6E0EC, emissive: 0x481E32, rough: 0.14, met: 0.08 },
+        
+        // 6. Crimson Red Upper Chest / Dorsal Facet (Extends cleanly to neck fold)
+        { pts: [V.dorsalApex, V.neckApex, V.chestFold], color: 0xE60026, emissive: 0x770014, rough: 0.14, met: 0.10 },
+        // 7. Crimson Red Lower Chest Facet
+        { pts: [V.neckApex, V.neckThroat, V.chestFold], color: 0xD00020, emissive: 0x5E0010, rough: 0.16, met: 0.10 },
+
+        // ── C. LOWER BODY & TAIL ──────────────────────────────────────
+        // 8. Bright Yellow Upper Belly Facet
+        { pts: [V.wingValley, V.chestFold, V.bellyYellowCrease], color: 0xFFE600, emissive: 0x665500, rough: 0.14, met: 0.10 },
+        // 9. Golden Yellow Lower Belly Facet
+        { pts: [V.bellyYellowCrease, V.chestFold, V.neckThroat], color: 0xFFA800, emissive: 0x663300, rough: 0.16, met: 0.10 },
+        // 10. Golden Yellow Belly Underside Keel
+        { pts: [V.bellyYellowCrease, V.neckThroat, V.bellyKeelBottom], color: 0xEE7700, emissive: 0x552000, rough: 0.18, met: 0.10 },
+        // 11. Orange Tail / Lower-Wing Facet
+        { pts: [V.wingValley, V.bellyYellowCrease, V.tailOrangeValley], color: 0xFF6600, emissive: 0x772000, rough: 0.16, met: 0.10 },
+        // 12. Orange Tail Lower Pointed Spur
+        { pts: [V.tailOrangeValley, V.bellyKeelBottom, V.lowerWingTip], color: 0xFF4500, emissive: 0x661800, rough: 0.18, met: 0.10 },
+        // 13. Deep Blue Lower Wing Underside
+        { pts: [V.tailOrangeValley, V.lowerWingTip, V.lowerWingBevel], color: 0x0033AA, emissive: 0x001455, rough: 0.20, met: 0.15 },
+
+        // ── D. RIGHT-SIDE HEAD & BEAK (PERFECT ORIGAMI FOLD) ───────────
+        // 14. Cyan Upper Neck / Crown Facet (slopes from neck fold up to crown)
+        { pts: [V.neckApex, V.headCrown, V.headCheek], color: 0x00E5FF, emissive: 0x005566, rough: 0.10, met: 0.10 },
+        // 15. Electric Blue Side Neck Facet (between neck fold, cheek, and throat)
+        { pts: [V.neckApex, V.headCheek, V.neckThroat], color: 0x0066FF, emissive: 0x002277, rough: 0.14, met: 0.15 },
+        // 16. Bright Cyan Beak Top Slope (from crown down to beak tip)
+        { pts: [V.headCrown, V.beakTip, V.headCheek], color: 0x00F0FF, emissive: 0x006677, rough: 0.10, met: 0.10 },
+        // 17. Deep Royal Blue Lower Beak Facet (under-beak fold)
+        { pts: [V.headCheek, V.beakTip, V.beakChin], color: 0x0044CC, emissive: 0x001855, rough: 0.14, met: 0.15 },
+        // 18. Cobalt Blue Throat / Neck Underside
+        { pts: [V.headCheek, V.beakChin, V.neckThroat], color: 0x0A2A88, emissive: 0x020C33, rough: 0.18, met: 0.15 },
+      ];
+
+      facetDefs.forEach((f) => {
+        const geo = new THREE.BufferGeometry();
+        const pos = new Float32Array([
+          f.pts[0].x, f.pts[0].y, f.pts[0].z,
+          f.pts[1].x, f.pts[1].y, f.pts[1].z,
+          f.pts[2].x, f.pts[2].y, f.pts[2].z,
+        ]);
+        geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        geo.computeVertexNormals();
+
+        const mat = new THREE.MeshPhysicalMaterial({
+          color: f.color,
+          roughness: f.rough,
+          metalness: f.met,
+          clearcoat: 0.95,
+          clearcoatRoughness: 0.08,
+          emissive: f.emissive,
+          emissiveIntensity: 0.55,
+          flatShading: true,
+          side: THREE.DoubleSide,
+        });
+
+        birdGroup.add(new THREE.Mesh(geo, mat));
+
+        // Facet crease highlight
+        const edgeGeo = new THREE.BufferGeometry();
+        const edgePos = new Float32Array([
+          f.pts[0].x, f.pts[0].y, f.pts[0].z,
+          f.pts[1].x, f.pts[1].y, f.pts[1].z,
+          f.pts[1].x, f.pts[1].y, f.pts[1].z,
+          f.pts[2].x, f.pts[2].y, f.pts[2].z,
+          f.pts[2].x, f.pts[2].y, f.pts[2].z,
+          f.pts[0].x, f.pts[0].y, f.pts[0].z,
+        ]);
+        edgeGeo.setAttribute('position', new THREE.BufferAttribute(edgePos, 3));
+        const lineMat = new THREE.LineBasicMaterial({
+          color: f.color,
+          transparent: true,
+          opacity: 0.85,
+          blending: THREE.AdditiveBlending,
+        });
+        birdGroup.add(new THREE.LineSegments(edgeGeo, lineMat));
+      });
+
+      // ── FIRST IMAGE SIGNATURE NEON COLOR LINES ─────────────────────
+      // 1. Electric Cyan Upper Wing Leading Edge Glow
+      const upperEdgeGeo = new THREE.BufferGeometry().setFromPoints([
+        V.wingTip, V.wingValley
+      ]);
+      const upperEdgeMat = new THREE.LineBasicMaterial({
+        color: 0x00E5FF,
+        transparent: true,
+        opacity: 0.95,
+        blending: THREE.AdditiveBlending,
+      });
+      birdGroup.add(new THREE.Line(upperEdgeGeo, upperEdgeMat));
+
+      // 2. Neon Magenta Dorsal Ridge Glow Line (FROM FIRST IMAGE)
+      const dorsalGlowGeo = new THREE.BufferGeometry().setFromPoints([
+        V.dorsalApex, V.neckApex
+      ]);
+      const dorsalGlowMat = new THREE.LineBasicMaterial({
+        color: 0xFF1493,
+        transparent: true,
+        opacity: 0.95,
+        blending: THREE.AdditiveBlending,
+      });
+      birdGroup.add(new THREE.Line(dorsalGlowGeo, dorsalGlowMat));
+
+      // 3. Warm Orange-Red Lower Belly/Tail Glow Line
+      const tailGlowGeo = new THREE.BufferGeometry().setFromPoints([
+        V.bellyKeelBottom, V.lowerWingTip
+      ]);
+      const tailGlowMat = new THREE.LineBasicMaterial({
+        color: 0xFF5500,
+        transparent: true,
+        opacity: 0.95,
+        blending: THREE.AdditiveBlending,
+      });
+      birdGroup.add(new THREE.Line(tailGlowGeo, tailGlowMat));
+
+      // 4. Electric Cyan-Blue Lower Wing Outer Glow Line
+      const lowerEdgeGeo = new THREE.BufferGeometry().setFromPoints([
+        V.lowerWingTip, V.tailOrangeValley
+      ]);
+      const lowerEdgeMat = new THREE.LineBasicMaterial({
+        color: 0x0088FF,
+        transparent: true,
+        opacity: 0.95,
+        blending: THREE.AdditiveBlending,
+      });
+      birdGroup.add(new THREE.Line(lowerEdgeGeo, lowerEdgeMat));
+
+      // 5. Electric Cyan Beak Crown & Outline
+      const beakEdgeGeo = new THREE.BufferGeometry().setFromPoints([
+        V.neckApex, V.headCrown, V.beakTip, V.beakChin
+      ]);
+      const beakEdgeMat = new THREE.LineBasicMaterial({
+        color: 0x00F0FF,
+        transparent: true,
+        opacity: 0.95,
+        blending: THREE.AdditiveBlending,
+      });
+      birdGroup.add(new THREE.Line(beakEdgeGeo, beakEdgeMat));
+
+      scene.add(birdGroup);
+
+      // Lighting Setup matching Image 1
+      const ambientLight = new THREE.AmbientLight(0x100820, 2.4);
+      scene.add(ambientLight);
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+      keyLight.position.set(3, 4, 6);
+      scene.add(keyLight);
+
+      const greenLight = new THREE.PointLight(0x00FF66, 5.0, 14);
+      greenLight.position.set(-2, 3, 3);
+      scene.add(greenLight);
+
+      const magentaLight = new THREE.PointLight(0xFF0088, 4.5, 14);
+      magentaLight.position.set(0.5, 2.5, 2.5);
+      scene.add(magentaLight);
+
+      const orangeLight = new THREE.PointLight(0xFF6600, 5.0, 14);
+      orangeLight.position.set(0, -2, 3);
+      scene.add(orangeLight);
+
+      const cyanLight = new THREE.PointLight(0x00DDFF, 4.5, 14);
+      cyanLight.position.set(2.5, 1, 3);
+      scene.add(cyanLight);
+
+      renderer.render(scene, camera);
+      return { renderer, scene, camera };
+    }
+
+    buildBirdScene('model-container');
+    buildBirdScene('overlay-canvas-mount');
+    document.getElementById('stats').textContent = 'Validation Render V5 Ready';
+  </script>
+</body>
+</html>

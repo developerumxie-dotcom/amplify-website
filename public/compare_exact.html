@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Exact Target Comparison — Image 2 Match</title>
+  <style>
+    body { margin: 0; background: #070514; color: #fff; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    .header { padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; background: #0c0824; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 20px; max-width: 1400px; margin: 0 auto; }
+    .card { background: #0f0a2e; border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden; }
+    .card-title { padding: 10px 16px; font-weight: 600; font-size: 14px; letter-spacing: 0.05em; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .viewport { position: relative; width: 680px; height: 453px; margin: 0 auto; background: #000; overflow: hidden; }
+    .viewport img { width: 100%; height: 100%; display: block; }
+    .viewport canvas { width: 100%; height: 100%; display: block; }
+    .overlay-view { position: relative; width: 680px; height: 453px; margin: 20px auto; background: #000; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div style="font-size: 16px; font-weight: 700; color: #00e5ff;">EXACT RECONSTRUCTION VALIDATION AGAINST IMAGE 2</div>
+    <div id="stats" style="font-size: 13px; color: #a5b4fc;">Rendering Exact 3D Model...</div>
+  </div>
+
+  <div class="grid">
+    <!-- Image 2 Target -->
+    <div class="card">
+      <div class="card-title" style="color: #38bdf8;">IMAGE 2: TARGET REFERENCE</div>
+      <div class="viewport">
+        <img src="/target_ref.jpg" />
+      </div>
+    </div>
+
+    <!-- Reconstructed Exact 3D Bird -->
+    <div class="card">
+      <div class="card-title" style="color: #a855f7;">RECONSTRUCTED THREE.JS 3D BIRD</div>
+      <div class="viewport" id="model-container"></div>
+    </div>
+  </div>
+
+  <!-- Direct Overlay -->
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px 30px;">
+    <div class="card">
+      <div class="card-title" style="color: #f43f5e;">DIRECT 50/50 OVERLAY (PRECISION CHECK)</div>
+      <div class="overlay-view" id="overlay-container">
+        <img src="/target_ref.jpg" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0.5;" />
+        <div id="overlay-canvas-mount" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as THREE from '/node_modules/three/build/three.module.js';
+    import { createOrigamiBird } from '/src/components/origamiBirdModel.js';
+
+    const W = 680, H = 453;
+
+    function buildBirdScene(containerId) {
+      const container = document.getElementById(containerId);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(36, W / H, 0.1, 100);
+      camera.position.set(0, 0, 9.8);
+      camera.lookAt(0, 0, 0);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(W, H);
+      renderer.setPixelRatio(2);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.40;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      container.appendChild(renderer.domElement);
+
+      const bird = createOrigamiBird();
+      scene.add(bird);
+
+      // Studio lighting
+      const ambientLight = new THREE.AmbientLight(0x100820, 2.4);
+      scene.add(ambientLight);
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+      keyLight.position.set(3, 4, 6);
+      scene.add(keyLight);
+
+      const greenLight = new THREE.PointLight(0x00FF66, 4.5, 12);
+      greenLight.position.set(-2, 3, 2.5);
+      scene.add(greenLight);
+
+      const magentaLight = new THREE.PointLight(0xFF007F, 4.0, 12);
+      magentaLight.position.set(0.5, 2.5, 2.5);
+      scene.add(magentaLight);
+
+      const orangeLight = new THREE.PointLight(0xFF5500, 4.5, 12);
+      orangeLight.position.set(0, -2, 2.5);
+      scene.add(orangeLight);
+
+      const cyanLight = new THREE.PointLight(0x00E5FF, 4.5, 12);
+      cyanLight.position.set(2.5, 1, 2.5);
+      scene.add(cyanLight);
+
+      const cyanRimBack = new THREE.PointLight(0x00C8FF, 6.0, 8);
+      cyanRimBack.position.set(-2.6, 1.5, -0.6);
+      scene.add(cyanRimBack);
+
+      const orangeRimBack = new THREE.PointLight(0xFF4500, 5.5, 8);
+      orangeRimBack.position.set(-1.8, -1.5, -0.6);
+      scene.add(orangeRimBack);
+
+      renderer.render(scene, camera);
+      return { renderer, scene, camera };
+    }
+
+    buildBirdScene('model-container');
+    buildBirdScene('overlay-canvas-mount');
+    document.getElementById('stats').textContent = 'Validation Render Image 2 Target Match Ready';
+  </script>
+</body>
+</html>

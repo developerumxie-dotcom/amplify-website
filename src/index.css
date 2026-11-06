@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  html, body {
+    background-color: #03020A;
+    color: #F8FAFC;
+    font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom smooth dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060412;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 122, 0, 0.5);
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism primitives */
+  .glass-nav {
+    background: rgba(20, 16, 38, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+  }
+
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-pill:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+
+  /* Text Gradients */
+  .text-gradient-impact {
+    background: linear-gradient(90deg, #FFA000 0%, #FF5500 30%, #FF1A4B 65%, #DE1088 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-orange-purple {
+    background: linear-gradient(90deg, #FF7A00 0%, #E02696 60%, #9D4EDD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .btn-gradient-primary {
+    background: linear-gradient(90deg, #FF9500 0%, #FF4500 45%, #E6007A 100%);
+    box-shadow: 0 4px 20px rgba(255, 69, 0, 0.45), 0 2px 10px rgba(230, 0, 122, 0.35);
+    transition: all 0.3s ease;
+  }
+
+  .btn-gradient-primary:hover {
+    box-shadow: 0 6px 26px rgba(255, 69, 0, 0.65), 0 3px 14px rgba(230, 0, 122, 0.45);
+    transform: translateY(-1px);
+  }
+
+  /* Orbital Ring 3D Rotation Animation */
+  @keyframes orbitPulse {
+    0%, 100% {
+      opacity: 0.75;
+      transform: rotate3d(1, 1, 0, 68deg) rotateZ(0deg) scale(1);
+    }
+    50% {
+      opacity: 0.95;
+      transform: rotate3d(1, 1, 0, 72deg) rotateZ(180deg) scale(1.02);
+    }
+  }
+
+  .orbital-ring {
+    border-radius: 50%;
+    border: 1.5px solid transparent;
+    border-top-color: #00F2FE;
+    border-right-color: #9D4EDD;
+    border-bottom-color: #FF2B6D;
+    filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.6));
+    animation: orbitSpin 24s linear infinite;
+  }
+
+  @keyframes orbitSpin {
+    from {
+      transform: rotate(-25deg) rotateY(65deg) rotateZ(0deg);
+    }
+    to {
+      transform: rotate(-25deg) rotateY(65deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes floatSlow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-14px) rotate(1deg);
+    }
+  }
+
+  .animate-float-slow {
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+}
