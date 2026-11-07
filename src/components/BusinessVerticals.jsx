@@ -54,20 +54,18 @@ export default function BusinessVerticals() {
   return (
     <section 
       id="verticals" 
-      className="relative w-full overflow-hidden bg-[#03020A] pt-2 pb-5 lg:pt-2 lg:pb-5 z-10"
+      className="relative w-full bg-transparent pt-4 pb-8 lg:pt-6 lg:pb-10 z-10"
     >
-      {/* ── Background Atmospheric Continuity with Hero ───────────────── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Subtle Deep Indigo Atmosphere */}
+      {/* ── Background Subtle Ambient Atmosphere (Continuous with Hero) ── */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {/* Center & Left subtle atmospheric atmosphere matching Hero */}
         <div className="absolute top-[10%] left-[35%] w-[460px] h-[260px] rounded-full bg-[#1a0a38]/20 blur-[120px]" />
-        
-        {/* Subtle Soft Golden-Orange Ambient Glow on Right matching Hero */}
-        <div className="absolute -top-[15%] right-[0%] w-[440px] h-[320px] rounded-full bg-[#FF7A00]/12 blur-[110px]" />
+        <div className="absolute top-[10%] left-[4%] w-[440px] h-[320px] rounded-full bg-[#0F172A]/25 blur-[120px]" />
       </div>
 
       {/* ── 3 Exact Business Vertical Glassmorphic Cards ────────────────── */}
-      <div className="w-full max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[44px] relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-[13px] items-center">
+      <div className="w-full max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 items-center">
           {verticals.map((v) => (
             <a
               key={v.id}

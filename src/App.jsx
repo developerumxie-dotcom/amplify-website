@@ -22,8 +22,31 @@ function App() {
       <div className="relative z-10 flex flex-col flex-1">
         <Navbar />
         <main className="flex-1">
-          <HeroSection />
-          <BusinessVerticals />
+          {/* Unified Continuous Atmosphere Wrapper for Hero + Business Verticals */}
+          <div className="relative w-full overflow-hidden bg-[#03020A]">
+            {/* Right-side continuous warm golden-orange gradient glow */}
+            <div 
+              className="absolute top-0 right-0 w-[45%] h-[85%] pointer-events-none z-0"
+              style={{
+                background: 'radial-gradient(ellipse 90% 70% at 100% 45%, rgba(255, 106, 0, 0.20) 0%, rgba(255, 80, 0, 0.10) 45%, rgba(225, 29, 72, 0.03) 70%, transparent 100%)',
+              }}
+            />
+            {/* Volumetric glow centered across the hero-verticals transition */}
+            <div className="absolute top-[38%] right-[0%] w-[520px] h-[440px] rounded-full bg-[#FF6A00]/18 blur-[120px] pointer-events-none z-0" />
+            <div className="absolute top-[58%] right-[0%] w-[420px] h-[320px] rounded-full bg-[#FF7A00]/13 blur-[110px] pointer-events-none z-0" />
+
+            {/* Seamless Bottom Fade: Smoothly dissolves the warm color into #03020A at the end of the second section */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 h-[140px] pointer-events-none z-0"
+              style={{
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(3, 2, 10, 0.6) 50%, #03020A 100%)',
+              }}
+            />
+
+            <HeroSection />
+            <BusinessVerticals />
+          </div>
+
           <ClientLogoBar />
           <WhatWeDoSection />
           <ImpactSection />

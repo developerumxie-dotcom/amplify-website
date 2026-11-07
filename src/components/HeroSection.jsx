@@ -21,10 +21,10 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[480px] lg:min-h-[500px] xl:min-h-[560px] 2xl:min-h-[620px] overflow-hidden bg-[#03020A] flex flex-col justify-start pt-24 sm:pt-28 lg:pt-24 pb-6">
+    <section className="relative w-full min-h-[480px] lg:min-h-[500px] xl:min-h-[560px] 2xl:min-h-[620px] bg-transparent flex flex-col justify-start pt-24 sm:pt-28 lg:pt-24 pb-4">
 
       {/* ── Background Atmospheric Volumetric Nebulae ─────────────────── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      <div className="absolute inset-0 pointer-events-none z-0">
         {/* Deep indigo/violet glow around bird */}
         <div className="absolute top-[8%] right-[8%] w-[580px] h-[420px] rounded-full bg-[#1a0a38]/45 blur-[110px]" />
 
