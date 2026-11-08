@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, Phone, ExternalLink } from 'lucide-react';
+import { companyInfo } from '../data/websiteContent';
 
 export default function Footer() {
   return (
@@ -28,8 +29,11 @@ export default function Footer() {
                 </span>
               </div>
             </a>
-            <p className="text-sm text-slate-400 font-medium tracking-wide">
-              Creative. Strategic. Global.
+            <p className="text-sm text-slate-400 font-medium tracking-wide mb-3">
+              360° Creative, Digital & Growth Studio.
+            </p>
+            <p className="text-xs text-slate-500 leading-relaxed max-w-sm">
+              Empowering brands from local businesses to industry leaders with cutting-edge technology, transparency, and data-driven creative strategies.
             </p>
           </div>
 
@@ -41,7 +45,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-300 font-medium">
               <li className="flex items-center gap-2.5 hover:text-white transition-colors cursor-pointer">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#00E5FF] shadow-[0_0_8px_#00E5FF]" />
-                <a href="#digital">Amplify Digital</a>
+                <a href="#brands">Amplify Digital (For Brands)</a>
               </li>
               <li className="flex items-center gap-2.5 hover:text-white transition-colors cursor-pointer">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#E02696] shadow-[0_0_8px_#E02696]" />
@@ -67,29 +71,42 @@ export default function Footer() {
                 <a href="#work" className="hover:text-white transition-colors">Work</a>
               </li>
               <li>
-                <a href="#about" className="hover:text-white transition-colors">About</a>
+                <a href="#about" className="hover:text-white transition-colors">About Us</a>
               </li>
               <li>
-                <a href="#insights" className="hover:text-white transition-colors">Insights</a>
+                <a href="#insights" className="hover:text-white transition-colors">Testimonials</a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-white transition-colors">Contact</a>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Get In Touch */}
+          {/* Column 3: Verified Contact Info */}
           <div className="lg:col-span-3">
             <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider mb-5">
               Get In Touch
             </h4>
             <ul className="space-y-3.5 text-sm text-slate-300 font-medium mb-6">
               <li className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-brand-orange shrink-0" />
+                <a href={`tel:${companyInfo.contact.phone.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">
+                  {companyInfo.contact.phone}
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-brand-orange shrink-0" />
-                <a href="mailto:hello@amplifydigital.com" className="hover:text-white transition-colors">
-                  hello@amplifydigital.com
+                <a href={`mailto:${companyInfo.contact.email}`} className="hover:text-white transition-colors">
+                  {companyInfo.contact.email}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-brand-magenta shrink-0" />
-                <span>Raipur, Chhattisgarh, India</span>
+                <span>{companyInfo.contact.address}</span>
+              </li>
+              <li className="flex items-center gap-3 text-xs text-slate-400">
+                <ExternalLink className="w-3.5 h-3.5 text-brand-orange shrink-0" />
+                <span>{companyInfo.contact.website}</span>
               </li>
             </ul>
 
@@ -110,11 +127,6 @@ export default function Footer() {
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </a>
-              <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-white/10 hover:text-white transition-colors" aria-label="X">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
             </div>
           </div>
 
@@ -122,7 +134,7 @@ export default function Footer() {
 
         {/* Bottom Bar: Copyright & Legal */}
         <div className="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
-          <p>© 2026 Amplify Digital. All rights reserved.</p>
+          <p>© 2026 Amplify Digital Services. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <a href="#" className="hover:text-slate-400 transition-colors">Privacy Policy</a>
             <span>•</span>

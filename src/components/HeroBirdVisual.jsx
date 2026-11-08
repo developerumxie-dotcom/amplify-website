@@ -375,7 +375,7 @@ export default function HeroBirdVisual() {
   }, []);
 
   return (
-    <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[450px] xl:h-[490px] flex items-center justify-center select-none">
+    <div className="relative w-full h-[420px] sm:h-[460px] lg:h-[500px] xl:h-[550px] 2xl:h-[600px] flex items-center justify-center select-none">
       {/* Background Volumetric Nebula Glows (match Image 2 lighting atmosphere) */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0">
         <div

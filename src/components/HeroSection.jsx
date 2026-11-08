@@ -21,7 +21,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[480px] lg:min-h-[500px] xl:min-h-[560px] 2xl:min-h-[620px] bg-transparent flex flex-col justify-start pt-24 sm:pt-28 lg:pt-24 pb-4">
+    <section className="relative w-full min-h-[540px] sm:min-h-[580px] lg:min-h-[620px] xl:min-h-[680px] 2xl:min-h-[740px] bg-transparent flex flex-col justify-center pt-20 sm:pt-24 lg:pt-20 xl:pt-24 pb-6 lg:pb-8">
 
       {/* ── Background Atmospheric Volumetric Nebulae ─────────────────── */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -148,45 +148,45 @@ export default function HeroSection() {
       </svg>
 
       {/* ── Main Hero Content Grid ────────────────────────────────────── */}
-      <div className="w-full max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
+      <div className="w-full max-w-[1120px] xl:max-w-[1340px] 2xl:max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-0 items-center">
 
           {/* Left Column: Headline, Copy & CTAs */}
           <div className="lg:col-span-6 flex flex-col items-start text-left pt-1 lg:pt-0">
 
             {/* Tag Badge: Creative • Strategy • Growth */}
-            <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-[#180f33]/85 border border-white/14 backdrop-blur-md mb-2.5">
-              <span className="text-[11.5px] sm:text-xs font-semibold text-slate-200 tracking-wide">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#180f33]/85 border border-white/14 backdrop-blur-md mb-3 sm:mb-4">
+              <span className="text-xs sm:text-[13px] font-semibold text-slate-200 tracking-wide">
                 Creative • Strategy • Growth
               </span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-[40px] lg:text-[42px] xl:text-[52px] 2xl:text-[60px] font-extrabold text-white tracking-[-0.03em] leading-[1.08] font-sans mb-2.5 sm:mb-3">
+            <h1 className="text-4xl sm:text-5xl lg:text-[46px] xl:text-[56px] 2xl:text-[66px] font-extrabold text-white tracking-[-0.03em] leading-[1.08] font-sans mb-3 sm:mb-4">
               We Turn Ideas <br />
               Into <span className="text-gradient-impact">Impact.</span>
             </h1>
 
             {/* Supporting Copy */}
-            <p className="text-[13.5px] sm:text-[14px] lg:text-[14px] text-slate-300/85 font-normal leading-relaxed max-w-[370px] mb-4 sm:mb-5">
+            <p className="text-[14.5px] sm:text-[15.5px] lg:text-[15.5px] xl:text-[16.5px] text-slate-300/90 font-normal leading-relaxed max-w-[420px] mb-6 sm:mb-7">
               A 360° creative, digital and growth studio<br className="hidden sm:inline" /> for ambitious brands and businesses.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-3.5 mb-5 sm:mb-6">
+            <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 mb-6 sm:mb-8">
               {/* Primary CTA: Explore Our Work */}
               <a
                 href="#work"
-                className="btn-gradient-primary inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-[13px] font-semibold text-white group cursor-pointer shadow-[0_4px_22px_rgba(255,100,0,0.45)] hover:shadow-[0_6px_28px_rgba(255,100,0,0.65)]"
+                className="btn-gradient-primary inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full text-xs sm:text-sm font-semibold text-white group cursor-pointer shadow-[0_4px_24px_rgba(255,100,0,0.50)] hover:shadow-[0_6px_30px_rgba(255,100,0,0.70)] hover:scale-[1.02] transition-all"
               >
                 <span>Explore Our Work</span>
-                <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 text-white transition-transform duration-200 group-hover:translate-x-1" />
               </a>
 
               {/* Secondary CTA: Book a Strategy Call with circle icon */}
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-[13px] font-medium text-slate-200 hover:text-white bg-[#140b29]/80 hover:bg-[#1a1038] border border-white/18 hover:border-white/28 backdrop-blur-md transition-all duration-200 shadow-sm"
+                className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full text-xs sm:text-sm font-medium text-slate-200 hover:text-white bg-[#140b29]/80 hover:bg-[#1a1038] border border-white/18 hover:border-white/28 backdrop-blur-md transition-all duration-200 shadow-sm hover:scale-[1.02]"
               >
                 <span>Book a Strategy Call</span>
                 <span className="w-2.5 h-2.5 rounded-full border border-slate-300 group-hover:border-white transition-colors" />
@@ -194,11 +194,11 @@ export default function HeroSection() {
             </div>
 
             {/* Mouse Scroll Indicator */}
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-medium select-none mt-1">
+            <div className="flex items-center gap-2.5 text-xs text-slate-400 font-medium select-none">
               <div className="w-3.5 h-5 rounded-full border border-slate-400/70 flex items-start justify-center p-0.5">
                 <span className="w-1 h-1.5 rounded-full bg-slate-300 animate-bounce" />
               </div>
-              <span className="tracking-wide text-[11px] sm:text-xs">Scroll to explore</span>
+              <span className="tracking-wide text-[11.5px] sm:text-xs">Scroll to explore</span>
             </div>
           </div>
 

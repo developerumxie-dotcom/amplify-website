@@ -4,7 +4,9 @@ import HeroSection from './components/HeroSection';
 import BusinessVerticals from './components/BusinessVerticals';
 import ClientLogoBar from './components/ClientLogoBar';
 import WhatWeDoSection from './components/WhatWeDoSection';
+import WorkPortfolioSection from './components/WorkPortfolioSection';
 import ImpactSection from './components/ImpactSection';
+import TestimonialsSection from './components/TestimonialsSection';
 import CtaBanner from './components/CtaBanner';
 import Footer from './components/Footer';
 
@@ -49,7 +51,9 @@ function App() {
 
           <ClientLogoBar />
           <WhatWeDoSection />
+          <WorkPortfolioSection />
           <ImpactSection />
+          <TestimonialsSection />
           <CtaBanner />
         </main>
         <Footer />
