@@ -14,13 +14,7 @@ import { companyInfo } from '../data/websiteContent';
  */
 export default function Footer() {
   return (
-    <footer className="relative pt-16 sm:pt-20 pb-10 sm:pb-12 bg-[#03020A] text-slate-300 border-t border-white/[0.08] z-10">
-      
-      {/* ── Background Atmospheric Glow ─────────────────────────────── */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 left-[10%] w-[500px] h-[250px] rounded-full bg-[#7928CA]/10 blur-[140px]" />
-        <div className="absolute top-0 right-[5%] w-[550px] h-[250px] rounded-full bg-[#FF7A00]/10 blur-[150px]" />
-      </div>
+    <footer className="relative pt-16 sm:pt-20 pb-10 sm:pb-12 bg-transparent text-slate-300 z-10">
 
       <div className="w-full max-w-[1360px] 2xl:max-w-[1460px] mx-auto px-5 sm:px-8 xl:px-12 relative z-10">
         

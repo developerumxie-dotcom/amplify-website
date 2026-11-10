@@ -4,9 +4,7 @@ import { impactStats } from '../data/websiteContent';
 
 export default function ImpactSection() {
   return (
-    <section id="about" className="relative py-16 sm:py-24 z-10 overflow-hidden">
-      {/* Background Deep Glows */}
-      <div className="absolute top-1/2 left-1/3 w-[600px] h-[450px] bg-[#3B1261]/25 blur-[140px] pointer-events-none" />
+    <section id="about" className="relative py-16 sm:py-24 z-10">
 
       <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-4 sm:px-8 xl:px-12">
         

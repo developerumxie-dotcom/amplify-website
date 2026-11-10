@@ -39,13 +39,7 @@ export default function CtaBanner() {
   };
 
   return (
-    <section id="contact" className="relative pt-6 sm:pt-10 pb-2 sm:pb-3 bg-[#03020A] overflow-hidden z-10">
-      
-      {/* ── Outer Atmospheric Ambient Illumination (Purple on Left, Orange on Right) ── */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/2 left-[-6%] -translate-y-1/2 w-[520px] h-[340px] rounded-full bg-[#7928CA]/22 blur-[150px]" />
-        <div className="absolute top-1/2 right-[-4%] -translate-y-1/2 w-[580px] h-[360px] rounded-full bg-[#FF7A00]/28 blur-[160px]" />
-      </div>
+    <section id="contact" className="relative pt-6 sm:pt-10 pb-2 sm:pb-3 bg-transparent z-10">
 
       <div className="w-full max-w-[1360px] 2xl:max-w-[1460px] mx-auto px-4 sm:px-8 xl:px-12 relative z-10">
         

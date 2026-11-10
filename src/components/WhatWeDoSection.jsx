@@ -111,11 +111,10 @@ export default function WhatWeDoSection() {
       <div
         key={card.id}
         onClick={() => handleCardClick(card)}
-        className={`group relative rounded-[22px] sm:rounded-[26px] overflow-hidden border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl cursor-pointer bg-[#080517] w-full flex flex-col justify-between ${
-          isTopRow
-            ? 'min-h-[230px] sm:min-h-[250px] lg:min-h-[260px] xl:min-h-[280px] 2xl:min-h-[300px]'
-            : 'min-h-[215px] sm:min-h-[235px] lg:min-h-[245px] xl:min-h-[265px] 2xl:min-h-[285px]'
-        }`}
+        className={`group relative rounded-[22px] sm:rounded-[26px] overflow-hidden border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl cursor-pointer bg-[#080517] w-full flex flex-col justify-between ${isTopRow
+          ? 'min-h-[230px] sm:min-h-[250px] lg:min-h-[260px] xl:min-h-[280px] 2xl:min-h-[300px]'
+          : 'min-h-[215px] sm:min-h-[235px] lg:min-h-[245px] xl:min-h-[265px] 2xl:min-h-[285px]'
+          }`}
         style={{
           borderColor: card.borderColor,
           boxShadow: `0 8px 32px -6px ${card.glow}`,
@@ -202,27 +201,18 @@ export default function WhatWeDoSection() {
   };
 
   return (
-    <section id="services" className="relative py-16 sm:py-20 lg:py-24 bg-[#03020A] overflow-hidden z-10">
-      {/* ── Background Ambient Atmosphere & Lighting Accents ──────────── */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Subtle purple ambient glow on the left matching reference */}
-        <div className="absolute top-[15%] left-[-5%] w-[620px] h-[540px] rounded-full bg-[#7928CA]/18 blur-[140px]" />
-
-        {/* Magenta and orange lighting accents on the right */}
-        <div className="absolute top-[25%] right-[0%] w-[580px] h-[500px] rounded-full bg-[#FF7A00]/12 blur-[150px]" />
-        <div className="absolute bottom-[5%] right-[20%] w-[500px] h-[380px] rounded-full bg-[#E02696]/11 blur-[130px]" />
-      </div>
+    <section id="services" className="relative py-16 sm:py-20 lg:py-24 bg-transparent z-10">
 
       <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-4 sm:px-8 xl:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-10 items-stretch">
-          
+
           {/* ── Left Column: Header, Copy, Highlights & Bottom CTA ────────── */}
           <div className="lg:col-span-4 xl:col-span-4 flex flex-col justify-between py-1 lg:py-2">
-            
+
             {/* Top Header Group */}
             <div className="flex flex-col items-start text-left">
               {/* Small purple pill: "OUR SERVICES" */}
-              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#2E0B5B]/60 border border-[#A855F7]/45 shadow-[0_0_18px_rgba(168,85,247,0.3)] backdrop-blur-md mb-6">
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#2E0B5B]/40 border border-[#A855F7]/35 shadow-[0_0_12px_rgba(168,85,247,0.2)] backdrop-blur-md mb-6">
                 <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-purple-200 uppercase font-mono">
                   OUR SERVICES
                 </span>
@@ -262,7 +252,7 @@ export default function WhatWeDoSection() {
 
           {/* ── Right Column: Asymmetric Five-Card Bento Layout (Bigger & Fitted) ── */}
           <div className="lg:col-span-8 xl:col-span-8 flex flex-col justify-between gap-4 sm:gap-5 xl:gap-6">
-            
+
             {/* Top Row: 2 Wider Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 xl:gap-6">
               {renderCard(bentoCards[0], true)}

@@ -31,16 +31,10 @@ const testimonialConfig = [
 
 export default function TestimonialsSection() {
   return (
-    <section id="insights" className="relative py-16 sm:py-24 lg:py-28 bg-[#03020A] overflow-hidden z-10">
-      
-      {/* ── Background Subtle Ambient Atmosphere ─────────────────── */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/3 left-[-6%] w-[550px] h-[450px] rounded-full bg-[#7928CA]/12 blur-[150px]" />
-        <div className="absolute bottom-1/4 right-[-6%] w-[550px] h-[450px] rounded-full bg-[#FF7A00]/10 blur-[160px]" />
-      </div>
+    <section id="insights" className="relative py-16 sm:py-24 lg:py-28 bg-transparent z-10">
 
       <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-4 sm:px-8 xl:px-12 relative z-10">
-        
+
         {/* ── Section Header Row (Harmonized Left Alignment) ────────── */}
         <div className="flex flex-col items-start text-left max-w-2xl mb-12 sm:mb-16">
           {/* Section Tag Pill matching exact site model */}
@@ -56,7 +50,7 @@ export default function TestimonialsSection() {
               Say About Us
             </span>
           </h2>
-          
+
           <p className="text-sm sm:text-base lg:text-[17px] text-slate-300/85 font-normal leading-relaxed max-w-xl">
             Real feedback from marketing leaders and executives who scaled their businesses with Amplify.
           </p>
@@ -80,7 +74,7 @@ export default function TestimonialsSection() {
                 <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none z-20" />
 
                 {/* Hover Inner Glow Rim */}
-                <div 
+                <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-[24px] sm:rounded-[28px] z-10"
                   style={{ boxShadow: `inset 0 0 28px ${config.glowColor}` }}
                 />
@@ -89,7 +83,7 @@ export default function TestimonialsSection() {
                 <div className="relative z-10 mb-6">
                   <div className="flex items-center justify-between">
                     {/* Glassmorphic Quote Badge */}
-                    <div 
+                    <div
                       className="w-11 h-11 rounded-[14px] flex items-center justify-center backdrop-blur-md border shadow-md transition-transform duration-300 group-hover:scale-105"
                       style={{
                         backgroundColor: config.badgeBg,
@@ -113,9 +107,9 @@ export default function TestimonialsSection() {
                 <div className="relative z-10 flex-1 flex flex-col justify-start">
                   {/* Scope / Highlight Pill */}
                   <div className="mb-4">
-                    <span 
+                    <span
                       className="inline-block px-3 py-1 rounded-full text-[11px] font-mono font-semibold border backdrop-blur-md"
-                      style={{ 
+                      style={{
                         color: config.accentColor,
                         borderColor: `${config.accentColor}35`,
                         backgroundColor: `${config.accentColor}12`
@@ -132,12 +126,12 @@ export default function TestimonialsSection() {
                 </div>
 
                 {/* Card Footer: Verified Author Attribution */}
-                <div 
+                <div
                   className="relative z-10 pt-5 mt-auto border-t flex items-center gap-3.5"
                   style={{ borderColor: `${config.accentColor}25` }}
                 >
                   {/* Initials Avatar */}
-                  <div 
+                  <div
                     className={`w-11 h-11 rounded-full bg-gradient-to-br ${config.gradient} flex items-center justify-center text-white font-bold text-sm shadow-md shrink-0 border border-white/20`}
                   >
                     {t.initials}

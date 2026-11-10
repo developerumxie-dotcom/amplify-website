@@ -61,16 +61,10 @@ const verticals = [
 
 export default function BusinessVerticals() {
   return (
-    <section 
-      id="verticals" 
+    <section
+      id="verticals"
       className="relative w-full bg-transparent pt-4 pb-8 lg:pt-6 lg:pb-10 z-10"
     >
-      {/* ── Background Subtle Ambient Atmosphere (Continuous with Hero) ── */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Center & Left subtle atmospheric atmosphere matching Hero */}
-        <div className="absolute top-[10%] left-[35%] w-[460px] h-[260px] rounded-full bg-[#1a0a38]/20 blur-[120px]" />
-        <div className="absolute top-[10%] left-[4%] w-[440px] h-[320px] rounded-full bg-[#0F172A]/25 blur-[120px]" />
-      </div>
 
       {/* ── 3 Exact Business Vertical Glassmorphic Cards ────────────────── */}
       <div className="w-full max-w-[1120px] xl:max-w-[1340px] 2xl:max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
@@ -97,7 +91,7 @@ export default function BusinessVerticals() {
                 />
 
                 {/* ── Smooth Left-to-Right Dark Gradient for Text Legibility ── */}
-                <div 
+                <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
                     background: 'linear-gradient(to right, rgba(8, 5, 23, 0.95) 0%, rgba(8, 5, 23, 0.82) 42%, rgba(8, 5, 23, 0.30) 70%, transparent 100%)',
@@ -109,7 +103,7 @@ export default function BusinessVerticals() {
                   {/* Top: Real Icon Badge & Headings */}
                   <div>
                     {/* Glassmorphic Icon Badge */}
-                    <div 
+                    <div
                       className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center backdrop-blur-md border shadow-lg transition-transform duration-300 group-hover:scale-105"
                       style={{
                         backgroundColor: 'rgba(255, 255, 255, 0.08)',
@@ -125,7 +119,7 @@ export default function BusinessVerticals() {
                       <h3 className="text-white font-bold text-sm sm:text-base lg:text-[18px] xl:text-[19px] tracking-tight leading-tight drop-shadow-sm font-sans">
                         {v.title}
                       </h3>
-                      <p 
+                      <p
                         className="text-[10px] sm:text-xs font-semibold tracking-wide mt-0.5"
                         style={{ color: v.accentColor }}
                       >
@@ -141,7 +135,7 @@ export default function BusinessVerticals() {
 
                   {/* Bottom: Real CTA Link & Corner Action Arrow */}
                   <div className="flex items-center justify-between pt-1">
-                    <span 
+                    <span
                       className="inline-flex items-center gap-1.5 text-[10.5px] sm:text-xs font-semibold tracking-wide transition-colors group-hover:brightness-125"
                       style={{ color: v.accentColor }}
                     >

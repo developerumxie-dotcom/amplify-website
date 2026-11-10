@@ -6,8 +6,9 @@
   :root {
     color-scheme: dark;
   }
-  
-  html, body {
+
+  html,
+  body {
     background-color: #03020A;
     color: #F8FAFC;
     font-family: 'Plus Jakarta Sans', Inter, sans-serif;
@@ -18,19 +19,23 @@
   ::-webkit-scrollbar {
     width: 8px;
   }
+
   ::-webkit-scrollbar-track {
     background: #060412;
   }
+
   ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 9999px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 122, 0, 0.5);
   }
 }
 
 @layer utilities {
+
   /* Glassmorphism primitives */
   .glass-nav {
     background: rgba(20, 16, 38, 0.65);
@@ -86,10 +91,13 @@
 
   /* Orbital Ring 3D Rotation Animation */
   @keyframes orbitPulse {
-    0%, 100% {
+
+    0%,
+    100% {
       opacity: 0.75;
       transform: rotate3d(1, 1, 0, 68deg) rotateZ(0deg) scale(1);
     }
+
     50% {
       opacity: 0.95;
       transform: rotate3d(1, 1, 0, 72deg) rotateZ(180deg) scale(1.02);
@@ -110,15 +118,19 @@
     from {
       transform: rotate(-25deg) rotateY(65deg) rotateZ(0deg);
     }
+
     to {
       transform: rotate(-25deg) rotateY(65deg) rotateZ(360deg);
     }
   }
 
   @keyframes floatSlow {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px) rotate(0deg);
     }
+
     50% {
       transform: translateY(-14px) rotate(1deg);
     }
@@ -126,5 +138,123 @@
 
   .animate-float-slow {
     animation: floatSlow 6s ease-in-out infinite;
+  }
+
+  /* ── Continuous Neon Background Animations ── */
+  @keyframes neonFloatPurple {
+
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+      transform: translate3d(14px, -10px, 0);
+    }
+  }
+
+  @keyframes neonFloatMagenta {
+
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+      transform: translate3d(-10px, 12px, 0);
+    }
+  }
+
+  @keyframes neonBreatheOrange {
+
+    0%,
+    100% {
+      opacity: 0.78;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+      opacity: 1;
+      transform: translate3d(-8px, -6px, 0) scale(1.03);
+    }
+  }
+
+  @keyframes neonDriftUpper {
+
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+      transform: translate3d(8px, -5px, 0);
+    }
+  }
+
+  @keyframes neonDriftMid {
+
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+      transform: translate3d(-6px, 6px, 0);
+    }
+  }
+
+  @keyframes neonDriftLower {
+
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+      transform: translate3d(-8px, 6px, 0);
+    }
+  }
+
+  .animate-neon-float-purple {
+    animation: neonFloatPurple 18s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .animate-neon-float-magenta {
+    animation: neonFloatMagenta 22s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .animate-neon-breathe-orange {
+    animation: neonBreatheOrange 15s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  .animate-neon-drift-upper {
+    animation: neonDriftUpper 20s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .animate-neon-drift-mid {
+    animation: neonDriftMid 17s ease-in-out infinite alternate; 
+    will-change: transform;
+  }
+
+  .animate-neon-drift-lower {
+    animation: neonDriftLower 24s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .animate-neon-float-purple,
+    .animate-neon-float-magenta,
+    .animate-neon-breathe-orange,
+    .animate-neon-drift-upper,
+    .animate-neon-drift-mid,
+    .animate-neon-drift-lower {
+      animation: none !important;
+      transform: none !important;
+    }
   }
 }
