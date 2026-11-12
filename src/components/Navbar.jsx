@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ArrowRight, Menu, X } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,14 +14,36 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (e, sectionId) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setMobileMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navOffset = 75;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - (sectionId === 'home' ? 0 : navOffset);
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+      });
+      if (window.history && window.history.pushState) {
+        window.history.pushState(null, '', `#${sectionId}`);
+      }
+    }
+  };
+
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolledHeader : ''}`}>
       {/* Seamless Faded Glass Blur Backdrop (No borders, feather-soft vertical gradient fade) */}
       <div className={`${styles.backdropFaded} ${scrolled ? styles.backdropVisible : ''}`} />
 
       <div className={styles.container}>
-        {/* Brand Logo - Scaled to match reference (38px x 38px) */}
-        <a href="#" className={styles.brand}>
+        {/* Brand Logo */}
+        <a 
+          href="#home" 
+          onClick={(e) => scrollToSection(e, 'home')} 
+          className={styles.brand}
+        >
           <div className={styles.brandLogo}>
             <img 
               src="/assets/logo-bird.png" 
@@ -40,7 +61,7 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Center Floating Glass Capsule Navigation (394px wide, reference style) */}
+        {/* Center Floating Glass Capsule Navigation */}
         <nav className={`${styles.navCapsule} ${scrolled ? styles.scrolledNavCapsule : ''}`}>
           {/* Specular Top Cut-Glass Refraction Line */}
           <div className={styles.topSheen} />
@@ -48,81 +69,55 @@ export default function Navbar() {
           {/* Diagonal Glass Glare */}
           <div className={styles.diagonalGlare} />
 
-          {/* What We Do with Dropdown */}
-          <div 
-            className={styles.navItemDropdownWrap}
-            onMouseEnter={() => setActiveDropdown('what-we-do')}
-            onMouseLeave={() => setActiveDropdown(null)}
+          {/* Navigation Links with Smooth Movement */}
+          <a 
+            href="#home" 
+            onClick={(e) => scrollToSection(e, 'home')} 
+            className={styles.navItemLink}
           >
-            <button className={styles.navItemBtn}>
-              <span>What We Do</span>
-              <ChevronDown className={`${styles.chevronIcon} ${activeDropdown === 'what-we-do' ? styles.chevronRotated : ''}`} />
-            </button>
+            Home
+          </a>
 
-            {/* Dropdown Menu */}
-            {activeDropdown === 'what-we-do' && (
-              <div className={styles.dropdownMenuLeft}>
-                <a href="#services" className={styles.dropdownItem}>
-                  <div className={styles.dropdownTitle}>Strategy & Brand</div>
-                  <div className={styles.dropdownDesc}>Build a powerful brand with purpose</div>
-                </a>
-                <a href="#services" className={styles.dropdownItem}>
-                  <div className={styles.dropdownTitle}>Content & Production</div>
-                  <div className={styles.dropdownDesc}>Create unforgettable visual content</div>
-                </a>
-                <a href="#services" className={styles.dropdownItem}>
-                  <div className={styles.dropdownTitle}>Social & Influence</div>
-                  <div className={styles.dropdownDesc}>Grow audience presence across platforms</div>
-                </a>
-                <a href="#services" className={styles.dropdownItem}>
-                  <div className={styles.dropdownTitle}>Performance & Growth</div>
-                  <div className={styles.dropdownDesc}>Turn clicks into measurable growth</div>
-                </a>
-                <a href="#services" className={styles.dropdownItem}>
-                  <div className={styles.dropdownTitle}>Digital Experiences</div>
-                  <div className={styles.dropdownDesc}>Build immersive web apps & events</div>
-                </a>
-              </div>
-            )}
-          </div>
+          <a 
+            href="#services" 
+            onClick={(e) => scrollToSection(e, 'services')} 
+            className={styles.navItemLink}
+          >
+            What We Do
+          </a>
 
-          <a href="#work" className={styles.navItemLink}>
+          <a 
+            href="#work" 
+            onClick={(e) => scrollToSection(e, 'work')} 
+            className={styles.navItemLink}
+          >
             Work
           </a>
 
-          <a href="#about" className={styles.navItemLink}>
+          <a 
+            href="#about" 
+            onClick={(e) => scrollToSection(e, 'about')} 
+            className={styles.navItemLink}
+          >
             About
           </a>
 
-          {/* Insights with Dropdown */}
-          <div 
-            className={styles.navItemDropdownWrap}
-            onMouseEnter={() => setActiveDropdown('insights')}
-            onMouseLeave={() => setActiveDropdown(null)}
+          <a 
+            href="#insights" 
+            onClick={(e) => scrollToSection(e, 'insights')} 
+            className={styles.navItemLink}
           >
-            <button className={styles.navItemBtn}>
-              <span>Insights</span>
-              <ChevronDown className={`${styles.chevronIcon} ${activeDropdown === 'insights' ? styles.chevronRotated : ''}`} />
-            </button>
-
-            {activeDropdown === 'insights' && (
-              <div className={styles.dropdownMenuRight}>
-                <a href="#insights" className={styles.dropdownItem}>
-                  <div className={styles.dropdownTitle}>Industry Reports</div>
-                  <div className={styles.dropdownDesc}>2026 Marketing & AI Benchmarks</div>
-                </a>
-                <a href="#insights" className={styles.dropdownItem}>
-                  <div className={styles.dropdownTitle}>Case Studies</div>
-                  <div className={styles.dropdownDesc}>Verified Client Growth Stories</div>
-                </a>
-              </div>
-            )}
-          </div>
+            Insights
+          </a>
         </nav>
 
-        {/* Right CTA Button: Let's Talk (Generous padding, clean border and arrow) */}
+        {/* Right CTA Button: Let's Talk */}
         <div className={styles.ctaWrap}>
-          <a href="#contact" className={`glass-btn-clear ${styles.letstalkBtn}`}>
+          <a 
+            href="#contact" 
+            onClick={(e) => scrollToSection(e, 'contact')} 
+            className={`glass-btn-clear ${styles.letstalkBtn}`}
+          >
             {/* Specular Top Cut-Glass Refraction Line */}
             <span className={styles.btnTopSheen} />
             
@@ -148,29 +143,36 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className={styles.mobileDrawer}>
           <a 
+            href="#home" 
+            onClick={(e) => scrollToSection(e, 'home')}
+            className={styles.mobileLink}
+          >
+            Home
+          </a>
+          <a 
             href="#services" 
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'services')}
             className={styles.mobileLink}
           >
             What We Do
           </a>
           <a 
             href="#work" 
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'work')}
             className={styles.mobileLink}
           >
             Work
           </a>
           <a 
             href="#about" 
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'about')}
             className={styles.mobileLink}
           >
             About
           </a>
           <a 
             href="#insights" 
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => scrollToSection(e, 'insights')}
             className={styles.mobileLink}
           >
             Insights
@@ -178,7 +180,7 @@ export default function Navbar() {
           <div className={styles.mobileCtaRow}>
             <a
               href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => scrollToSection(e, 'contact')}
               className={styles.mobileCtaBtn}
             >
               <span>Let's Talk</span>

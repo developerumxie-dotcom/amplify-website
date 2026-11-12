@@ -22,7 +22,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className={styles.heroSection}>
+    <section id="home" className={styles.heroSection}>
 
       {/* ── Background Atmospheric Volumetric Nebulae ─────────────────── */}
       <div className={styles.atmosphereNebulae}>
