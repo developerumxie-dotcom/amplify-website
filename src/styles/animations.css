@@ -1,0 +1,393 @@
+/**
+ * AMPLIFY DIGITAL — GLOBAL ANIMATIONS & KEYFRAMES
+ * Exact GPU-accelerated motion choreography preserving approved animations.
+ */
+
+/* ── Orbital Ring & Floating ── */
+@keyframes orbitPulse {
+  0%, 100% {
+    opacity: 0.75;
+    transform: rotate3d(1, 1, 0, 68deg) rotateZ(0deg) scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: rotate3d(1, 1, 0, 72deg) rotateZ(180deg) scale(1.02);
+  }
+}
+
+@keyframes orbitSpin {
+  from {
+    transform: rotate(-25deg) rotateY(65deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotate(-25deg) rotateY(65deg) rotateZ(360deg);
+  }
+}
+
+.orbital-ring {
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-top-color: #00F2FE;
+  border-right-color: #9D4EDD;
+  border-bottom-color: #FF2B6D;
+  filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.6));
+  animation: orbitSpin 24s linear infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+/* ── Continuous Neon Background Animations ── */
+@keyframes neonFloatPurple {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(14px, -10px, 0);
+  }
+}
+
+@keyframes neonFloatMagenta {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-10px, 12px, 0);
+  }
+}
+
+@keyframes neonBreatheOrange {
+  0%, 100% {
+    opacity: 0.78;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(-8px, -6px, 0) scale(1.03);
+  }
+}
+
+@keyframes neonDriftUpper {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(8px, -5px, 0);
+  }
+}
+
+@keyframes neonDriftMid {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-6px, 6px, 0);
+  }
+}
+
+@keyframes neonDriftLower {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-8px, 6px, 0);
+  }
+}
+
+/* ── Digital Living Auroras & Data Flows ── */
+@keyframes digitalPlasmaLeft1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.75;
+  }
+  35% {
+    transform: translate3d(28px, -20px, 0) scale(1.10) rotate(3.5deg);
+    opacity: 0.96;
+  }
+  70% {
+    transform: translate3d(-18px, 22px, 0) scale(0.96) rotate(-2.5deg);
+    opacity: 0.76;
+  }
+  100% {
+    transform: translate3d(18px, 12px, 0) scale(1.05) rotate(2deg);
+    opacity: 0.88;
+  }
+}
+
+@keyframes digitalPlasmaLeft2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg);
+    opacity: 0.72;
+  }
+  40% {
+    transform: translate3d(-24px, 24px, 0) scale(0.95) rotate(-4deg);
+    opacity: 0.94;
+  }
+  75% {
+    transform: translate3d(24px, -18px, 0) scale(1.08) rotate(3deg);
+    opacity: 0.76;
+  }
+  100% {
+    transform: translate3d(-14px, -14px, 0) scale(1.01) rotate(-1.5deg);
+    opacity: 0.85;
+  }
+}
+
+@keyframes digitalPlasmaRight1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.75;
+  }
+  35% {
+    transform: translate3d(-28px, 18px, 0) scale(1.10) rotate(-3.5deg);
+    opacity: 0.96;
+  }
+  70% {
+    transform: translate3d(20px, -20px, 0) scale(0.96) rotate(2.5deg);
+    opacity: 0.74;
+  }
+  100% {
+    transform: translate3d(-18px, -12px, 0) scale(1.06) rotate(-2deg);
+    opacity: 0.88;
+  }
+}
+
+@keyframes digitalPlasmaRight2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.03) rotate(0deg);
+    opacity: 0.70;
+  }
+  40% {
+    transform: translate3d(24px, -22px, 0) scale(0.95) rotate(3.5deg);
+    opacity: 0.94;
+  }
+  75% {
+    transform: translate3d(-22px, 20px, 0) scale(1.09) rotate(-3deg);
+    opacity: 0.74;
+  }
+  100% {
+    transform: translate3d(16px, 14px, 0) scale(1.02) rotate(1.5deg);
+    opacity: 0.86;
+  }
+}
+
+@keyframes digitalCyanPulse {
+  0%, 100% {
+    opacity: 0.30;
+    transform: translate3d(0, 0, 0) scale(0.98);
+  }
+  50% {
+    opacity: 0.70;
+    transform: translate3d(12px, -14px, 0) scale(1.10);
+  }
+}
+
+@keyframes digitalStreamLeft {
+  0% {
+    stroke-dashoffset: 1400;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes digitalStreamRight {
+  0% {
+    stroke-dashoffset: 1400;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes digitalGridSweep {
+  0% {
+    transform: translateY(-80%) rotate(-15deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.30;
+  }
+  80% {
+    opacity: 0.30;
+  }
+  100% {
+    transform: translateY(180%) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes digitalNodePulse1 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.40;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.9));
+  }
+}
+
+@keyframes digitalNodePulse2 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.40;
+  }
+  50% {
+    transform: scale(1.45);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.9));
+  }
+}
+
+@keyframes digitalNodePulse3 {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.40;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 122, 0, 0.9));
+  }
+}
+
+@keyframes digitalHaloPing {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* ── Animation Utility Classes with will-change GPU acceleration ── */
+.animate-neon-float-purple {
+  animation: neonFloatPurple 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-neon-float-magenta {
+  animation: neonFloatMagenta 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-neon-breathe-orange {
+  animation: neonBreatheOrange 15s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-neon-drift-upper {
+  animation: neonDriftUpper 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-neon-drift-mid {
+  animation: neonDriftMid 17s ease-in-out infinite alternate; 
+  will-change: transform;
+}
+
+.animate-neon-drift-lower {
+  animation: neonDriftLower 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-digital-plasma-purple-1 {
+  animation: digitalPlasmaLeft1 14s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-digital-plasma-purple-2 {
+  animation: digitalPlasmaLeft2 18s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-digital-plasma-orange-1 {
+  animation: digitalPlasmaRight1 15s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-digital-plasma-orange-2 {
+  animation: digitalPlasmaRight2 20s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-digital-cyan-pulse {
+  animation: digitalCyanPulse 10s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-digital-stream-left {
+  animation: digitalStreamLeft 7s linear infinite;
+}
+
+.animate-digital-stream-right {
+  animation: digitalStreamRight 8s linear infinite;
+}
+
+.animate-digital-sweep {
+  animation: digitalGridSweep 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-star-1,
+.animate-digital-node-1 {
+  animation: digitalNodePulse1 3.5s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+}
+
+.animate-star-2,
+.animate-digital-node-2 {
+  animation: digitalNodePulse2 4.0s ease-in-out infinite 1.2s;
+  will-change: transform, opacity, filter;
+}
+
+.animate-star-3,
+.animate-digital-node-3 {
+  animation: digitalNodePulse3 4.6s ease-in-out infinite 2.2s;
+  will-change: transform, opacity, filter;
+}
+
+.animate-digital-halo {
+  animation: digitalHaloPing 3.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-neon-float-purple,
+  .animate-neon-float-magenta,
+  .animate-neon-breathe-orange,
+  .animate-neon-drift-upper,
+  .animate-neon-drift-mid,
+  .animate-neon-drift-lower,
+  .animate-digital-plasma-purple-1,
+  .animate-digital-plasma-purple-2,
+  .animate-digital-plasma-orange-1,
+  .animate-digital-plasma-orange-2,
+  .animate-digital-cyan-pulse,
+  .animate-digital-stream-left,
+  .animate-digital-stream-right,
+  .animate-digital-sweep,
+  .animate-star-1,
+  .animate-star-2,
+  .animate-star-3,
+  .animate-digital-node-1,
+  .animate-digital-node-2,
+  .animate-digital-node-3,
+  .animate-digital-halo {
+    animation: none !important;
+    transform: none !important;
+  }
+}

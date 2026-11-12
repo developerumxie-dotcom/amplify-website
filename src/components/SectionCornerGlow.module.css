@@ -1,0 +1,113 @@
+/**
+ * AMPLIFY DIGITAL — SECTION CORNER GLOW MODULE STYLES
+ */
+
+.wrapper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+.topLeftGlow {
+  position: absolute;
+  top: -15%;
+  left: -10%;
+  width: 480px;
+  height: 440px;
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: neonFloatPurple 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .topLeftGlow {
+    width: 620px;
+    height: 560px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .topLeftGlow {
+    width: 760px;
+  }
+}
+
+.bottomRightGlow {
+  position: absolute;
+  bottom: -15%;
+  right: -10%;
+  width: 500px;
+  height: 460px;
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: neonBreatheOrange 15s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@media (min-width: 640px) {
+  .bottomRightGlow {
+    width: 650px;
+    height: 580px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bottomRightGlow {
+    width: 800px;
+  }
+}
+
+.starsContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  border-radius: 9999px;
+}
+
+.star1 {
+  width: 2px;
+  height: 2px;
+  background-color: #ffffff;
+  opacity: 0.8;
+  box-shadow: 0 0 6px #ffffff;
+  animation: digitalNodePulse1 3.5s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+}
+
+.star2 {
+  width: 2.5px;
+  height: 2.5px;
+  background-color: #a5f3fc;
+  opacity: 0.85;
+  box-shadow: 0 0 7px #00e5ff;
+  animation: digitalNodePulse2 4.0s ease-in-out infinite 1.2s;
+  will-change: transform, opacity, filter;
+}
+
+.star3 {
+  width: 2px;
+  height: 2px;
+  background-color: #fde68a;
+  opacity: 0.8;
+  box-shadow: 0 0 6px #ffb800;
+  animation: digitalNodePulse3 4.6s ease-in-out infinite 2.2s;
+  will-change: transform, opacity, filter;
+}
+
+.star4 {
+  width: 2.5px;
+  height: 2.5px;
+  background-color: #e9d5ff;
+  opacity: 0.85;
+  box-shadow: 0 0 7px #c084fc;
+  animation: digitalNodePulse1 3.5s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+}

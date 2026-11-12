@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight, X, CheckCircle2 } from 'lucide-react';
 import { portfolioProjects } from '../data/websiteContent';
+import styles from './WorkPortfolioSection.module.css';
 
 const Portfolio3DCard = React.memo(function Portfolio3DCard({
   item,
@@ -178,15 +179,12 @@ const Portfolio3DCard = React.memo(function Portfolio3DCard({
         willChange: 'transform, opacity',
         backfaceVisibility: 'hidden',
         WebkitBackfaceVisibility: 'hidden',
+        userSelect: 'none',
       }}
-      className="select-none"
     >
       <div
         onClick={onClick}
-        className={`group relative w-full h-full rounded-[22px] sm:rounded-[26px] overflow-hidden border transition-all duration-300 bg-[#0A071E]/95 backdrop-blur-md flex flex-col justify-between ${isActive
-            ? 'cursor-pointer shadow-2xl'
-            : 'cursor-pointer shadow-lg hover:border-white/40 hover:brightness-105'
-          }`}
+        className={`${styles.cardChassis} ${isActive ? styles.cardActive : styles.cardInactive}`}
         style={{
           borderColor: isActive ? `${item.accentColor}85` : `${item.accentColor}35`,
           boxShadow: isActive
@@ -204,25 +202,25 @@ const Portfolio3DCard = React.memo(function Portfolio3DCard({
         }}
       >
         {/* Specular Top Border Sheen */}
-        <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none z-20" />
+        <div className={styles.cardTopSheen} />
 
         {/* Active Card Inner Glow Rim */}
         {isActive && (
           <div
-            className="absolute inset-0 pointer-events-none rounded-[22px] sm:rounded-[26px] z-10 transition-opacity duration-300"
+            className={styles.cardActiveGlow}
             style={{ boxShadow: `inset 0 0 28px ${item.accentColor}35` }}
           />
         )}
 
         {/* Side Card Dimming Overlay (Maintains Center Focus) */}
         {!isActive && (
-          <div className="absolute inset-0 bg-[#070514]/40 backdrop-blur-[0.5px] transition-opacity duration-200 pointer-events-none rounded-[22px] sm:rounded-[26px] z-25 group-hover:bg-[#070514]/15" />
+          <div className={styles.cardSideDimming} />
         )}
 
         {/* Media Thumbnail Container with Fast Loading & Skeleton */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#070514] shrink-0">
+        <div className={styles.mediaContainer}>
           {!loaded && (
-            <div className="absolute inset-0 bg-white/[0.04] animate-pulse" />
+            <div className={styles.mediaSkeleton} />
           )}
           <img
             src={item.image}
@@ -230,16 +228,15 @@ const Portfolio3DCard = React.memo(function Portfolio3DCard({
             decoding="async"
             loading="lazy"
             onLoad={() => setLoaded(true)}
-            className={`w-full h-full object-cover transition-all duration-500 ${isActive ? 'group-hover:scale-[1.04]' : ''
-              } ${loaded ? 'opacity-100' : 'opacity-0'}`}
+            className={`${styles.mediaImg} ${isActive ? styles.mediaImgZoom : ''} ${loaded ? styles.mediaImgLoaded : styles.mediaImgLoading}`}
           />
           {/* Soft bottom vignette overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A071E] via-[#0A071E]/20 to-transparent pointer-events-none" />
+          <div className={styles.mediaVignette} />
 
           {/* Client Tag Pill with subtle accent border */}
-          <div className="absolute top-3 sm:top-3.5 left-3 sm:left-3.5 z-10">
+          <div className={styles.clientTagWrap}>
             <span
-              className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10.5px] sm:text-[11px] font-mono font-semibold bg-black/75 text-slate-200 backdrop-blur-md border shadow-sm"
+              className={styles.clientTagPill}
               style={{ borderColor: `${item.accentColor}40` }}
             >
               {item.client}
@@ -248,13 +245,13 @@ const Portfolio3DCard = React.memo(function Portfolio3DCard({
 
           {/* Active Card Badge */}
           {isActive && (
-            <div className="absolute top-3 sm:top-3.5 right-3 sm:right-3.5 z-10">
+            <div className={styles.activeBadgeWrap}>
               <span
-                className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-black/75 text-white backdrop-blur-md border shadow-sm flex items-center gap-1.5"
+                className={styles.activeBadgePill}
                 style={{ borderColor: `${item.accentColor}60` }}
               >
                 <span
-                  className="w-1.5 h-1.5 rounded-full animate-pulse"
+                  className={styles.activePulseDot}
                   style={{ backgroundColor: item.accentColor }}
                 />
                 ACTIVE
@@ -264,44 +261,44 @@ const Portfolio3DCard = React.memo(function Portfolio3DCard({
         </div>
 
         {/* Card Body */}
-        <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-1 justify-between relative z-10">
+        <div className={styles.cardBody}>
           <div>
             {/* Category with glowing accent dot */}
-            <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+            <div className={styles.categoryRow}>
               <span
-                className="w-1.5 h-1.5 rounded-full"
+                className={styles.categoryDot}
                 style={{
                   backgroundColor: item.accentColor,
                   boxShadow: `0 0 8px ${item.accentColor}`,
                 }}
               />
               <span
-                className="text-[10.5px] sm:text-[11px] uppercase tracking-[0.16em] font-mono font-semibold"
+                className={styles.categoryText}
                 style={{ color: item.accentColor }}
               >
                 {item.category}
               </span>
             </div>
 
-            <h3 className="text-base sm:text-lg lg:text-[20px] font-bold text-white tracking-tight font-sans leading-snug group-hover:text-white transition-colors mb-1.5 sm:mb-2 line-clamp-1">
+            <h3 className={styles.cardTitle}>
               {item.title}
             </h3>
 
-            <p className="text-slate-300/85 text-[11px] sm:text-xs lg:text-[13px] leading-relaxed line-clamp-2">
+            <p className={styles.cardDesc}>
               {item.description}
             </p>
           </div>
 
           {/* Tags & Action Button Row */}
           <div
-            className="pt-3.5 sm:pt-4 mt-3 sm:mt-4 border-t flex items-center justify-between"
+            className={styles.cardFooterRow}
             style={{ borderColor: `${item.accentColor}25` }}
           >
-            <div className="flex flex-wrap gap-1 sm:gap-1.5">
+            <div className={styles.tagsContainer}>
               {item.tags.slice(0, 2).map((tag, idx) => (
                 <span
                   key={idx}
-                  className="text-[9.5px] sm:text-[10.5px] font-mono border px-2 sm:px-2.5 py-0.5 rounded-full text-slate-200"
+                  className={styles.tagItem}
                   style={{
                     borderColor: `${item.accentColor}35`,
                     backgroundColor: `${item.accentColor}12`,
@@ -312,20 +309,17 @@ const Portfolio3DCard = React.memo(function Portfolio3DCard({
               ))}
             </div>
 
-            <div className="flex items-center gap-2 shrink-0 ml-2">
+            <div className={styles.actionBtnWrapper}>
               {isActive && (
-                <span className="text-[11px] font-mono font-semibold text-slate-300 group-hover:text-white hidden sm:inline">
+                <span className={styles.scopeText}>
                   View Scope
                 </span>
               )}
               <div
-                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white/80 transition-all shadow-md border ${isActive
-                    ? 'group-hover:text-white group-hover:scale-110'
-                    : 'opacity-70 group-hover:opacity-100'
-                  }`}
+                className={`${styles.arrowCircleBtn} ${isActive ? styles.arrowCircleBtnActive : styles.arrowCircleBtnInactive}`}
                 style={{ borderColor: `${item.accentColor}50` }}
               >
-                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                <ArrowRight className={styles.arrowIcon} />
               </div>
             </div>
           </div>
@@ -347,8 +341,6 @@ export default function WorkPortfolioSection() {
   const lastWheelTimeRef = useRef(0);
 
   // Velocity-based Hover Scrubber references
-  // zone values: 0 = Center (stop), -1 = Second card Left (steady), -2 = Third card Left (fast),
-  //              1 = Second card Right (steady), 2 = Third card Right (fast)
   const hoverZoneRef = useRef(0);
   const scrubIntervalRef = useRef(null);
 
@@ -377,8 +369,6 @@ export default function WorkPortfolioSection() {
   }, []);
 
   // Update Scrubbing according to cursor zone
-  // Zone ±1: Second card (steady change ~720ms)
-  // Zone ±2: Third card (faster change ~340ms)
   const updateScrubbing = useCallback(
     (zone) => {
       if (scrubIntervalRef.current) {
@@ -449,7 +439,7 @@ export default function WorkPortfolioSection() {
     stopScrubbing();
   };
 
-  // Safe Category Filter Switcher (Resets Carousel index safely)
+  // Safe Category Filter Switcher
   const handleCategoryChange = (cat) => {
     stopScrubbing();
     setActiveCategory(cat);
@@ -510,8 +500,7 @@ export default function WorkPortfolioSection() {
     }
   };
 
-  // Mouse wheel navigation only when intentional (horizontal scroll or shift+scroll)
-  // Ensures normal page vertical scrolling is NEVER hijacked!
+  // Mouse wheel navigation only when intentional
   const handleWheel = (e) => {
     const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
     if (isHorizontal || e.shiftKey) {
@@ -557,49 +546,49 @@ export default function WorkPortfolioSection() {
   }, [total, isMobile, filteredProjects, activeIndex]);
 
   return (
-    <section id="work" className="relative py-16 sm:py-24 lg:py-28 bg-transparent z-10 overflow-hidden">
-      <div className="w-full max-w-[1440px] 2xl:max-w-[1560px] mx-auto px-4 sm:px-8 xl:px-12 relative z-10">
+    <section id="work" className={styles.workSection}>
+      <div className={styles.container}>
 
         {/* ── Section Header Row ────────────────────────────────────── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14">
-          <div className="flex flex-col items-start text-left max-w-2xl">
+        <div className={styles.headerRow}>
+          <div className={styles.headerTextCol}>
             {/* Section Tag Pill */}
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#2E0B5B]/40 border border-[#A855F7]/35 shadow-[0_0_12px_rgba(168,85,247,0.2)] backdrop-blur-md mb-6">
-              <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-purple-200 uppercase font-mono">
+            <div className={styles.tagPill}>
+              <span className={styles.tagPillText}>
                 SELECTED WORK
               </span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl xl:text-[56px] font-extrabold text-white tracking-tight font-display leading-[1.08]">
+            <h2 className={styles.heading}>
               Proven Work.{' '}
-              <span className="bg-gradient-to-r from-[#FF7A00] via-[#FF5500] to-[#E02696] bg-clip-text text-transparent">
+              <span className={styles.headingGradient}>
                 Tangible Impact.
               </span>
             </h2>
-            <p className="text-sm sm:text-base lg:text-[17px] text-slate-300/85 font-normal mt-3.5 leading-relaxed max-w-xl">
+            <p className={styles.subtitle}>
               Authentic projects and creative campaigns delivered for leading retail giants, e-commerce engines, and growing enterprises.
             </p>
           </div>
 
           {/* Category Filter Pills (Exact preserved labels & styles with Optical Glass) */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className={styles.filterRow}>
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
-                className={`relative overflow-hidden px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                className={`${styles.filterBtn} ${
                   activeCategory === cat
-                    ? 'glass-btn-luminous text-white scale-[1.02]'
-                    : 'glass-btn-clear text-slate-300 hover:text-white'
+                    ? `glass-btn-luminous ${styles.filterBtnActive}`
+                    : `glass-btn-clear ${styles.filterBtnInactive}`
                 }`}
               >
                 {/* Specular Top Cut-Glass Refraction Line */}
-                <span className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none z-20" />
+                <span className={styles.filterCutLine} />
                 
                 {/* Diagonal Ambient Studio Glare */}
-                <span className="absolute inset-0 bg-gradient-to-br from-white/[0.20] via-transparent to-white/[0.04] pointer-events-none z-10" />
+                <span className={styles.filterGlare} />
 
-                <span className="relative z-20">{cat}</span>
+                <span className={styles.filterBtnText}>{cat}</span>
               </button>
             ))}
           </div>
@@ -614,14 +603,14 @@ export default function WorkPortfolioSection() {
           onMouseMove={handleContainerMouseMove}
           onMouseLeave={handleContainerMouseLeave}
           aria-label="3D Projects Showcase Carousel"
-          className="relative w-full min-h-[500px] sm:min-h-[560px] lg:min-h-[600px] flex items-center justify-center focus:outline-none select-none"
+          className={styles.stage}
           style={{
             perspective: isMobile ? '1000px' : '1400px',
             transformStyle: 'preserve-3d',
           }}
         >
           {/* Subtle 3D Floor Lighting Plane */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-3/4 max-w-2xl h-12 bg-gradient-to-t from-transparent via-[#FF7A00]/12 to-transparent blur-2xl pointer-events-none rounded-full" />
+          <div className={styles.floorGlow} />
 
           {/* Left Navigation Chevron Button */}
           {total > 1 && (
@@ -632,9 +621,9 @@ export default function WorkPortfolioSection() {
                 handlePrev();
               }}
               aria-label="Previous project"
-              className="absolute left-1 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#0D0922]/85 backdrop-blur-xl border border-white/15 text-white/80 hover:text-white hover:border-[#FF7A00]/60 hover:shadow-[0_0_24px_rgba(255,122,0,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer active:scale-95 group shadow-xl"
+              className={`${styles.navChevronBtn} ${styles.navChevronPrev}`}
             >
-              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:-translate-x-0.5" />
+              <ChevronLeft className={styles.chevronSvg} />
             </button>
           )}
 
@@ -659,12 +648,12 @@ export default function WorkPortfolioSection() {
                 handleNext();
               }
             }}
-            className="relative w-full h-full min-h-[500px] sm:min-h-[560px] lg:min-h-[600px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+            className={styles.stageTrack}
             style={{ transformStyle: 'preserve-3d' }}
           >
             {/* Center Anchor Point: (0, 0) is the center of the stage */}
             <div
-              className="absolute left-1/2 top-1/2 w-0 h-0 flex items-center justify-center pointer-events-none"
+              className={styles.stageCenterAnchor}
               style={{ transformStyle: 'preserve-3d' }}
             >
               {visibleCards.map(({ offset, project }) => (
@@ -690,18 +679,18 @@ export default function WorkPortfolioSection() {
                 handleNext();
               }}
               aria-label="Next project"
-              className="absolute right-1 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#0D0922]/85 backdrop-blur-xl border border-white/15 text-white/80 hover:text-white hover:border-[#FF7A00]/60 hover:shadow-[0_0_24px_rgba(255,122,0,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer active:scale-95 group shadow-xl"
+              className={`${styles.navChevronBtn} ${styles.navChevronNext}`}
             >
-              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:translate-x-0.5" />
+              <ChevronRight className={styles.chevronSvg} />
             </button>
           )}
         </div>
 
         {/* ── Active Project Pagination & Readout Bar ───────────────── */}
         {total > 1 && (
-          <div className="flex flex-col items-center gap-3.5 mt-6 sm:mt-8 relative z-30">
+          <div className={styles.paginationWrapper}>
             {/* Dots navigation */}
-            <div className="flex items-center gap-2 p-1.5 rounded-full bg-[#0A071E]/80 border border-white/10 backdrop-blur-md shadow-lg">
+            <div className={styles.dotsContainer}>
               {filteredProjects.map((p, idx) => {
                 const isCurrent = idx === activeIndex;
                 return (
@@ -718,24 +707,21 @@ export default function WorkPortfolioSection() {
                       }
                     }}
                     aria-label={`Jump to project ${idx + 1}: ${p.title}`}
-                    className={`transition-all duration-300 rounded-full cursor-pointer ${isCurrent
-                        ? 'w-8 sm:w-10 h-2 sm:h-2.5 bg-gradient-to-r from-[#FF7A00] to-[#E02696] shadow-[0_0_12px_rgba(255,122,0,0.6)]'
-                        : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-white/25 hover:bg-white/50 hover:scale-125'
-                      }`}
+                    className={`${styles.dotBtn} ${isCurrent ? styles.dotActive : styles.dotInactive}`}
                   />
                 );
               })}
             </div>
 
             {/* Project Counter and Title readout */}
-            <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono text-slate-400">
-              <span className="text-white font-bold tracking-wider">
+            <div className={styles.counterReadout}>
+              <span className={styles.currentNum}>
                 {String(activeIndex + 1).padStart(2, '0')}
               </span>
-              <span className="text-white/30">/</span>
+              <span className={styles.counterSlash}>/</span>
               <span>{String(total).padStart(2, '0')}</span>
-              <span className="w-1 h-1 rounded-full bg-white/30" />
-              <span className="text-slate-200 font-sans font-semibold">
+              <span className={styles.counterDot} />
+              <span className={styles.currentClientName}>
                 {filteredProjects[activeIndex]?.client}
               </span>
             </div>
@@ -747,75 +733,75 @@ export default function WorkPortfolioSection() {
       {/* ── Interactive Project Deep-Dive Modal (100% Preserved) ───── */}
       {selectedProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
+          className={styles.modalBackdrop}
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="relative w-full max-w-2xl rounded-3xl bg-[#0D0922]/95 border border-white/15 p-6 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.85)] max-h-[90vh] overflow-y-auto"
+            className={styles.modalDialog}
             style={{ borderColor: selectedProject.accentColor }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-slate-300 hover:text-white transition-colors cursor-pointer"
+              className={styles.modalCloseBtn}
               aria-label="Close dialog"
             >
-              <X className="w-5 h-5" />
+              <X className={styles.modalCloseIcon} />
             </button>
 
             {/* Modal Media Preview */}
-            <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden mb-6 bg-[#070514] border border-white/10">
+            <div className={styles.modalMediaWrap}>
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full h-full object-cover"
+                className={styles.modalMediaImg}
               />
-              <div className="absolute top-3 left-3">
-                <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-black/70 text-slate-200 backdrop-blur-md border border-white/20">
+              <div className={styles.modalClientPillWrap}>
+                <span className={styles.modalClientPill}>
                   {selectedProject.client}
                 </span>
               </div>
             </div>
 
             {/* Header */}
-            <div className="flex items-center gap-2 mb-2">
+            <div className={styles.modalCategoryRow}>
               <span
-                className="w-2 h-2 rounded-full"
+                className={styles.modalCategoryDot}
                 style={{
                   backgroundColor: selectedProject.accentColor,
                   boxShadow: `0 0 10px ${selectedProject.accentColor}`,
                 }}
               />
               <span
-                className="text-xs uppercase tracking-widest font-mono font-semibold"
+                className={styles.modalCategoryText}
                 style={{ color: selectedProject.accentColor }}
               >
                 {selectedProject.category}
               </span>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 font-display">
+            <h3 className={styles.modalTitle}>
               {selectedProject.title}
             </h3>
 
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+            <p className={styles.modalDesc}>
               {selectedProject.description}
             </p>
 
             {/* Deliverables / Tags */}
-            <div className="mb-6">
-              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5 font-mono">
+            <div className={styles.scopeDeliverablesWrap}>
+              <h4 className={styles.scopeDeliverablesHeading}>
                 Key Scope & Deliverables
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className={styles.scopeDeliverablesList}>
                 {selectedProject.tags.map((t, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white/[0.04] border border-white/10 text-slate-200"
+                    className={styles.deliverablePill}
                   >
                     <CheckCircle2
-                      className="w-3.5 h-3.5"
+                      className={styles.checkCircleIcon}
                       style={{ color: selectedProject.accentColor }}
                     />
                     <span>{t}</span>
@@ -825,23 +811,23 @@ export default function WorkPortfolioSection() {
             </div>
 
             {/* Modal Footer CTA */}
-            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs text-slate-400">
+            <div className={styles.modalFooter}>
+              <span className={styles.modalFooterText}>
                 Interested in similar outcomes for your brand?
               </span>
               <a
                 href="#contact"
                 onClick={() => setSelectedProject(null)}
-                className="glass-btn-luminous inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-white shadow-lg cursor-pointer"
+                className={`glass-btn-luminous ${styles.modalCtaBtn}`}
               >
                 {/* Specular Top Cut-Glass Refraction Line */}
-                <span className="absolute top-0 left-0 right-0 h-[1.2px] bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none z-20" />
+                <span className={styles.modalCtaCutLine} />
                 
                 {/* Diagonal Ambient Studio Glare */}
-                <span className="absolute inset-0 bg-gradient-to-br from-white/[0.25] via-transparent to-white/[0.05] pointer-events-none z-10" />
+                <span className={styles.modalCtaGlare} />
 
-                <span className="relative z-20">Discuss {selectedProject.title}</span>
-                <ArrowRight className="relative z-20 w-4 h-4" />
+                <span>Discuss {selectedProject.title}</span>
+                <ArrowRight className={styles.modalCtaArrowIcon} />
               </a>
             </div>
           </div>

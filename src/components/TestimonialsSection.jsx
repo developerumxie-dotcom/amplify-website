@@ -2,6 +2,7 @@ import React from 'react';
 import { Quote, Star, CheckCircle2 } from 'lucide-react';
 import { testimonials } from '../data/websiteContent';
 import RealisticGlassSurface from './RealisticGlassSurface';
+import styles from './TestimonialsSection.module.css';
 
 const testimonialConfig = [
   {
@@ -10,7 +11,7 @@ const testimonialConfig = [
     borderColor: 'rgba(255, 122, 0, 0.45)',
     glowColor: 'rgba(255, 122, 0, 0.35)',
     badgeBg: 'rgba(255, 122, 0, 0.15)',
-    gradient: 'from-[#FF7A00] to-[#E11D48]',
+    gradient: 'linear-gradient(135deg, #FF7A00 0%, #E11D48 100%)',
   },
   {
     id: 'revolt',
@@ -18,7 +19,7 @@ const testimonialConfig = [
     borderColor: 'rgba(168, 85, 247, 0.45)',
     glowColor: 'rgba(168, 85, 247, 0.35)',
     badgeBg: 'rgba(168, 85, 247, 0.15)',
-    gradient: 'from-[#A855F7] to-[#EC4899]',
+    gradient: 'linear-gradient(135deg, #A855F7 0%, #EC4899 100%)',
   },
   {
     id: 'uspa',
@@ -26,46 +27,46 @@ const testimonialConfig = [
     borderColor: 'rgba(224, 38, 150, 0.45)',
     glowColor: 'rgba(224, 38, 150, 0.35)',
     badgeBg: 'rgba(224, 38, 150, 0.15)',
-    gradient: 'from-[#E02696] to-[#FF7A00]',
+    gradient: 'linear-gradient(135deg, #E02696 0%, #FF7A00 100%)',
   },
 ];
 
 export default function TestimonialsSection() {
   return (
-    <section id="insights" className="relative py-16 sm:py-24 lg:py-28 bg-transparent z-10">
+    <section id="insights" className={styles.testimonialsSection}>
 
-      <div className="w-full max-w-[1400px] 2xl:max-w-[1520px] mx-auto px-4 sm:px-8 xl:px-12 relative z-10">
+      <div className={styles.container}>
 
         {/* ── Section Header Row (Harmonized Left Alignment) ────────── */}
-        <div className="flex flex-col items-start text-left max-w-2xl mb-12 sm:mb-16">
+        <div className={styles.headerCol}>
           {/* Section Tag Pill matching exact site model */}
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#2E0B5B]/60 border border-[#A855F7]/45 shadow-[0_0_18px_rgba(168,85,247,0.3)] backdrop-blur-md mb-6">
-            <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] text-purple-200 uppercase font-mono">
+          <div className={styles.tagPill}>
+            <span className={styles.tagPillText}>
               CLIENT TESTIMONIALS
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-white tracking-tight font-display mb-4 leading-[1.08]">
+          <h2 className={styles.heading}>
             What Leading Brands{' '}
-            <span className="bg-gradient-to-r from-[#FF7A00] via-[#FF5500] to-[#E02696] bg-clip-text text-transparent">
+            <span className={styles.headingGradient}>
               Say About Us
             </span>
           </h2>
 
-          <p className="text-sm sm:text-base lg:text-[17px] text-slate-300/85 font-normal leading-relaxed max-w-xl">
+          <p className={styles.subtitle}>
             Real feedback from marketing leaders and executives who scaled their businesses with Amplify.
           </p>
         </div>
 
         {/* ── 3 Authentic Testimonials Grid with Glassmorphism ──────── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 xl:gap-8 items-stretch">
+        <div className={styles.testimonialsGrid}>
           {testimonials.map((t, idx) => {
             const config = testimonialConfig[idx] || testimonialConfig[0];
 
             return (
               <div
                 key={t.id}
-                className="group relative rounded-[24px] sm:rounded-[28px] bg-gradient-to-br from-white/[0.12] via-white/[0.03] to-[#0c0824]/60 backdrop-blur-2xl backdrop-saturate-200 border flex flex-col justify-between p-7 sm:p-8 xl:p-9 transition-all duration-300 hover:-translate-y-2 shadow-xl overflow-hidden"
+                className={styles.testimonialCard}
                 style={{
                   borderColor: config.borderColor,
                   boxShadow: `0 14px 40px -8px ${config.glowColor}, inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55), inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.45), inset 0 0 24px 0 rgba(255, 255, 255, 0.03)`,
@@ -74,40 +75,40 @@ export default function TestimonialsSection() {
 
                 {/* Hover Inner Glow Rim */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-[24px] sm:rounded-[28px] z-10"
+                  className={styles.hoverInnerGlowRim}
                   style={{ boxShadow: `inset 0 0 28px ${config.glowColor}` }}
                 />
 
                 {/* Card Top: Glowing Quote Badge & 5 Stars */}
-                <div className="relative z-10 mb-6">
-                  <div className="flex items-center justify-between">
+                <div className={styles.cardTopRow}>
+                  <div className={styles.topRowFlex}>
                     {/* Glassmorphic Quote Badge */}
                     <div
-                      className="w-11 h-11 rounded-[14px] flex items-center justify-center backdrop-blur-md border shadow-md transition-transform duration-300 group-hover:scale-105"
+                      className={styles.quoteBadge}
                       style={{
                         backgroundColor: config.badgeBg,
                         borderColor: config.borderColor,
                         boxShadow: `0 0 16px -2px ${config.glowColor}`,
                       }}
                     >
-                      <Quote className="w-5 h-5" style={{ color: config.accentColor }} />
+                      <Quote className={styles.quoteIcon} style={{ color: config.accentColor }} />
                     </div>
 
                     {/* 5 Stars Rating Pill */}
-                    <div className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md shadow-sm">
+                    <div className={styles.starsPill}>
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]" />
+                        <Star key={i} className={styles.starSvg} />
                       ))}
                     </div>
                   </div>
                 </div>
 
                 {/* Card Body: Highlight Tag & Authentic Quote */}
-                <div className="relative z-10 flex-1 flex flex-col justify-start">
+                <div className={styles.cardBody}>
                   {/* Scope / Highlight Pill */}
-                  <div className="mb-4">
+                  <div className={styles.highlightPillWrap}>
                     <span
-                      className="inline-block px-3 py-1 rounded-full text-[11px] font-mono font-semibold border backdrop-blur-md"
+                      className={styles.highlightPill}
                       style={{
                         color: config.accentColor,
                         borderColor: `${config.accentColor}35`,
@@ -119,34 +120,35 @@ export default function TestimonialsSection() {
                   </div>
 
                   {/* Quote Text */}
-                  <p className="text-base sm:text-[17px] text-slate-200/95 font-normal leading-relaxed mb-6 italic">
+                  <p className={styles.quoteText}>
                     "{t.quote}"
                   </p>
                 </div>
 
                 {/* Card Footer: Verified Author Attribution */}
                 <div
-                  className="relative z-10 pt-5 mt-auto border-t flex items-center gap-3.5"
+                  className={styles.cardFooterRow}
                   style={{ borderColor: `${config.accentColor}25` }}
                 >
                   {/* Initials Avatar */}
                   <div
-                    className={`w-11 h-11 rounded-full bg-gradient-to-br ${config.gradient} flex items-center justify-center text-white font-bold text-sm shadow-md shrink-0 border border-white/20`}
+                    className={styles.avatar}
+                    style={{ background: config.gradient }}
                   >
                     {t.initials}
                   </div>
 
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-sm sm:text-base font-bold text-white tracking-tight truncate">
+                  <div className={styles.authorMeta}>
+                    <div className={styles.authorNameRow}>
+                      <span className={styles.authorName}>
                         {t.author}
                       </span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <CheckCircle2 className={styles.checkIcon} />
                     </div>
-                    <div className="text-xs font-semibold mt-0.5" style={{ color: config.accentColor }}>
+                    <div className={styles.authorRole} style={{ color: config.accentColor }}>
                       {t.role}
                     </div>
-                    <div className="text-xs text-slate-400 font-medium truncate">
+                    <div className={styles.authorCompany}>
                       {t.company}
                     </div>
                   </div>

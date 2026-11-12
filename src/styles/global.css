@@ -1,0 +1,10 @@
+/**
+ * AMPLIFY DIGITAL — GLOBAL STYLES MASTER ENTRY POINT
+ * Combines tokens, reset, typography, animations, and shared utilities.
+ */
+
+@import './tokens.css';
+@import './reset.css';
+@import './typography.css';
+@import './animations.css';
+@import './utilities.css';

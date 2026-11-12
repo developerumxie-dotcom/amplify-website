@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import { createOrigamiBird, BIRD_VERTICES } from './origamiBirdModel';
+import styles from './HeroBirdVisual.module.css';
 
 /**
  * AMPLIFY DIGITAL — CINEMATIC INTERACTIVE 3D ORIGAMI BIRD
@@ -375,34 +376,25 @@ export default function HeroBirdVisual() {
   }, []);
 
   return (
-    <div className="relative w-full h-[420px] sm:h-[460px] lg:h-[500px] xl:h-[550px] 2xl:h-[600px] flex items-center justify-center select-none">
+    <div className={styles.birdContainer}>
       {/* Background Volumetric Nebula Glows (match Image 2 lighting atmosphere) */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0">
-        <div
-          className="w-[380px] h-[380px] rounded-full blur-[100px] filter mix-blend-screen pointer-events-none"
-          style={{ background: 'rgba(121, 40, 202, 0.25)' }}
-        />
-        <div
-          className="absolute w-[300px] h-[300px] rounded-full blur-[90px] -translate-y-6 translate-x-10 filter mix-blend-screen pointer-events-none"
-          style={{ background: 'rgba(224, 38, 150, 0.20)' }}
-        />
-        <div
-          className="absolute w-[320px] h-[220px] rounded-full blur-[95px] translate-y-12 -translate-x-8 filter mix-blend-screen pointer-events-none"
-          style={{ background: 'rgba(255, 102, 0, 0.16)' }}
-        />
+      <div className={styles.volumetricNebulae}>
+        <div className={styles.nebulaPurple} />
+        <div className={styles.nebulaMagenta} />
+        <div className={styles.nebulaOrange} />
       </div>
 
       {/* WebGL Canvas Mount */}
       <div
         ref={mountRef}
-        className="relative z-10 w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
+        className={styles.canvasMount}
       />
 
       {/* Fallback for no WebGL */}
       {webglError && (
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center bg-[#070514]/90 rounded-3xl border border-white/10">
-          <p className="text-sm font-semibold text-slate-300 mb-2">WebGL 3D Rendering Unavailable</p>
-          <p className="text-xs text-slate-400 max-w-xs">Hardware acceleration is required to render the real-time 3D origami bird sculpture.</p>
+        <div className={styles.webglFallback}>
+          <p className={styles.fallbackTitle}>WebGL 3D Rendering Unavailable</p>
+          <p className={styles.fallbackDesc}>Hardware acceleration is required to render the real-time 3D origami bird sculpture.</p>
         </div>
       )}
     </div>

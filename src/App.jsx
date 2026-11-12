@@ -10,24 +10,25 @@ import ImpactSection from './components/ImpactSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import CtaBanner from './components/CtaBanner';
 import Footer from './components/Footer';
+import styles from './App.module.css';
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#03020A] text-slate-100 flex flex-col relative selection:bg-brand-orange selection:text-white">
+    <div className={styles.app}>
       {/* Background Cosmic Starfield / Light Gradients for Hero */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-[900px] bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(121,40,202,0.18),transparent)]" />
+      <div className={styles.cosmicBackground}>
+        <div className={styles.heroGlowRadial} />
       </div>
 
       {/* Main Page Layout Sections — Seamless Single One-Page Continuous Canvas */}
-      <div className="relative z-10 flex flex-col flex-1">
+      <div className={styles.layoutContent}>
         <Navbar />
 
         {/* ── Single Unified Continuous Canvas (Zero Cut Lines, True One-Page Flow) ── */}
-        <main className="relative w-full flex-1 overflow-hidden">
+        <main className={styles.mainCanvas}>
           <ContinuousNeonBackground />
 
-          <div className="relative z-10">
+          <div className={styles.sectionsStack}>
             <HeroSection />
             <BusinessVerticals />
             <ClientLogoBar />

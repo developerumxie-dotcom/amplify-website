@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import styles from './InteractiveDigitalCanvas.module.css';
 
 /**
  * AMPLIFY DIGITAL — INTERACTIVE DIGITAL GEOMETRIC CANVAS
@@ -351,7 +352,7 @@ export default function InteractiveDigitalCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[1] block select-none"
+      className={styles.canvas}
       aria-hidden="true"
     />
   );

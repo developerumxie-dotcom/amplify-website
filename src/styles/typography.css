@@ -1,0 +1,38 @@
+/**
+ * AMPLIFY DIGITAL — TYPOGRAPHY STYLES
+ * Font families, text gradients, and display headings.
+ */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ── Approved Text Gradients ── */
+.text-gradient-impact {
+  background: var(--gradient-impact);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-orange-purple {
+  background: var(--gradient-orange-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

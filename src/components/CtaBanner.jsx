@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { companyInfo } from '../data/websiteContent';
 import RealisticGlassSurface from './RealisticGlassSurface';
+import styles from './CtaBanner.module.css';
 
 /**
  * AMPLIFY DIGITAL — EXACT CTA BANNER
@@ -40,9 +41,9 @@ export default function CtaBanner() {
   };
 
   return (
-    <section id="contact" className="relative pt-6 sm:pt-10 pb-2 sm:pb-3 bg-transparent z-10">
+    <section id="contact" className={styles.ctaSection}>
 
-      <div className="w-full max-w-[1360px] 2xl:max-w-[1460px] mx-auto px-4 sm:px-8 xl:px-12 relative z-10">
+      <div className={styles.container}>
         
         {/* ── Wide Glassmorphism Banner Container ───────────────────── */}
         <div
@@ -50,7 +51,7 @@ export default function CtaBanner() {
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="relative w-full rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] overflow-hidden bg-gradient-to-br from-white/[0.12] via-white/[0.03] to-[#0c0824]/60 backdrop-blur-3xl backdrop-saturate-200 px-6 sm:px-10 lg:px-12 py-5 sm:py-6 lg:py-7 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 min-h-[118px] sm:min-h-[126px] lg:min-h-[134px] transition-all duration-300 group/card cursor-pointer"
+          className={styles.bannerCard}
           style={{
             boxShadow: isHovered
               ? '0 0 50px -5px rgba(255, 122, 0, 0.48), 0 0 35px -5px rgba(168, 85, 247, 0.38), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.60), inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.30), inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.45), inset 0 0 28px 0 rgba(255, 255, 255, 0.04)'
@@ -60,44 +61,20 @@ export default function CtaBanner() {
           }}
         >
           {/* Dual Glow Border (Violet on Top-Left, Fiery Orange on Bottom-Right) */}
-          <div 
-            className="absolute inset-0 rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] pointer-events-none z-20 border border-transparent"
-            style={{
-              background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.50) 0%, rgba(255, 255, 255, 0.15) 30%, rgba(255, 122, 0, 0.25) 65%, rgba(255, 122, 0, 0.65) 100%) border-box',
-              WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
-              WebkitMaskComposite: 'xor',
-              maskComposite: 'exclude',
-            }}
-          />
+          <div className={styles.dualGlowBorder} />
 
           {/* Top-Left Subtle Purple Atmosphere Glow */}
-          <div 
-            className="absolute top-0 left-0 w-[55%] h-full pointer-events-none z-0"
-            style={{
-              background: 'radial-gradient(ellipse 70% 90% at 5% 15%, rgba(168, 85, 247, 0.32) 0%, rgba(121, 40, 202, 0.12) 50%, transparent 80%)',
-            }}
-          />
+          <div className={styles.purpleGlowAtmosphere} />
 
-          {/* Right Fiery Amber/Orange Atmosphere Glow (Fills right 48% of card smoothly) */}
-          <div 
-            className="absolute top-0 right-0 w-[55%] h-full pointer-events-none z-0"
-            style={{
-              background: 'radial-gradient(ellipse 75% 120% at 88% 50%, rgba(255, 120, 0, 0.55) 0%, rgba(255, 80, 0, 0.28) 42%, rgba(255, 50, 0, 0.10) 65%, transparent 85%)',
-            }}
-          />
+          {/* Right Fiery Amber/Orange Atmosphere Glow */}
+          <div className={styles.orangeGlowAtmosphere} />
 
           {/* Bird Atmospheric Radial Core Glow */}
-          <div 
-            className="absolute top-1/2 right-[4%] -translate-y-1/2 w-[340px] h-[160px] rounded-full pointer-events-none z-0"
-            style={{
-              background: 'radial-gradient(ellipse 60% 80% at 50% 50%, rgba(255, 120, 0, 0.45) 0%, rgba(255, 80, 0, 0.20) 50%, transparent 80%)',
-              filter: 'blur(16px)',
-            }}
-          />
+          <div className={styles.birdCoreGlow} />
 
           {/* Neon Light Waves & Trails */}
-          <div className="absolute inset-0 pointer-events-none z-0 opacity-75">
-            <svg className="w-full h-full" viewBox="0 0 1200 130" fill="none" preserveAspectRatio="none">
+          <div className={styles.neonTrailsSvgWrap}>
+            <svg className={styles.neonSvg} viewBox="0 0 1200 130" fill="none" preserveAspectRatio="none">
               <path d="M 0 35 Q 320 75 620 25" stroke="url(#cardPurpleTrail)" strokeWidth="1.2" strokeOpacity="0.45" />
               <path d="M 520 115 Q 750 126 950 85 T 1200 65" stroke="url(#cardOrangeWave)" strokeWidth="1.8" strokeOpacity="0.85" filter="url(#glowWave)" />
               <defs>
@@ -123,18 +100,18 @@ export default function CtaBanner() {
           </div>
 
           {/* Perfectly Isolated Ultra-HD 3D Origami Bird (Pure Transparency, Zero Background Box) */}
-          <div className="absolute right-0 top-0 bottom-0 h-full flex items-center justify-end pointer-events-none z-10 pr-6 sm:pr-8 md:pr-12 lg:pr-16">
+          <div className={styles.birdWrap}>
             <img
               src="/assets/cta-bird-isolated-hd.png"
               alt=""
-              className="h-[70%] sm:h-[74%] lg:h-[78%] w-auto object-contain -rotate-[3deg] drop-shadow-[0_0_28px_rgba(255,122,0,0.7)] drop-shadow-[0_0_55px_rgba(255,80,0,0.4)] transition-transform duration-700 ease-out group-hover/card:scale-[1.06] group-hover/card:-rotate-[1deg]"
+              className={styles.birdImg}
             />
           </div>
 
           {/* Interactive Mouse Spotlight Reflection Effect */}
           {isHovered && (
             <div
-              className="absolute inset-0 pointer-events-none z-10 transition-opacity duration-300"
+              className={styles.spotlightOverlay}
               style={{
                 background: `radial-gradient(circle 380px at ${mousePos.x}px ${mousePos.y}px, rgba(255, 130, 0, 0.14), rgba(168, 85, 247, 0.08) 50%, transparent 80%)`,
               }}
@@ -142,42 +119,36 @@ export default function CtaBanner() {
           )}
 
           {/* ── Left Heading Block ──────────────────────────────────── */}
-          <div className="relative z-10 text-center md:text-left shrink-0">
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] xl:text-[35px] font-bold text-white tracking-tight font-display leading-[1.14]">
+          <div className={styles.headingBlock}>
+            <h2 className={styles.heading}>
               Have a vision? <br />
               Let's{' '}
-              <span className="bg-gradient-to-r from-[#FF7A00] via-[#FF2E93] to-[#A855F7] bg-clip-text text-transparent">
+              <span className={styles.headingGradient}>
                 amplify it.
               </span>
             </h2>
           </div>
 
           {/* ── Center Action Button (Perfect Center-Right Placement) ── */}
-          <div className="relative z-10 flex items-center justify-center shrink-0 md:mr-14 lg:mr-24 xl:mr-32">
-            <div className="relative group/btn">
+          <div className={styles.actionWrapper}>
+            <div className={styles.btnGroup}>
               {/* Luminous Orange Radial Halo Glow */}
-              <div 
-                className="absolute -inset-3.5 rounded-full pointer-events-none transition-all duration-300 group-hover/btn:scale-115 group-hover/btn:opacity-95"
-                style={{
-                  background: 'radial-gradient(circle, rgba(255, 122, 0, 0.75) 0%, rgba(255, 95, 0, 0.40) 45%, transparent 70%)',
-                  filter: 'blur(10px)',
-                }}
-              />
+              <div className={styles.orangeHaloGlow} />
 
               <a
                 href={companyInfo.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-btn-luminous relative inline-flex items-center gap-2 px-7 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-white whitespace-nowrap cursor-pointer select-none"
+                className={`glass-btn-luminous ${styles.strategyBtn}`}
               >
                 {/* Specular Top Cut-Glass Refraction Line */}
-                <span className="absolute top-0 left-0 right-0 h-[1.2px] bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none z-20" />
+                <span className={styles.btnCutSheen} />
                 
                 {/* Diagonal Ambient Studio Glare */}
-                <span className="absolute inset-0 bg-gradient-to-br from-white/[0.25] via-transparent to-white/[0.05] pointer-events-none z-10" />
+                <span className={styles.btnGlare} />
 
-                <span className="relative z-20">Book a Strategy Call</span>
-                <span className="relative z-20 text-base font-bold leading-none select-none transition-transform duration-200 group-hover/btn:translate-x-1">→</span>
+                <span className={styles.btnText}>Book a Strategy Call</span>
+                <span className={styles.btnArrow}>→</span>
               </a>
             </div>
           </div>

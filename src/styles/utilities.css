@@ -1,0 +1,183 @@
+/**
+ * AMPLIFY DIGITAL — SHARED GLASS & UTILITY STYLES
+ * Reusable layout containers, buttons, and physical optical glass systems.
+ */
+
+/* ── Container Layouts ── */
+.container-wide {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-wide {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-wide {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container-wide {
+    max-width: 1560px;
+  }
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container-narrow {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-narrow {
+    max-width: 1340px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container-narrow {
+    max-width: 1440px;
+  }
+}
+
+/* ── Glassmorphism Primitives ── */
+.glass-nav {
+  background: rgba(20, 16, 38, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card {
+  background: var(--gradient-glass-substrate);
+  backdrop-filter: blur(28px) saturate(190%) contrast(108%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(108%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.65),
+              inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.52),
+              inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.26),
+              inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.45),
+              inset 0 0 24px 0 rgba(255, 255, 255, 0.03);
+}
+
+.glass-card-premium {
+  background: var(--gradient-glass-substrate);
+  backdrop-filter: blur(32px) saturate(200%) contrast(108%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%) contrast(108%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 55px -12px rgba(0, 0, 0, 0.70),
+              inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.58),
+              inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.30),
+              inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.48),
+              inset -1px 0 1px 0 rgba(0, 0, 0, 0.35),
+              inset 0 0 28px 0 rgba(255, 255, 255, 0.04);
+}
+
+.glass-realistic {
+  background: var(--gradient-glass-substrate);
+  backdrop-filter: blur(28px) saturate(190%) contrast(108%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(108%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow-glass-realistic);
+}
+
+.glass-pill {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.03) 45%, rgba(18, 12, 42, 0.50) 100%);
+  backdrop-filter: blur(16px) saturate(190%) contrast(108%);
+  -webkit-backdrop-filter: blur(16px) saturate(190%) contrast(108%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.35),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.50),
+              inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
+  transition: all var(--transition-normal);
+}
+
+.glass-pill:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.06) 45%, rgba(24, 16, 52, 0.60) 100%);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 6px 20px -2px rgba(0, 0, 0, 0.45),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.70),
+              inset 0 -1px 1px 0 rgba(0, 0, 0, 0.40);
+}
+
+/* ── Realistic Glass Button Primitives (VisionOS / Optical Crystal) ── */
+.glass-btn-clear {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 40%, rgba(18, 12, 42, 0.55) 100%);
+  backdrop-filter: blur(24px) saturate(200%) contrast(108%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%) contrast(108%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: var(--shadow-glass-btn-clear);
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.glass-btn-clear:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 40%, rgba(26, 18, 56, 0.65) 100%);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.55),
+              0 0 24px -2px rgba(255, 255, 255, 0.28),
+              inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.90),
+              inset 1px 0 1px 0 rgba(255, 255, 255, 0.45),
+              inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.50),
+              inset 0 0 20px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-1.5px);
+}
+
+.glass-btn-luminous {
+  position: relative;
+  background: var(--gradient-luminous-btn);
+  backdrop-filter: blur(24px) saturate(200%) contrast(110%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%) contrast(110%);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow: var(--shadow-glass-btn-luminous);
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.glass-btn-luminous:hover {
+  background: var(--gradient-luminous-btn-hover);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 40px -4px rgba(255, 106, 0, 0.75),
+              0 0 35px 2px rgba(255, 106, 0, 0.55),
+              inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.98),
+              inset 1px 0 1px 0 rgba(255, 255, 255, 0.50),
+              inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.50),
+              inset 0 0 24px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-1.5px);
+}
+
+.btn-gradient-primary {
+  background: var(--gradient-primary-btn);
+  box-shadow: 0 4px 20px rgba(255, 69, 0, 0.45), 0 2px 10px rgba(230, 0, 122, 0.35);
+  transition: all var(--transition-smooth);
+}
+
+.btn-gradient-primary:hover {
+  box-shadow: 0 6px 26px rgba(255, 69, 0, 0.65), 0 3px 14px rgba(230, 0, 122, 0.45);
+  transform: translateY(-1px);
+}

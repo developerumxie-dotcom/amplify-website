@@ -1,0 +1,12 @@
+/**
+ * AMPLIFY DIGITAL — INTERACTIVE DIGITAL CANVAS MODULE STYLES
+ */
+
+.canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  display: block;
+  user-select: none;
+}
