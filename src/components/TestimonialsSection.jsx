@@ -1,6 +1,7 @@
 import React from 'react';
 import { Quote, Star, CheckCircle2 } from 'lucide-react';
 import { testimonials } from '../data/websiteContent';
+import RealisticGlassSurface from './RealisticGlassSurface';
 
 const testimonialConfig = [
   {
@@ -64,14 +65,12 @@ export default function TestimonialsSection() {
             return (
               <div
                 key={t.id}
-                className="group relative rounded-[24px] sm:rounded-[28px] bg-[#0A071E]/90 backdrop-blur-xl border flex flex-col justify-between p-7 sm:p-8 xl:p-9 transition-all duration-300 hover:-translate-y-2 shadow-xl overflow-hidden"
+                className="group relative rounded-[24px] sm:rounded-[28px] bg-gradient-to-br from-white/[0.12] via-white/[0.03] to-[#0c0824]/60 backdrop-blur-2xl backdrop-saturate-200 border flex flex-col justify-between p-7 sm:p-8 xl:p-9 transition-all duration-300 hover:-translate-y-2 shadow-xl overflow-hidden"
                 style={{
                   borderColor: config.borderColor,
-                  boxShadow: `0 10px 32px -8px ${config.glowColor}`,
+                  boxShadow: `0 14px 40px -8px ${config.glowColor}, inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55), inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.45), inset 0 0 24px 0 rgba(255, 255, 255, 0.03)`,
                 }}
               >
-                {/* Specular Top Border Sheen */}
-                <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none z-20" />
 
                 {/* Hover Inner Glow Rim */}
                 <div
@@ -153,6 +152,8 @@ export default function TestimonialsSection() {
                   </div>
                 </div>
 
+                {/* ── Realistic Optical Glass Surface (Topmost Z-Index Layer) ── */}
+                <RealisticGlassSurface accentGlow={config.glowColor} />
               </div>
             );
           })}

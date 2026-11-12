@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sparkles, Heart, GraduationCap, ArrowRight, ChevronRight } from 'lucide-react';
+import RealisticGlassSurface from './RealisticGlassSurface';
 
 /**
  * AMPLIFY DIGITAL — SECOND SECTION: BUSINESS VERTICALS
@@ -75,10 +76,10 @@ export default function BusinessVerticals() {
               <a
                 key={v.id}
                 href={v.link}
-                className="group relative rounded-[18px] overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer block bg-[#080517] aspect-[304/182] w-full"
+                className="group relative rounded-[20px] overflow-hidden border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl cursor-pointer block bg-gradient-to-br from-white/[0.10] via-white/[0.02] to-[#0c0824]/60 backdrop-blur-2xl backdrop-saturate-200 aspect-[304/182] w-full"
                 style={{
                   borderColor: v.borderColor,
-                  boxShadow: `0 6px 24px -4px ${v.glowColor}`,
+                  boxShadow: `0 12px 36px -6px ${v.glowColor}, inset 0 1.5px 1px 0 rgba(255,255,255,0.55), inset 1.5px 0 1px 0 rgba(255,255,255,0.25), inset 0 -1.5px 1px 0 rgba(0,0,0,0.45), inset 0 0 24px 0 rgba(255,255,255,0.03)`,
                 }}
                 aria-label={`${v.title} - ${v.subtitle}: ${v.description}`}
               >
@@ -90,11 +91,11 @@ export default function BusinessVerticals() {
                   loading="lazy"
                 />
 
-                {/* ── Smooth Left-to-Right Dark Gradient for Text Legibility ── */}
+                {/* ── Smooth Left-to-Right Translucent Gradient for Text Legibility ── */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'linear-gradient(to right, rgba(8, 5, 23, 0.95) 0%, rgba(8, 5, 23, 0.82) 42%, rgba(8, 5, 23, 0.30) 70%, transparent 100%)',
+                    background: 'linear-gradient(to right, rgba(10, 6, 26, 0.82) 0%, rgba(10, 6, 26, 0.65) 45%, rgba(10, 6, 26, 0.15) 75%, transparent 100%)',
                   }}
                 />
 
@@ -150,8 +151,8 @@ export default function BusinessVerticals() {
                   </div>
                 </div>
 
-                {/* Specular Top Border Sheen */}
-                <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none z-20" />
+                {/* ── Realistic Optical Glass Surface (Topmost Z-Index Layer) ── */}
+                <RealisticGlassSurface accentGlow={v.glowColor} />
               </a>
             );
           })}

@@ -15,7 +15,24 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 sm:px-10 lg:px-12 pt-3.5 sm:pt-4 pb-2">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 sm:px-10 lg:px-12 ${
+        scrolled ? 'py-3 sm:py-3.5' : 'pt-3.5 sm:pt-4 pb-2'
+      }`}
+    >
+      {/* Seamless Faded Glass Blur Backdrop (No borders, feather-soft vertical gradient fade) */}
+      <div
+        className={`absolute inset-0 -bottom-8 pointer-events-none -z-10 transition-opacity duration-300 ${
+          scrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          background: 'linear-gradient(to bottom, rgba(3, 2, 10, 0.88) 0%, rgba(3, 2, 10, 0.75) 55%, rgba(3, 2, 10, 0.35) 80%, transparent 100%)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          maskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0) 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.4) 80%, rgba(0, 0, 0, 0) 100%)',
+        }}
+      />
       <div className="w-full max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1440px] mx-auto flex items-center justify-between">
         
         {/* Brand Logo - Scaled to match reference (38px x 38px) */}
@@ -38,7 +55,21 @@ export default function Navbar() {
         </a>
 
         {/* Center Floating Glass Capsule Navigation (394px wide, reference style) */}
-        <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 px-6 py-1.5 rounded-full bg-[#130b28]/70 border border-white/12 shadow-[0_8px_32px_rgba(0,0,0,0.55)] backdrop-blur-xl">
+        <nav
+          className={`relative overflow-hidden hidden md:flex items-center gap-1 sm:gap-1.5 px-6 py-1.5 rounded-full transition-all duration-300 ${
+            scrolled
+              ? 'bg-gradient-to-br from-white/[0.12] via-white/[0.03] to-[#181135]/65 border border-white/20 backdrop-blur-2xl backdrop-saturate-200'
+              : 'bg-gradient-to-br from-white/[0.12] via-white/[0.03] to-[#130b28]/70 border border-white/18 backdrop-blur-2xl backdrop-saturate-200'
+          }`}
+          style={{
+            boxShadow: '0 8px 32px rgba(0,0,0,0.45), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55), inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.20), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.40)'
+          }}
+        >
+          {/* Specular Top Cut-Glass Refraction Line */}
+          <div className="absolute top-0 left-0 right-0 h-[1.2px] bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none z-20" />
+          
+          {/* Diagonal Glass Glare */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.10] via-transparent to-white/[0.02] pointer-events-none z-10 rounded-full" />
           {/* What We Do with Dropdown */}
           <div 
             className="relative"
@@ -125,10 +156,16 @@ export default function Navbar() {
         <div className="flex items-center gap-3 shrink-0">
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs sm:text-[13px] font-semibold text-white bg-white/[0.05] hover:bg-white/[0.10] border border-white/20 hover:border-white/35 backdrop-blur-xl transition-all duration-200 shadow-[0_2px_14px_rgba(0,0,0,0.35)] hover:shadow-[0_0_20px_rgba(255,255,255,0.18)] group shrink-0"
+            className="glass-btn-clear hidden sm:inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full text-xs sm:text-[13px] font-semibold text-white group shrink-0"
           >
-            <span>Let's Talk</span>
-            <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-200 group-hover:translate-x-1" />
+            {/* Specular Top Cut-Glass Refraction Line */}
+            <span className="absolute top-0 left-0 right-0 h-[1.2px] bg-gradient-to-r from-transparent via-white/85 to-transparent pointer-events-none z-20" />
+            
+            {/* Diagonal Ambient Studio Glare */}
+            <span className="absolute inset-0 bg-gradient-to-br from-white/[0.22] via-transparent to-white/[0.04] pointer-events-none z-10" />
+
+            <span className="relative z-20">Let's Talk</span>
+            <ArrowRight className="relative z-20 w-3.5 h-3.5 text-white transition-transform duration-200 group-hover:translate-x-1" />
           </a>
 
           {/* Mobile Menu Button */}

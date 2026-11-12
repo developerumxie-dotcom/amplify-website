@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { companyInfo } from '../data/websiteContent';
+import RealisticGlassSurface from './RealisticGlassSurface';
 
 /**
  * AMPLIFY DIGITAL — EXACT CTA BANNER
@@ -49,11 +50,11 @@ export default function CtaBanner() {
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="relative w-full rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] overflow-hidden bg-[#070214] px-6 sm:px-10 lg:px-12 py-5 sm:py-6 lg:py-7 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 min-h-[118px] sm:min-h-[126px] lg:min-h-[134px] transition-all duration-300 group/card cursor-pointer"
+          className="relative w-full rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] overflow-hidden bg-gradient-to-br from-white/[0.12] via-white/[0.03] to-[#0c0824]/60 backdrop-blur-3xl backdrop-saturate-200 px-6 sm:px-10 lg:px-12 py-5 sm:py-6 lg:py-7 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 min-h-[118px] sm:min-h-[126px] lg:min-h-[134px] transition-all duration-300 group/card cursor-pointer"
           style={{
             boxShadow: isHovered
-              ? '0 0 50px -5px rgba(255, 122, 0, 0.48), 0 0 35px -5px rgba(168, 85, 247, 0.38)'
-              : '0 0 35px -5px rgba(255, 122, 0, 0.32), 0 0 25px -5px rgba(168, 85, 247, 0.25)',
+              ? '0 0 50px -5px rgba(255, 122, 0, 0.48), 0 0 35px -5px rgba(168, 85, 247, 0.38), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.60), inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.30), inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.45), inset 0 0 28px 0 rgba(255, 255, 255, 0.04)'
+              : '0 0 35px -5px rgba(255, 122, 0, 0.32), 0 0 25px -5px rgba(168, 85, 247, 0.25), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.50), inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35), inset 0 0 20px 0 rgba(255, 255, 255, 0.02)',
             transform: `perspective(1200px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) ${isHovered ? 'scale(1.005)' : 'scale(1)'}`,
             transitionProperty: 'transform, box-shadow',
           }}
@@ -68,9 +69,6 @@ export default function CtaBanner() {
               maskComposite: 'exclude',
             }}
           />
-
-          {/* Specular Top Border Sheen */}
-          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none z-20" />
 
           {/* Top-Left Subtle Purple Atmosphere Glow */}
           <div 
@@ -170,14 +168,22 @@ export default function CtaBanner() {
                 href={companyInfo.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative inline-flex items-center gap-2 px-7 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#FF6A00] via-[#E11D48] to-[#D946EF] shadow-[0_0_22px_rgba(255,106,0,0.65)] hover:shadow-[0_0_38px_rgba(255,106,0,0.90)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] whitespace-nowrap cursor-pointer select-none"
+                className="glass-btn-luminous relative inline-flex items-center gap-2 px-7 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-white whitespace-nowrap cursor-pointer select-none"
               >
-                <span>Book a Strategy Call</span>
-                <span className="text-base font-bold leading-none select-none transition-transform duration-200 group-hover/btn:translate-x-1">→</span>
+                {/* Specular Top Cut-Glass Refraction Line */}
+                <span className="absolute top-0 left-0 right-0 h-[1.2px] bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none z-20" />
+                
+                {/* Diagonal Ambient Studio Glare */}
+                <span className="absolute inset-0 bg-gradient-to-br from-white/[0.25] via-transparent to-white/[0.05] pointer-events-none z-10" />
+
+                <span className="relative z-20">Book a Strategy Call</span>
+                <span className="relative z-20 text-base font-bold leading-none select-none transition-transform duration-200 group-hover/btn:translate-x-1">→</span>
               </a>
             </div>
           </div>
 
+          {/* ── Realistic Optical Glass Surface (Topmost Z-Index Layer) ── */}
+          <RealisticGlassSurface />
         </div>
 
       </div>

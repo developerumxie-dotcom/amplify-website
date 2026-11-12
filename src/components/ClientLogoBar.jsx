@@ -1,13 +1,18 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import { clientLogos } from '../data/websiteContent';
+import RealisticGlassSurface from './RealisticGlassSurface';
 
 export default function ClientLogoBar() {
   return (
     <section className="relative py-8 sm:py-12 z-10">
       <div className="w-full max-w-[1380px] 2xl:max-w-[1480px] mx-auto px-4 sm:px-8 xl:px-12">
-        <div className="w-full rounded-2xl sm:rounded-full bg-[#0D0922]/80 border border-white/12 backdrop-blur-xl px-8 sm:px-12 py-5 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-          
+        <div 
+          className="relative overflow-hidden w-full rounded-2xl sm:rounded-full bg-gradient-to-br from-white/[0.12] via-white/[0.03] to-[#0c0824]/60 border border-white/20 backdrop-blur-2xl backdrop-saturate-200 px-8 sm:px-12 py-5 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-8"
+          style={{
+            boxShadow: '0 16px 45px rgba(0,0,0,0.50), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55), inset 1.5px 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.45), inset 0 0 24px 0 rgba(255, 255, 255, 0.03)',
+          }}
+        >
           {/* Left Label */}
           <div className="flex items-center gap-4 shrink-0 pr-0 md:pr-8 md:border-r border-white/12 text-center md:text-left">
             <div className="flex flex-col">
@@ -94,6 +99,8 @@ export default function ClientLogoBar() {
             <ChevronRight className="w-5 h-5 text-slate-400 hover:text-white cursor-pointer transition-colors" />
           </div>
 
+          {/* ── Realistic Optical Glass Surface (Topmost Z-Index Layer) ── */}
+          <RealisticGlassSurface />
         </div>
       </div>
     </section>

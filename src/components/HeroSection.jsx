@@ -155,8 +155,9 @@ export default function HeroSection() {
           <div className="lg:col-span-6 flex flex-col items-start text-left pt-1 lg:pt-0">
 
             {/* Tag Badge: Creative • Strategy • Growth */}
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#180f33]/85 border border-white/14 backdrop-blur-md mb-3 sm:mb-4">
-              <span className="text-xs sm:text-[13px] font-semibold text-slate-200 tracking-wide">
+            <div className="glass-pill relative overflow-hidden inline-flex items-center px-4 py-1.5 rounded-full mb-3 sm:mb-4">
+              <span className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
+              <span className="text-xs sm:text-[13px] font-semibold text-slate-200 tracking-wide relative z-10">
                 Creative • Strategy • Growth
               </span>
             </div>
@@ -177,19 +178,31 @@ export default function HeroSection() {
               {/* Primary CTA: Explore Our Work */}
               <a
                 href="#work"
-                className="btn-gradient-primary inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full text-xs sm:text-sm font-semibold text-white group cursor-pointer shadow-[0_4px_24px_rgba(255,100,0,0.50)] hover:shadow-[0_6px_30px_rgba(255,100,0,0.70)] hover:scale-[1.02] transition-all"
+                className="glass-btn-luminous inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full text-xs sm:text-sm font-semibold text-white group cursor-pointer"
               >
-                <span>Explore Our Work</span>
-                <ArrowRight className="w-4 h-4 text-white transition-transform duration-200 group-hover:translate-x-1" />
+                {/* Specular Top Cut-Glass Refraction Line */}
+                <span className="absolute top-0 left-0 right-0 h-[1.2px] bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none z-20" />
+                
+                {/* Diagonal Ambient Studio Glare */}
+                <span className="absolute inset-0 bg-gradient-to-br from-white/[0.25] via-transparent to-white/[0.05] pointer-events-none z-10" />
+
+                <span className="relative z-20">Explore Our Work</span>
+                <ArrowRight className="relative z-20 w-4 h-4 text-white transition-transform duration-200 group-hover:translate-x-1" />
               </a>
 
               {/* Secondary CTA: Book a Strategy Call with circle icon */}
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full text-xs sm:text-sm font-medium text-slate-200 hover:text-white bg-[#140b29]/80 hover:bg-[#1a1038] border border-white/18 hover:border-white/28 backdrop-blur-md transition-all duration-200 shadow-sm hover:scale-[1.02]"
+                className="glass-btn-clear inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full text-xs sm:text-sm font-medium text-slate-200 hover:text-white group cursor-pointer"
               >
-                <span>Book a Strategy Call</span>
-                <span className="w-2.5 h-2.5 rounded-full border border-slate-300 group-hover:border-white transition-colors" />
+                {/* Specular Top Cut-Glass Refraction Line */}
+                <span className="absolute top-0 left-0 right-0 h-[1.2px] bg-gradient-to-r from-transparent via-white/85 to-transparent pointer-events-none z-20" />
+                
+                {/* Diagonal Ambient Studio Glare */}
+                <span className="absolute inset-0 bg-gradient-to-br from-white/[0.22] via-transparent to-white/[0.04] pointer-events-none z-10" />
+
+                <span className="relative z-20">Book a Strategy Call</span>
+                <span className="relative z-20 w-2.5 h-2.5 rounded-full border border-slate-300 group-hover:border-white transition-colors" />
               </a>
             </div>
 

@@ -581,18 +581,25 @@ export default function WorkPortfolioSection() {
             </p>
           </div>
 
-          {/* Category Filter Pills (Exact preserved labels & styles) */}
+          {/* Category Filter Pills (Exact preserved labels & styles with Optical Glass) */}
           <div className="flex flex-wrap items-center gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
-                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${activeCategory === cat
-                    ? 'bg-gradient-to-r from-[#FF7A00] via-[#E11D48] to-[#D946EF] text-white shadow-[0_4px_20px_rgba(255,106,0,0.4)] scale-[1.02]'
-                    : 'bg-[#120B29]/70 text-slate-300 hover:text-white border border-white/12 hover:border-white/25 backdrop-blur-md'
-                  }`}
+                className={`relative overflow-hidden px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  activeCategory === cat
+                    ? 'glass-btn-luminous text-white scale-[1.02]'
+                    : 'glass-btn-clear text-slate-300 hover:text-white'
+                }`}
               >
-                {cat}
+                {/* Specular Top Cut-Glass Refraction Line */}
+                <span className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none z-20" />
+                
+                {/* Diagonal Ambient Studio Glare */}
+                <span className="absolute inset-0 bg-gradient-to-br from-white/[0.20] via-transparent to-white/[0.04] pointer-events-none z-10" />
+
+                <span className="relative z-20">{cat}</span>
               </button>
             ))}
           </div>
@@ -825,10 +832,16 @@ export default function WorkPortfolioSection() {
               <a
                 href="#contact"
                 onClick={() => setSelectedProject(null)}
-                className="btn-gradient-primary inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-white shadow-lg cursor-pointer"
+                className="glass-btn-luminous inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-white shadow-lg cursor-pointer"
               >
-                <span>Discuss {selectedProject.title}</span>
-                <ArrowRight className="w-4 h-4" />
+                {/* Specular Top Cut-Glass Refraction Line */}
+                <span className="absolute top-0 left-0 right-0 h-[1.2px] bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none z-20" />
+                
+                {/* Diagonal Ambient Studio Glare */}
+                <span className="absolute inset-0 bg-gradient-to-br from-white/[0.25] via-transparent to-white/[0.05] pointer-events-none z-10" />
+
+                <span className="relative z-20">Discuss {selectedProject.title}</span>
+                <ArrowRight className="relative z-20 w-4 h-4" />
               </a>
             </div>
           </div>
