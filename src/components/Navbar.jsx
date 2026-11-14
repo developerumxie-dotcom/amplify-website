@@ -46,7 +46,7 @@ export default function Navbar() {
           aria-label="Amplify Digital Home"
         >
           <img 
-            src="/assets/amplify-logo-dark.png" 
+            src="./assets/amplify-logo-dark.png" 
             alt="Amplify Digital" 
             className={styles.brandFullLogo}
           />

@@ -27,7 +27,7 @@ export default function Footer() {
           <div className={styles.brandCol}>
             <a href="#home" className={styles.brandLink} aria-label="Amplify Digital Home">
               <img 
-                src="/assets/amplify-logo-dark.png" 
+                src="./assets/amplify-logo-dark.png" 
                 alt="Amplify Digital" 
                 className={styles.brandFullLogo}
               />

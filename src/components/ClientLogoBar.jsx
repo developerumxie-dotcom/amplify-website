@@ -29,7 +29,7 @@ export default function ClientLogoBar() {
             {/* 2. Myntra */}
             <div className={`${styles.logoItem} ${styles.logoBright}`}>
               <img 
-                src="/assets/clients/logo_client_1.png" 
+                src="./assets/clients/logo_client_1.png" 
                 alt="Myntra" 
                 className={styles.logoImgWhiteBg}
               />
@@ -38,7 +38,7 @@ export default function ClientLogoBar() {
             {/* 3. U.S. POLO ASSN. */}
             <div className={`${styles.logoItem} ${styles.logoBright}`}>
               <img 
-                src="/assets/clients/logo_client_3.png" 
+                src="./assets/clients/logo_client_3.png" 
                 alt="U.S. POLO ASSN." 
                 className={styles.logoImgLargeWhiteBg}
               />
@@ -47,7 +47,7 @@ export default function ClientLogoBar() {
             {/* 4. Swiggy */}
             <div className={`${styles.logoItem} ${styles.logoBright}`}>
               <img 
-                src="/assets/clients/logo_client_4.png" 
+                src="./assets/clients/logo_client_4.png" 
                 alt="Swiggy" 
                 className={styles.logoImgSwiggy}
               />
@@ -63,7 +63,7 @@ export default function ClientLogoBar() {
             {/* 6. Aadona Networks */}
             <div className={`${styles.logoItem} ${styles.logoBright}`}>
               <img 
-                src="/assets/clients/logo_client_6_aadona.png" 
+                src="./assets/clients/logo_client_6_aadona.png" 
                 alt="Aadona Networks" 
                 className={styles.logoImgWhiteBg}
               />
@@ -72,7 +72,7 @@ export default function ClientLogoBar() {
             {/* 7. The SaleKart */}
             <div className={`${styles.logoItem} ${styles.logoBright}`}>
               <img 
-                src="/assets/clients/logo_client_7.png" 
+                src="./assets/clients/logo_client_7.png" 
                 alt="The SaleKart" 
                 className={styles.logoImgWhiteBg}
               />
@@ -81,7 +81,7 @@ export default function ClientLogoBar() {
             {/* 8. The Blue Lane */}
             <div className={`${styles.logoItem} ${styles.logoBright}`}>
               <img 
-                src="/assets/clients/logo_client_8_bl.png" 
+                src="./assets/clients/logo_client_8_bl.png" 
                 alt="The Blue Lane Designs" 
                 className={styles.logoImgPaddedWhiteBg}
               />

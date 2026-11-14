@@ -102,7 +102,7 @@ export default function CtaBanner() {
           {/* Perfectly Isolated Ultra-HD 3D Origami Bird (Pure Transparency, Zero Background Box) */}
           <div className={styles.birdWrap}>
             <img
-              src="/assets/cta-bird-isolated-hd.png"
+              src="./assets/cta-bird-isolated-hd.png"
               alt=""
               className={styles.birdImg}
             />

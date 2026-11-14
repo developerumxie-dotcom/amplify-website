@@ -34,7 +34,7 @@ export default function ImpactSection() {
           {/* Right Skyline Artwork (Panoramic glowing futuristic digital metropolis) */}
           <div className={styles.skylineArtwork}>
             <img
-              src="/assets/impact-bg-hd.jpg"
+              src="./assets/impact-bg-hd.jpg"
               alt="Futuristic Digital Metropolis"
               className={styles.skylineImg}
               loading="lazy"
