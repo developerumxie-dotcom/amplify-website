@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, Heart, GraduationCap, ArrowRight, ChevronRight } from 'lucide-react';
 import RealisticGlassSurface from './RealisticGlassSurface';
+import { getAssetUrl } from '../utils/assetUrl';
 import styles from './BusinessVerticals.module.css';
 
 /**
@@ -110,7 +111,7 @@ export default function BusinessVerticals() {
               >
                 {/* ── Plain Photography Layer (Right-aligned subject) ── */}
                 <img
-                  src={v.photo}
+                  src={getAssetUrl(v.photo)}
                   alt=""
                   className={styles.cardPhoto}
                   loading="lazy"

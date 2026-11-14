@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowRight, ChevronRight, X, CheckCircle2 } from 'lucide-react';
 import { servicesData } from '../data/websiteContent';
 import RealisticGlassSurface from './RealisticGlassSurface';
+import { getAssetUrl } from '../utils/assetUrl';
 import styles from './WhatWeDoSection.module.css';
 
 /**
@@ -130,12 +131,12 @@ export default function WhatWeDoSection() {
       >
         {/* ── Plain 3D Artwork Layer (Right-aligned subject) ── */}
         <img
-          src={card.image}
+          src={getAssetUrl(card.image)}
           alt=""
           onError={(e) => {
             // Fallback gracefully to plain-art crop if HD is not yet loaded
-            if (card.fallbackImage && e.currentTarget.src !== card.fallbackImage) {
-              e.currentTarget.src = card.fallbackImage;
+            if (card.fallbackImage && e.currentTarget.src !== getAssetUrl(card.fallbackImage)) {
+              e.currentTarget.src = getAssetUrl(card.fallbackImage);
             }
           }}
           className={styles.cardArtwork}

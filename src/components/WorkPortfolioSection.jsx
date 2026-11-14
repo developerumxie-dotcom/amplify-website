@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight, X, CheckCircle2 } from 'lucide-react';
 import { portfolioProjects } from '../data/websiteContent';
+import { getAssetUrl } from '../utils/assetUrl';
 import styles from './WorkPortfolioSection.module.css';
 
 const Portfolio3DCard = React.memo(function Portfolio3DCard({
@@ -223,7 +224,7 @@ const Portfolio3DCard = React.memo(function Portfolio3DCard({
             <div className={styles.mediaSkeleton} />
           )}
           <img
-            src={item.image}
+            src={getAssetUrl(item.image)}
             alt={item.title}
             decoding="async"
             loading="lazy"
@@ -753,7 +754,7 @@ export default function WorkPortfolioSection() {
             {/* Modal Media Preview */}
             <div className={styles.modalMediaWrap}>
               <img
-                src={selectedProject.image}
+                src={getAssetUrl(selectedProject.image)}
                 alt={selectedProject.title}
                 className={styles.modalMediaImg}
               />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
+import { getAssetUrl } from '../utils/assetUrl';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
@@ -46,7 +47,7 @@ export default function Navbar() {
           aria-label="Amplify Digital Home"
         >
           <img 
-            src="./assets/amplify-logo-dark.png" 
+            src={getAssetUrl('assets/amplify-logo-dark.png')} 
             alt="Amplify Digital" 
             className={styles.brandFullLogo}
           />

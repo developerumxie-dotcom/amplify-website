@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Rocket, Award, Users } from 'lucide-react';
 import RealisticGlassSurface from './RealisticGlassSurface';
+import { getAssetUrl } from '../utils/assetUrl';
 import styles from './ImpactSection.module.css';
 
 export default function ImpactSection() {
@@ -34,7 +35,7 @@ export default function ImpactSection() {
           {/* Right Skyline Artwork (Panoramic glowing futuristic digital metropolis) */}
           <div className={styles.skylineArtwork}>
             <img
-              src="./assets/impact-bg-hd.jpg"
+              src={getAssetUrl('assets/impact-bg-hd.jpg')}
               alt="Futuristic Digital Metropolis"
               className={styles.skylineImg}
               loading="lazy"

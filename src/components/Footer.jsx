@@ -2,6 +2,7 @@ import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
 import { companyInfo } from '../data/websiteContent';
 import { getVerticalUrl } from './BusinessVerticals';
+import { getAssetUrl } from '../utils/assetUrl';
 import styles from './Footer.module.css';
 
 /**
@@ -27,7 +28,7 @@ export default function Footer() {
           <div className={styles.brandCol}>
             <a href="#home" className={styles.brandLink} aria-label="Amplify Digital Home">
               <img 
-                src="./assets/amplify-logo-dark.png" 
+                src={getAssetUrl('assets/amplify-logo-dark.png')} 
                 alt="Amplify Digital" 
                 className={styles.brandFullLogo}
               />
