@@ -7,20 +7,39 @@ import styles from './BusinessVerticals.module.css';
  * AMPLIFY DIGITAL — SECOND SECTION: BUSINESS VERTICALS
  * 
  * Featuring:
+ * - Dynamic resolution to local dev ports (5174, 5175, 5176) or production subdomains
  * - Clean, plain photography without baked-in text or graphics
  * - Real React / HTML semantic typography and accessible markup
  * - Real glassmorphic circular badges with glowing Lucide icons
  * - Interactive hover states, specular top sheens, and responsive scaling
  */
 
+export const getVerticalUrl = (devPort, subdomain) => {
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname || 'localhost';
+    if (
+      hostname === 'localhost' ||
+      hostname === '127.0.0.1' ||
+      hostname.startsWith('192.168.') ||
+      hostname.startsWith('10.') ||
+      hostname.endsWith('.local')
+    ) {
+      return `http://${hostname}:${devPort}`;
+    }
+    return `https://${subdomain}.amplifydigital.com`;
+  }
+  return `http://localhost:${devPort}`;
+};
+
 const verticals = [
   {
-    id: 'digital',
-    title: 'Amplify Digital',
+    id: 'brands',
+    title: 'Amplify Brands',
     subtitle: 'For Brands',
-    description: 'Creative campaigns, powerful branding and digital growth.',
+    description: 'Commercial video editing, 3D motion design and high-retention creative campaigns.',
     cta: 'Explore Brands',
-    link: '#brands',
+    devPort: 5174,
+    subdomain: 'brands',
     photo: '/assets/card-photo-digital.jpg',
     borderColor: 'rgba(217, 70, 239, 0.40)',
     glowColor: 'rgba(217, 70, 239, 0.35)',
@@ -33,9 +52,10 @@ const verticals = [
     id: 'healthcare',
     title: 'Amplify Healthcare',
     subtitle: 'For Healthcare',
-    description: 'Hospital marketing, patient growth and automation.',
+    description: 'Hospital marketing, patient acquisition funnels and doctor branding.',
     cta: 'Explore Healthcare',
-    link: '#healthcare',
+    devPort: 5175,
+    subdomain: 'healthcare',
     photo: '/assets/card-photo-healthcare.jpg',
     borderColor: 'rgba(56, 189, 248, 0.40)',
     glowColor: 'rgba(14, 165, 233, 0.35)',
@@ -48,9 +68,10 @@ const verticals = [
     id: 'academy',
     title: 'Amplify Academy',
     subtitle: 'For Learners',
-    description: 'Digital marketing & AI education for the future.',
+    description: 'Digital marketing & AI education for the next generation of founders.',
     cta: 'Explore Academy',
-    link: '#academy',
+    devPort: 5176,
+    subdomain: 'academy',
     photo: '/assets/card-photo-academy.jpg',
     borderColor: 'rgba(250, 204, 21, 0.40)',
     glowColor: 'rgba(234, 179, 8, 0.35)',
@@ -72,10 +93,14 @@ export default function BusinessVerticals() {
         <div className={styles.grid}>
           {verticals.map((v) => {
             const IconComponent = v.icon;
+            const targetUrl = getVerticalUrl(v.devPort, v.subdomain);
+
             return (
               <a
                 key={v.id}
-                href={v.link}
+                href={targetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.card}
                 style={{
                   borderColor: v.borderColor,

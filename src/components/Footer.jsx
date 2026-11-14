@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
 import { companyInfo } from '../data/websiteContent';
+import { getVerticalUrl } from './BusinessVerticals';
 import styles from './Footer.module.css';
 
 /**
@@ -47,19 +48,34 @@ export default function Footer() {
             </h4>
             <ul className={styles.verticalsList}>
               <li>
-                <a href="#brands" className={styles.verticalLink}>
+                <a 
+                  href={getVerticalUrl(5174, 'brands')} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={styles.verticalLink}
+                >
                   <span className={styles.dotViolet} />
-                  <span className={styles.verticalLinkText}>Amplify Digital</span>
+                  <span className={styles.verticalLinkText}>Amplify Brands</span>
                 </a>
               </li>
               <li>
-                <a href="#healthcare" className={styles.verticalLink}>
+                <a 
+                  href={getVerticalUrl(5175, 'healthcare')} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={styles.verticalLink}
+                >
                   <span className={styles.dotCyan} />
                   <span className={styles.verticalLinkText}>Amplify Healthcare</span>
                 </a>
               </li>
               <li>
-                <a href="#academy" className={styles.verticalLink}>
+                <a 
+                  href={getVerticalUrl(5176, 'academy')} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={styles.verticalLink}
+                >
                   <span className={styles.dotYellow} />
                   <span className={styles.verticalLinkText}>Amplify Academy</span>
                 </a>
