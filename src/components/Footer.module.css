@@ -90,7 +90,28 @@
   align-items: center;
   gap: 0.875rem;
   text-decoration: none;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.brandFullLogo {
+  height: 2.25rem;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+@media (min-width: 640px) {
+  .brandFullLogo {
+    height: 2.6rem;
+    max-width: 220px;
+  }
+}
+
+.brandLink:hover .brandFullLogo {
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 12px rgba(0, 229, 255, 0.35));
 }
 
 .logoWrap {

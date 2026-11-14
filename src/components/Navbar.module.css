@@ -85,6 +85,27 @@
   outline: none;
 }
 
+.brandFullLogo {
+  height: 2rem;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+@media (min-width: 640px) {
+  .brandFullLogo {
+    height: 2.25rem;
+    max-width: 190px;
+  }
+}
+
+.brand:hover .brandFullLogo {
+  transform: scale(1.03);
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.35));
+}
+
 .brandLogo {
   position: relative;
   width: 2rem;

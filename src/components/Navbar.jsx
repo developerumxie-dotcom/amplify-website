@@ -43,22 +43,13 @@ export default function Navbar() {
           href="#home" 
           onClick={(e) => scrollToSection(e, 'home')} 
           className={styles.brand}
+          aria-label="Amplify Digital Home"
         >
-          <div className={styles.brandLogo}>
-            <img 
-              src="/assets/logo-bird.png" 
-              alt="Amplify Digital Logo" 
-              className={styles.logoImg}
-            />
-          </div>
-          <div className={styles.brandText}>
-            <span className={styles.brandName}>
-              AMPLIFY
-            </span>
-            <span className={styles.brandSub}>
-              DIGITAL
-            </span>
-          </div>
+          <img 
+            src="/assets/amplify-logo-dark.png" 
+            alt="Amplify Digital" 
+            className={styles.brandFullLogo}
+          />
         </a>
 
         {/* Center Floating Glass Capsule Navigation */}

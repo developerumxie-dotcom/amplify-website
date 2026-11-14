@@ -24,22 +24,12 @@ export default function Footer() {
           
           {/* ── Column 1: Brand & Identity (lg:col-span-4) ───────────── */}
           <div className={styles.brandCol}>
-            <a href="#" className={styles.brandLink}>
-              <div className={styles.logoWrap}>
-                <img 
-                  src="/assets/footer-bird-exact-ref.png" 
-                  alt="Amplify Digital Logo" 
-                  className={styles.logoImg}
-                />
-              </div>
-              <div className={styles.brandWordmark}>
-                <span className={styles.brandText}>
-                  AMPLIFY
-                </span>
-                <span className={styles.brandText}>
-                  DIGITAL
-                </span>
-              </div>
+            <a href="#home" className={styles.brandLink} aria-label="Amplify Digital Home">
+              <img 
+                src="/assets/amplify-logo-dark.png" 
+                alt="Amplify Digital" 
+                className={styles.brandFullLogo}
+              />
             </a>
 
             <p className={styles.tagline}>
