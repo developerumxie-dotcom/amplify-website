@@ -80,30 +80,38 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
   flex-shrink: 0;
   outline: none;
+  text-decoration: none;
 }
 
 .brandFullLogo {
-  height: 2rem;
+  display: block;
+  height: 2.25rem;
   width: auto;
-  max-width: 170px;
+  max-height: 44px;
   object-fit: contain;
   transition: transform var(--transition-smooth), filter var(--transition-smooth);
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.4));
 }
 
 @media (min-width: 640px) {
   .brandFullLogo {
-    height: 2.25rem;
-    max-width: 190px;
+    height: 2.6rem;
+    max-height: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .brandFullLogo {
+    height: 2.85rem;
+    max-height: 56px;
   }
 }
 
 .brand:hover .brandFullLogo {
   transform: scale(1.03);
-  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.35));
+  filter: drop-shadow(0 0 14px rgba(0, 229, 255, 0.4));
 }
 
 .brandLogo {
