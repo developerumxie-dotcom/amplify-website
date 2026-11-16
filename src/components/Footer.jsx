@@ -194,7 +194,21 @@ export default function Footer() {
 
         {/* ── Bottom Sub-Bar: Copyright & Legal ───────────────────────── */}
         <div className={styles.bottomBar}>
-          <p className={styles.copyrightText}>© 2026 Amplify Digital Services. All rights reserved.</p>
+          <div className={styles.bottomLeftGroup}>
+            <p className={styles.copyrightText}>© 2026 Amplify Digital Services. All rights reserved.</p>
+            <span className={styles.creditSeparator}>•</span>
+            <p className={styles.developerCredit}>
+              Designed & Developed by{' '}
+              <a
+                href="https://www.instagram.com/dev.umxie/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.developerLink}
+              >
+                developer-umxie
+              </a>
+            </p>
+          </div>
 
           <div className={styles.legalLinksRow}>
             <a href="#" className={styles.legalLink}>Privacy Policy</a>

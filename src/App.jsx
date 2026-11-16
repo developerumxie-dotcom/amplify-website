@@ -10,6 +10,7 @@ import ImpactSection from './components/ImpactSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import CtaBanner from './components/CtaBanner';
 import Footer from './components/Footer';
+import AmplifyAI from './features/amplify-ai/AmplifyAI';
 import styles from './App.module.css';
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
           </div>
         </main>
       </div>
+
+      {/* AMPLIFY AI — 3D Interactive Virtual Assistant */}
+      <AmplifyAI />
     </div>
   );
 }

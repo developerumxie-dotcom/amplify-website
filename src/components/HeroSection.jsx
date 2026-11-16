@@ -183,7 +183,7 @@ export default function HeroSection() {
               >
                 {/* Specular Top Cut-Glass Refraction Line */}
                 <span className={styles.btnSpecularCut} />
-                
+
                 {/* Diagonal Ambient Studio Glare */}
                 <span className={styles.btnGlareLuminous} />
 
@@ -198,7 +198,7 @@ export default function HeroSection() {
               >
                 {/* Specular Top Cut-Glass Refraction Line */}
                 <span className={styles.btnSpecularCutClear} />
-                
+
                 {/* Diagonal Ambient Studio Glare */}
                 <span className={styles.btnGlareClear} />
 

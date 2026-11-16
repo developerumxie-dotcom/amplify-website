@@ -476,6 +476,49 @@
   margin: 0;
 }
 
+.bottomLeftGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .bottomLeftGroup {
+    justify-content: flex-start;
+  }
+}
+
+.creditSeparator {
+  color: rgba(255, 255, 255, 0.25);
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .creditSeparator {
+    display: inline;
+  }
+}
+
+.developerCredit {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.developerLink {
+  color: #c084fc;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.developerLink:hover {
+  color: #00e5ff;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  text-decoration: underline;
+}
+
 .legalLinksRow {
   display: flex;
   align-items: center;

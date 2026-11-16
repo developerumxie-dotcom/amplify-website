@@ -1,0 +1,52 @@
+{
+  "vertical": "Amplify Academy — For Learners",
+  "overview": "A dedicated learning and professional-development vertical offering practical, industry-driven training in digital marketing, creative strategy, web technology, and modern AI workflows.",
+  "philosophy": "Bridging the gap between classroom theory and real-world agency execution through hands-on campaign simulations and tool mastery.",
+  "curriculumAreas": [
+    {
+      "id": "marketing-fundamentals",
+      "name": "Digital Marketing Fundamentals & Strategy",
+      "topics": "Core digital channels, marketing funnels, customer personas, and campaign budgeting."
+    },
+    {
+      "id": "social-media-mastery",
+      "name": "Social Media Marketing & Community Building",
+      "topics": "Instagram algorithm, LinkedIn organic growth, content calendars, and viral reel frameworks."
+    },
+    {
+      "id": "paid-advertising",
+      "name": "Performance Marketing: Meta & Google Ads",
+      "topics": "PPC campaigns, audience targeting, pixel tracking, A/B testing, and ROAS optimization."
+    },
+    {
+      "id": "seo-growth",
+      "name": "Search Engine Optimization (SEO)",
+      "topics": "Keyword research, on-page optimization, technical SEO, backlinks, and Google Analytics."
+    },
+    {
+      "id": "creative-content",
+      "name": "Content Creation, Copywriting & Video Storytelling",
+      "topics": "Short-form video editing, visual storytelling, commercial copywriting, and brand aesthetics."
+    },
+    {
+      "id": "ai-marketing",
+      "name": "AI Tools for Modern Marketing & Workflow Automation",
+      "topics": "Prompt engineering for creatives, AI image & video generation, LLM workflow automation, and productivity systems."
+    },
+    {
+      "id": "web-fundamentals",
+      "name": "Website Development & UI/UX Fundamentals",
+      "topics": "Modern landing page design, conversion UX, and modern web building essentials."
+    }
+  ],
+  "strictRules": {
+    "doNotInvent": [
+      "Exact course pricing or discounts",
+      "Upcoming batch start dates or schedules",
+      "University accreditation or government certificate claims",
+      "Job placement guarantees or 100% hiring promises",
+      "Course durations unless confirmed in official literature"
+    ],
+    "fallbackGuidance": "Explain that curriculum modules are tailored to industry demands, and invite the learner to leave their contact details or reach out directly to the Academy admissions desk at support@amplifydigitalservices.com or via WhatsApp."
+  }
+}

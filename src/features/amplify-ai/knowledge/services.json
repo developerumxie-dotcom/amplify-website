@@ -1,0 +1,118 @@
+{
+  "vertical": "Amplify Digital — For Brands",
+  "overview": "A creative, marketing and digital growth partner for businesses looking to scale their identity, reach, and performance.",
+  "categories": [
+    {
+      "id": "brand-strategy",
+      "name": "Brand Strategy and Identity",
+      "tagline": "Build a powerful brand with purpose.",
+      "summary": "Holistic visual identity systems, market positioning, and distinctive brand personality crafting across every touchpoint.",
+      "capabilities": [
+        "Brand positioning & differentiation",
+        "Brand identity development & logo design",
+        "Brand communication & tone of voice",
+        "Creative direction & brand books",
+        "Comprehensive brand guidelines",
+        "Campaign concepts & launch strategy",
+        "Packaging solutions & branded collateral"
+      ]
+    },
+    {
+      "id": "social-media",
+      "name": "Social Media Marketing",
+      "tagline": "Turn followers into a thriving community.",
+      "summary": "End-to-end social media strategy, creative content production, and community management across Instagram, LinkedIn, and Meta platforms.",
+      "capabilities": [
+        "Social media strategy & execution",
+        "Data-driven strategic content calendars",
+        "Full account management & growth",
+        "Instagram & Facebook viral reels/campaigns",
+        "LinkedIn B2B thought leadership & marketing",
+        "Community engagement & active moderation",
+        "Social analytics & ROI reporting"
+      ]
+    },
+    {
+      "id": "content-production",
+      "name": "Content and Creative Production",
+      "tagline": "Create unforgettable, high-converting visual media.",
+      "summary": "Cinematic brand films, commercial video production, photography, 3D motion graphics, and AI-assisted creative assets.",
+      "capabilities": [
+        "Cinematic brand films & corporate documentaries",
+        "High-definition product videos & commercials",
+        "Viral reels & short-form video production",
+        "Studio photography & live event shoots",
+        "Cinematography & creative art direction",
+        "Motion graphics & 3D visual effects",
+        "AI-assisted creative production & campaign design"
+      ]
+    },
+    {
+      "id": "performance-marketing",
+      "name": "Digital Advertising and Performance",
+      "tagline": "Turn digital ad spend into predictable revenue.",
+      "summary": "Full-funnel customer acquisition, hyper-targeted ad campaigns on Meta and Google, and conversion rate optimization.",
+      "capabilities": [
+        "Meta Ads (Instagram & Facebook conversion funnels)",
+        "Google Ads (Search, Shopping, Display & YouTube)",
+        "Performance marketing & customer acquisition",
+        "High-intent lead generation campaigns",
+        "Conversion Rate Optimization (CRO)",
+        "Rigorous A/B creative & audience experimentation",
+        "Attribution modeling, analytics & transparent reporting"
+      ]
+    },
+    {
+      "id": "web-digital-experiences",
+      "name": "Website and Digital Experiences",
+      "tagline": "High-performance digital flagships that convert.",
+      "summary": "Custom UI/UX architecture and modern React.js web development with seamless responsive design, SEO domination, and interactive 3D.",
+      "capabilities": [
+        "Custom UI/UX architecture & user journey wireframing",
+        "100% responsive modern React.js website development",
+        "High-converting landing pages & sales funnels",
+        "Technical SEO, schema markup & Google search visibility",
+        "Interactive web experiences & WebGL 3D elements",
+        "E-Commerce storefront integrations",
+        "Continuous website maintenance & performance optimization"
+      ]
+    },
+    {
+      "id": "influencer-regional",
+      "name": "Influencer and Regional Marketing",
+      "tagline": "Authentic creator partnerships and localized brand storytelling.",
+      "summary": "Targeted creator collaborations, regional-language campaigns, and multilingual transcreation to reach culturally resonant audiences.",
+      "capabilities": [
+        "Influencer discovery, contracting & campaign management",
+        "Creator-led authentic video content",
+        "Regional-language marketing & localized messaging",
+        "Multilingual transcreation & cultural copywriting",
+        "Geo-targeted regional digital advertising"
+      ]
+    },
+    {
+      "id": "events-experiences",
+      "name": "Events and Brand Experiences",
+      "tagline": "Experiential activations that leave a lasting mark.",
+      "summary": "Physical and hybrid brand activations, corporate event media coverage, and immersive brand experiences.",
+      "capabilities": [
+        "Brand activations & on-ground experiential launches",
+        "Corporate events & trade-show creative showcases",
+        "Live event cinematography & same-day video edits",
+        "Event promotional campaigns & attendee registration funnels"
+      ]
+    },
+    {
+      "id": "crm-automation",
+      "name": "CRM and Marketing Automation",
+      "tagline": "Automate lead nurturing and accelerate the sales pipeline.",
+      "summary": "WhatsApp Business marketing, automated conversational lead flows, and CRM integration to turn inquiries into closed deals.",
+      "capabilities": [
+        "WhatsApp Business API marketing & automated bots",
+        "Lead nurturing email & SMS sequences",
+        "CRM setup & pipeline workflow integrations",
+        "Automated customer communication & review generation"
+      ]
+    }
+  ]
+}

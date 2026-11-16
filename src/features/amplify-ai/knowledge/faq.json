@@ -1,0 +1,44 @@
+{
+  "faqs": [
+    {
+      "keywords": ["what do you do", "about amplify", "who are you", "what is amplify digital", "capabilities"],
+      "question": "What does Amplify Digital do?",
+      "answer": "Amplify Digital is a 360° creative, digital, marketing and growth studio. We operate across three primary verticals:\n\n1. **Amplify Digital for Brands**: Full-funnel brand strategy, creative content, social media, performance marketing, and modern React web experiences.\n2. **Amplify Healthcare**: Specialized healthcare branding, doctor personal branding, and patient inquiry systems.\n3. **Amplify Academy**: Practical industry training in digital marketing, creative storytelling, and AI tools.\n\nOur philosophy is simple: **We Turn Ideas Into Impact**."
+    },
+    {
+      "keywords": ["pricing", "cost", "how much", "charges", "fees", "budget", "monthly cost", "social media marketing cost"],
+      "question": "What are your pricing and service packages?",
+      "answer": "Because every brand has distinct goals, creative needs, and scales of execution, we don't believe in one-size-fits-all generic pricing. We scope each partnership based on your required deliverables, timelines, and growth targets. We would be happy to put together a tailored project scope—would you like to share a quick project brief or schedule a discovery call with our team?"
+    },
+    {
+      "keywords": ["guarantee", "guaranteed leads", "1000 leads", "promise results", "guarantee 1000 leads"],
+      "question": "Can you guarantee 1,000 leads or guaranteed results?",
+      "answer": "We maintain strict professional integrity: we do not make exaggerated, unverified promises or artificial 'guaranteed lead' claims. Real, lasting business growth depends on product-market fit, audience targeting, creative resonance, and market dynamics. What we do guarantee is transparent reporting, disciplined A/B testing, high-converting creative execution, and relentless optimization to maximize your return on ad spend (ROAS)."
+    },
+    {
+      "keywords": ["contact", "speak to founder", "talk to team", "call", "phone", "whatsapp", "book call", "strategy call"],
+      "question": "How can I speak to your team or book a strategy call?",
+      "answer": "You can connect directly with our leadership and strategy team:\n\n• **WhatsApp Direct**: [+91 7879964770](https://wa.me/917879964770?text=Hello%20Amplify%20Digital%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project)\n• **Direct Phone**: +91 7879964770\n• **Email**: [support@amplifydigitalservices.com](mailto:support@amplifydigitalservices.com)\n• **Location**: Raipur, Chhattisgarh, India\n\nOr simply let me know what you're looking for, and I can take down a quick message for the team right here!"
+    },
+    {
+      "keywords": ["international", "global", "outside india", "foreign clients", "us clients"],
+      "question": "Do you work with international brands and clients outside India?",
+      "answer": "Yes, absolutely! We collaborate with brands, startups, and institutions across different geographic regions, tailoring visual identities, digital funnels, and multilingual content to global market expectations."
+    },
+    {
+      "keywords": ["healthcare", "hospital", "doctor", "clinic", "patient", "medical"],
+      "question": "How do you help hospitals and doctors with marketing?",
+      "answer": "Through **Amplify Healthcare**, our dedicated medical marketing division! We assist multispeciality hospitals, clinics, and doctors with:\n• Ethical doctor personal branding & clinical explainer videos\n• Hospital local search optimization (Google Maps & Search)\n• Patient education content & community awareness campaigns\n• Automated WhatsApp appointment inquiry routing\n\n*Note: We strictly adhere to medical advertising regulations and do not provide medical diagnoses or guarantee patient recovery numbers.*"
+    },
+    {
+      "keywords": ["academy", "courses", "learning", "internship", "certificates", "syllabus", "student"],
+      "question": "What courses does Amplify Academy offer?",
+      "answer": "**Amplify Academy** prepares ambitious learners and marketers with real-world agency skills. Our hands-on learning modules cover:\n• Digital Marketing Strategy & Performance Ad Funnels (Meta & Google)\n• Search Engine Optimization (SEO) & Content Marketing\n• Social Media Growth & Viral Video Storytelling\n• Modern AI Workflows & Creative Prompt Engineering\n\nTo view upcoming batch availability and consult with an admissions mentor, drop your contact details or message us on WhatsApp!"
+    },
+    {
+      "keywords": ["clients", "portfolio", "brands you worked with", "retail brands", "fashion brands", "examples", "case studies"],
+      "question": "Who are your clients and what brands have you worked with?",
+      "answer": "We have collaborated with leading enterprises and retail icons including **Titan World, Titan Eye+, Helios, U.S. Polo Assn., Myntra, Taneira, TATA, Swiggy, Revolt Motors, Aadona Networks, and The SaleKart**, among 250+ partner businesses. Would you like to see examples in fashion retail, e-commerce, tech, or branding?"
+    }
+  ]
+}

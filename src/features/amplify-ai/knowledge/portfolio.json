@@ -1,0 +1,89 @@
+{
+  "portfolioOverview": "A proven track record spanning retail, lifestyle, consumer goods, e-commerce, healthcare, and enterprise technology across 320+ delivered campaigns.",
+  "projects": [
+    {
+      "id": "peter-england",
+      "title": "Peter England Retail Campaign",
+      "client": "Peter England / Aditya Birla Fashion",
+      "industry": "Fashion Retail",
+      "services": ["Retail Branding", "Campaign Collateral", "Visual Design"],
+      "description": "Nationwide retail promotional campaign, standees, and visual collateral for the Travel Chino collection across flagship stores.",
+      "challenge": "Create high-impact in-store visual collaterals that communicate product flexibility and style instantly to walk-in consumers.",
+      "approach": "Developed sleek, contemporary retail graphics, modular store standees, and eye-catching product story cards.",
+      "deliverables": ["Store display collaterals", "Promotional standees", "Point-of-sale visual kits"],
+      "results": "Deployed across multi-city flagship outlets with high engagement.",
+      "image": "/assets/portfolio/port_peter_england.jpg",
+      "url": "#portfolio"
+    },
+    {
+      "id": "salekart-ecommerce",
+      "title": "The SaleKart Growth Engine",
+      "client": "The SaleKart.com",
+      "industry": "E-Commerce",
+      "services": ["E-Commerce Marketing", "Performance PPC", "Digital Growth"],
+      "description": "Comprehensive paid acquisition, search advertising, and conversion rate optimization driving rapid scaling.",
+      "challenge": "High customer acquisition costs and low cart checkout velocity in competitive e-commerce landscape.",
+      "approach": "Restructured Meta and Google Ads funnels, instituted dynamic retargeting, and optimized high-intent search campaigns.",
+      "deliverables": ["Google Shopping & Search ads", "Meta conversion campaigns", "Landing page CRO"],
+      "results": "Over 300%+ increase in verified order scaling with improved ROAS.",
+      "image": "/assets/portfolio/port_social_banner.jpg",
+      "url": "#portfolio"
+    },
+    {
+      "id": "culinary-portal",
+      "title": "Enterprise Web Portal",
+      "client": "Hospitality & Retail Enterprise",
+      "industry": "Hospitality & Food Service",
+      "services": ["UI/UX Design", "Full-Stack Web Development", "Local SEO"],
+      "description": "Full-stack responsive web platform with interactive ordering menus, seamless booking, and local search visibility.",
+      "challenge": "Outdated legacy website with high bounce rate, poor mobile experience, and zero search rankings.",
+      "approach": "Built custom React.js frontend with mobile-first menu interactions, fast load times, and structured schema markup for local SEO.",
+      "deliverables": ["Interactive web platform", "Digital menu & reservation engine", "Local search ranking strategy"],
+      "results": "Top 3 local Google search ranking and 65% increase in direct mobile bookings.",
+      "image": "/assets/portfolio/port_web_dev_raipur.jpg",
+      "url": "#portfolio"
+    },
+    {
+      "id": "my-fresh-house",
+      "title": "My Fresh House Urban Campaign",
+      "client": "My Fresh House",
+      "industry": "Consumer Goods & F&B",
+      "services": ["OOH Branding", "Graphic Identity", "Public Relations"],
+      "description": "High-impact out-of-home advertising, bold street marketing collaterals, and contemporary visual identity.",
+      "challenge": "Launching a brand in an urban market with immediate visual distinction.",
+      "approach": "Bold typography, vibrant color palettes, and strategically positioned hoardings and transit media.",
+      "deliverables": ["Brand identity kit", "OOH hoardings & billboards", "Transit marketing assets"],
+      "results": "Widespread local brand recall within the first 30 days of launch.",
+      "image": "/assets/portfolio/port_branding_pr.jpg",
+      "url": "#portfolio"
+    },
+    {
+      "id": "aadona-networks",
+      "title": "Aadona Networks Technical Identity",
+      "client": "Aadona Networks",
+      "industry": "Enterprise Networking & B2B Tech",
+      "services": ["B2B Marketing", "Display Advertising", "Corporate Identity"],
+      "description": "B2B digital promotion, structured technical advertising, and targeted networking product collateral.",
+      "challenge": "Translating complex hardware technical specifications into crisp, professional commercial assets for enterprise clients.",
+      "approach": "Designed structured product catalogs, technical infographics, and focused LinkedIn/Google display campaigns.",
+      "deliverables": ["Enterprise product catalogs", "Technical collateral", "Targeted B2B digital display ads"],
+      "results": "Elevated brand credibility among enterprise distributors and IT decision-makers.",
+      "image": "/assets/portfolio/port_advertising_banners.jpg",
+      "url": "#portfolio"
+    },
+    {
+      "id": "uspa-fashion",
+      "title": "U.S. POLO ASSN. Campaigns",
+      "client": "U.S. POLO ASSN. India",
+      "industry": "Fashion & Lifestyle",
+      "services": ["Fashion Retail", "Creative Direction", "Social Campaigns"],
+      "description": "Premium social media creative executions, digital brand assets, and multi-channel campaign promotion.",
+      "challenge": "Maintain global heritage brand aesthetic while driving youth engagement on Indian social platforms.",
+      "approach": "High-fashion visuals, aspirational lifestyle storytelling, and dynamic short-form social edits.",
+      "deliverables": ["Social campaign creatives", "Digital lookbooks", "Promotional reels"],
+      "results": "Enhanced audience engagement and consistent visual excellence praised by brand leadership.",
+      "image": "/assets/portfolio/port_web_4905662.jpg",
+      "url": "#portfolio"
+    }
+  ]
+}

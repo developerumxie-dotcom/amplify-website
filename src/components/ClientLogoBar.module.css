@@ -1,46 +1,47 @@
 /**
- * AMPLIFY DIGITAL — "TRUSTED BY LEADING BRANDS" MARQUEE
- * Minimalist, borderless, Linear & Apple inspired aesthetic (#03020A)
+ * AMPLIFY DIGITAL — "TRUSTED BY LEADING BRANDS"
+ * TRUE 3D CONVEX CYLINDER CURVE (UNIFORM FROSTED SILVER — NO GLOW/HIGHLIGHT)
+ * 100% transparent background, clean consistent frosted silver tone
  */
 
-.marqueeSection {
+.curveSection {
   position: relative;
   width: 100%;
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
-  background-color: #03020A;
+  padding-top: 1.5rem;
+  padding-bottom: 1.05rem;
+  background: transparent;
   overflow: hidden;
   z-index: 10;
 }
 
 @media (min-width: 640px) {
-  .marqueeSection {
-    padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
+  .curveSection {
+    padding-top: 2.25rem;
+    padding-bottom: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .marqueeSection {
-    padding-top: 5.5rem;
-    padding-bottom: 5.5rem;
+  .curveSection {
+    padding-top: 2.75rem;
+    padding-bottom: 1.75rem;
   }
 }
 
-/* ── Centered Micro-Label ── */
+/* ── Centered Minimalist Micro-Label ── */
 .labelContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.25rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
 @media (min-width: 640px) {
   .labelContainer {
-    margin-bottom: 3.25rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -51,7 +52,7 @@
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(148, 163, 184, 0.70); /* Subtle muted frosted silver */
+  color: rgba(148, 163, 184, 0.70);
   user-select: none;
   transition: color 0.3s ease;
 }
@@ -67,121 +68,90 @@
   color: rgba(226, 232, 240, 0.95);
 }
 
-/* ── Borderless Infinite Marquee Container ── */
-.marqueeContainer {
+/* ── True 3D Convex Curve Stage ── */
+.curveStage {
   position: relative;
   width: 100%;
+  height: 145px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
+  background: transparent;
+  perspective: 900px;
+  perspective-origin: 50% 50%;
+  cursor: grab;
   mask-image: linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%);
 }
 
-/* Smooth gradient edge dissolves for cross-browser fallback */
-.fadeLeft,
-.fadeRight {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 80px;
-  z-index: 5;
-  pointer-events: none;
+.curveStage:active {
+  cursor: grabbing;
 }
 
 @media (min-width: 640px) {
-  .fadeLeft,
-  .fadeRight {
-    width: 140px;
+  .curveStage {
+    height: 165px;
+    perspective: 1000px;
   }
 }
 
 @media (min-width: 1024px) {
-  .fadeLeft,
-  .fadeRight {
-    width: 200px;
+  .curveStage {
+    height: 185px;
+    perspective: 1100px;
   }
 }
 
-.fadeLeft {
-  left: 0;
-  background: linear-gradient(to right, #03020A 15%, rgba(3, 2, 10, 0.75) 50%, transparent 100%);
+/* ── 3D Track Container ── */
+.curveTrack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
 }
 
-.fadeRight {
-  right: 0;
-  background: linear-gradient(to left, #03020A 15%, rgba(3, 2, 10, 0.75) 50%, transparent 100%);
-}
-
-/* ── Kinetic Continuous Marquee Track ── */
-.marqueeTrack {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  will-change: transform;
-  animation: continuousMarquee 38s linear infinite;
-}
-
-/* Touch and desktop hover pause for inspecting brands */
-.marqueeTrack:hover {
-  animation-play-state: paused;
-}
-
-@keyframes continuousMarquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Smooth motion on mobile devices */
-@media (max-width: 768px) {
-  .marqueeTrack {
-    animation-duration: 28s; /* Slightly faster kinetic pace on smaller screens */
-  }
-}
-
-/* ── Individual Brand Logo Items ── */
+/* ── 3D Logo Item (Logo Only — Borderless) ── */
 .logoItem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 165px;
+  height: 90px;
+  margin-left: -82.5px;
+  margin-top: -45px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  padding: 0 2rem;
-  cursor: pointer;
+  background: transparent;
+  border: none;
   outline: none;
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: pointer;
   user-select: none;
 }
 
 @media (min-width: 640px) {
   .logoItem {
-    padding: 0 3rem;
+    width: 220px;
+    height: 110px;
+    margin-left: -110px;
+    margin-top: -55px;
   }
 }
 
-@media (min-width: 1024px) {
-  .logoItem {
-    padding: 0 3.75rem;
-  }
-}
-
-/* ── Brand Logo Images: Frosted Silver-White Monochrome at 70% ── */
+/* ── Brand Logo Images: Brightened Frosted Silver-White Monochrome ── */
 .brandLogoImg {
   display: block;
   width: auto;
   height: auto;
   object-fit: contain;
-  opacity: 0.70; /* Exact 70% frosted silver-white opacity */
+  opacity: 0.88;
+  filter: brightness(1.12) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55));
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.45));
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Subtle clean hover */
 .logoItem:hover .brandLogoImg {
-  opacity: 1; /* Crisp 100% white on hover */
+  opacity: 1;
   transform: scale(1.08);
-  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.50));
 }

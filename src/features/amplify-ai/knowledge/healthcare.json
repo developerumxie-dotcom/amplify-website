@@ -1,0 +1,91 @@
+{
+  "vertical": "Amplify Healthcare — For Hospitals & Healthcare Brands",
+  "overview": "A specialised healthcare marketing and patient communication vertical designed specifically for multispeciality hospitals, clinics, diagnostic networks, and individual medical practitioners.",
+  "targetAudiences": [
+    "Multispeciality hospitals",
+    "Specialty surgical centers & clinics",
+    "Doctors & medical practitioners (Personal Branding)",
+    "Diagnostic centers & pathology networks",
+    "Healthcare institutions & nursing colleges",
+    "Emerging health-tech & wellness brands"
+  ],
+  "services": [
+    {
+      "id": "hospital-branding",
+      "name": "Hospital Branding & Institutional Identity",
+      "summary": "Building institutional trust, patient-centric positioning, and compassionate visual identity for healthcare institutions.",
+      "capabilities": [
+        "Hospital brand identity & visual systems",
+        "Digital institutional positioning",
+        "Patient-centric brand communication",
+        "Trust-building community campaigns",
+        "Internal hospital signage & patient collateral"
+      ]
+    },
+    {
+      "id": "doctor-branding",
+      "name": "Doctor Personal Branding",
+      "summary": "Establishing senior doctors, surgeons, and specialists as respected medical authorities through ethical personal branding.",
+      "capabilities": [
+        "Doctor introduction & specialization videos",
+        "Educational medical reels & short-form content",
+        "Professional LinkedIn & Instagram medical authority profiles",
+        "Specialty-focused medical condition explainers",
+        "Doctor website biography & appointment landing pages"
+      ]
+    },
+    {
+      "id": "healthcare-social",
+      "name": "Healthcare Social Media & Awareness",
+      "summary": "Empathetic, scientifically accurate patient education and department awareness campaigns.",
+      "capabilities": [
+        "Hospital social media management",
+        "Preventive health awareness campaigns",
+        "International Health Day observances (World Heart Day, Cancer Day, etc.)",
+        "Department-wise promotional & clinical capability spotlights",
+        "Ethical community moderation & patient query triaging"
+      ]
+    },
+    {
+      "id": "healthcare-video",
+      "name": "Healthcare Video Production & Walkthroughs",
+      "summary": "High-production clinical walkthroughs, doctor interviews, and verified patient testimonial films.",
+      "capabilities": [
+        "Hospital infrastructure & advanced technology walkthroughs",
+        "In-depth doctor clinical interview films",
+        "Consented ethical patient recovery stories",
+        "Animated surgical/treatment procedure explainers",
+        "Emergency care & department capability films"
+      ]
+    },
+    {
+      "id": "hospital-digital-marketing",
+      "name": "Hospital Digital Marketing & Local SEO",
+      "summary": "Dominating local search queries ('Best cardiologist near me') and running appointment inquiry campaigns.",
+      "capabilities": [
+        "Google Business Profile optimization for hospitals & clinics",
+        "Geo-targeted Google Search & Maps ads for emergency/specialty care",
+        "Meta Ads for health checkup packages and departmental awareness",
+        "Fast, accessible, HIPAA/compliance-aware hospital websites",
+        "Local SEO to rank in nearby pin codes and cities"
+      ]
+    },
+    {
+      "id": "patient-automation",
+      "name": "Patient Communication & WhatsApp Automation",
+      "summary": "Automated WhatsApp appointment booking routing, patient consultation reminders, and CRM lead workflows.",
+      "capabilities": [
+        "Official WhatsApp Business API appointment routing bots",
+        "Automated OPD consultation reminders & follow-up messages",
+        "CRM integration for incoming patient inquiries",
+        "Patient feedback & Google Review automation"
+      ]
+    }
+  ],
+  "complianceRules": {
+    "noMedicalAdvice": "Amplify AI represents a marketing agency and is NOT a medical professional. Never diagnose conditions or recommend medications.",
+    "noGuarantees": "Never guarantee patient numbers, footfalls, or medical outcomes.",
+    "privacyAndConsent": "Never invent or share patient testimonials without verified informed consent.",
+    "disclaimer": "If a visitor asks for medical help, immediately advise them to consult a qualified physician or call local emergency services."
+  }
+}

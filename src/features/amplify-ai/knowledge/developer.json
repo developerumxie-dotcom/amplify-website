@@ -1,0 +1,85 @@
+{
+  "name": "Muhammed Umair",
+  "identity": "UMXIE",
+  "fullName": "Muhammed Umair",
+  "profession": "Software Engineer & Creative Technologist",
+  "location": "Kerala, India",
+  "primaryFocus": "Backend Engineering & Full-Stack Development",
+  "philosophy": "Build with curiosity. Engineer with logic. Create with purpose.",
+  "about": "Muhammed Umair, professionally known as UMXIE, is a software developer passionate about building modern web applications, scalable backend systems, AI-powered solutions, and creative digital experiences. His interests include backend engineering, full-stack development, JavaScript, software architecture, database management, artificial intelligence, 3D web development, UI/UX design, and creative technology. He enjoys learning through real-world projects, solving technical problems, exploring emerging technologies, and continuously improving his software engineering skills.",
+  "experience": [
+    {
+      "role": "full stack and backend Developer",
+      "company": "Novox EdTech",
+      "type": "Professional Experience"
+    }
+    
+  ],
+  "projects": {
+    "completed": [
+      {
+        "name": "Amplify Digital Website",
+        "description": "The complete modern React.js flagship digital experience with continuous neon canvas, responsive UI/UX architecture, and seamless single-page flow.",
+        "status": "Completed"
+      },
+      {
+        "name": "Amplify Digital AI Assistant",
+        "description": "Official 3D interactive mascot with WebGL turntable rendering, IndexedDB binary model caching, and grounded RAG-lite knowledge engine.",
+        "status": "Completed"
+      },
+      {
+        "name": "Vidya Hospital Website",
+        "description": "High-trust healthcare digital platform designed for patient access and clinical presentation.",
+        "status": "Completed"
+      }
+    ],
+    "ongoing": [
+      {
+        "name": "Newcomer City Platform",
+        "description": "A comprehensive community and resource discovery platform focused on Kozhikode, Kerala.",
+        "status": "Ongoing"
+      }
+    ]
+  },
+  "technologies": [
+    "JavaScript",
+    "Python",
+    "C",
+    "Java",
+    "React.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "PostgreSQL",
+    "AWS",
+    "Docker",
+    "Git",
+    "GitHub"
+  ],
+  "interests": [
+    "Backend Engineering",
+    "Full-Stack Development",
+    "Artificial Intelligence",
+    "AI Integration",
+    "3D Websites",
+    "Creative Coding",
+    "UI/UX Design",
+    "Photography",
+    "Video Editing",
+    "Computer Hardware",
+    "Emerging Technologies"
+  ],
+  "contact": {
+    "portfolio": "https://develoerumxie.vercel.app",
+    "email": "developerumxie@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/muhammed-umair-23540939b/",
+    "github": "https://github.com/developerumxie-dotcom",
+    "instagram": "https://www.instagram.com/dev.umxie"
+  },
+  "attribution": {
+    "aiAssistant": "Amplify AI",
+    "aiCreator": "Muhammed Umair (UMXIE)",
+    "aiDeveloper": "Muhammed Umair (UMXIE)",
+    "websiteDeveloper": "Muhammed Umair (UMXIE)"
+  }
+}
