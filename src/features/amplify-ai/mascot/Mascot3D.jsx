@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { MASCOT_MODEL_PATH, loadGLBWithCache } from '../services/modelCache';
 import { POSE_CONFIGS } from './MascotAnimations';
 import { MascotInteractions } from './MascotInteractions';
 import styles from './Mascot3D.module.css';
@@ -26,6 +27,7 @@ export default function Mascot3D({ currentState = 'WELCOME', controller }) {
     let scene;
     let camera;
     let mascotRoot = null;
+    let mixer = null;
     let clock = new THREE.Clock();
 
     // 1. Initialize WebGL Renderer
@@ -35,7 +37,7 @@ export default function Mascot3D({ currentState = 'WELCOME', controller }) {
         alpha: true,
         powerPreference: 'high-performance'
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2.5));
       renderer.setSize(container.clientWidth || 380, container.clientHeight || 220);
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.15;
@@ -80,45 +82,70 @@ export default function Mascot3D({ currentState = 'WELCOME', controller }) {
     // 4. Interaction Controller (Mouse Drag & Head Tracking)
     interactionsRef.current = new MascotInteractions(container);
 
-    // 5. Load Genuine 3D GLB Model
-    const loader = new GLTFLoader();
-    loader.load(
-      '/models/amplify ai.glb',
-      (gltf) => {
-        const model = gltf.scene;
+    // 5. Load Genuine 3D GLB Model (High-Speed Cache Engine)
+    (async () => {
+      try {
+        const buffer = await loadGLBWithCache(MASCOT_MODEL_PATH);
+        const loader = new GLTFLoader();
+        loader.parse(
+          buffer.slice(0),
+          '',
+          (gltf) => {
+            const model = gltf.scene;
 
-        // Auto-center and normalize model scale
-        const box = new THREE.Box3().setFromObject(model);
-        const center = box.getCenter(new THREE.Vector3());
-        const size = box.getSize(new THREE.Vector3());
-        const maxDim = Math.max(size.x, size.y, size.z);
-        const scale = 1.85 / (maxDim || 1);
+            // Auto-center and normalize model scale based on eagle character mesh
+            const eagleMesh = model.getObjectByName('tripo_node_c4e30960-a0e1-4e12-84bb-8e26c') || model;
+            const box = new THREE.Box3().setFromObject(eagleMesh);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 2.18 / (maxDim || 1);
 
-        model.position.sub(center);
-        model.position.y -= 0.15; // Ground slightly
-        model.scale.setScalar(scale);
+            model.position.sub(center);
+            model.position.y -= 0.28; // Balanced vertical posture with generous headroom
+            model.scale.setScalar(scale);
 
-        // Enhance materials
-        model.traverse((child) => {
-          if (child.isMesh && child.material) {
-            child.material.roughness = Math.max(child.material.roughness, 0.45);
-            child.material.metalness = Math.min(child.material.metalness, 0.25);
+            // Enhance materials & ensure text on cloud is crisp
+            model.traverse((child) => {
+              if (child.isMesh && child.material) {
+                child.material.roughness = Math.max(child.material.roughness, 0.45);
+                child.material.metalness = Math.min(child.material.metalness, 0.25);
+
+                if (child.material.map) {
+                  child.material.map.anisotropy = 16;
+                  child.material.map.minFilter = THREE.LinearMipmapLinearFilter;
+                  child.material.map.magFilter = THREE.LinearFilter;
+                  child.material.map.needsUpdate = true;
+                }
+              }
+            });
+
+            mascotRoot = new THREE.Group();
+            mascotRoot.add(model);
+            scene.add(mascotRoot);
+
+            // Play the genuine 10s FriendlyLoop animation
+            if (gltf.animations && gltf.animations.length > 0) {
+              mixer = new THREE.AnimationMixer(model);
+              const action = mixer.clipAction(gltf.animations[0]);
+              action.setLoop(THREE.LoopRepeat);
+              action.play();
+            }
+
+            setIsLoading(false);
+          },
+          (err) => {
+            console.warn('Failed to parse 3D GLB model:', err);
+            setLoadError(true);
+            setIsLoading(false);
           }
-        });
-
-        mascotRoot = new THREE.Group();
-        mascotRoot.add(model);
-        scene.add(mascotRoot);
-
-        setIsLoading(false);
-      },
-      undefined,
-      (err) => {
+        );
+      } catch (err) {
         console.warn('Failed to load 3D GLB model, using canonical pose visual:', err);
         setLoadError(true);
         setIsLoading(false);
       }
-    );
+    })();
 
     // 6. Resize Handler
     const handleResize = () => {
@@ -136,6 +163,10 @@ export default function Mascot3D({ currentState = 'WELCOME', controller }) {
       animationFrameId = requestAnimationFrame(animate);
       const delta = clock.getDelta();
       const elapsedTime = clock.getElapsedTime();
+
+      if (mixer) {
+        mixer.update(delta);
+      }
 
       // Update state transitions
       if (controller) {
@@ -170,6 +201,10 @@ export default function Mascot3D({ currentState = 'WELCOME', controller }) {
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
+
+      if (mixer) {
+        mixer.stopAllAction();
+      }
 
       if (interactionsRef.current) {
         interactionsRef.current.dispose();

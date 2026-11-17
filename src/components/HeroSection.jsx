@@ -11,16 +11,6 @@ import styles from './HeroSection.module.css';
  */
 
 export default function HeroSection() {
-  const [ringVisible, setRingVisible] = useState(false);
-
-  useEffect(() => {
-    // Fade in decorative orbit ring smoothly after bird completes assembly
-    const timer = setTimeout(() => {
-      setRingVisible(true);
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section id="home" className={styles.heroSection}>
 
@@ -119,26 +109,7 @@ export default function HeroSection() {
           </filter>
         </defs>
 
-        {/* 1. Elliptical Orbit Trail Around the Bird (fades in after bird ready) */}
-        <g className={`${styles.orbitGroup} ${ringVisible ? styles.orbitVisible : styles.orbitHidden}`}>
-          <ellipse
-            cx="726"
-            cy="260"
-            rx="246"
-            ry="62"
-            transform="rotate(-23.5 726 260)"
-            fill="none"
-            stroke="url(#orbitGrad)"
-            strokeWidth="1.5"
-            filter="url(#orbitGlow)"
-          />
-
-          {/* Bright Cyan Glint at lower-left orbit sweep (608, 350) */}
-          <circle cx="608" cy="350" r="3.2" fill="#00E5FF" filter="url(#cyanGlint)" />
-          <circle cx="608" cy="350" r="1.4" fill="#FFFFFF" />
-        </g>
-
-        {/* 2. Sweeping Bottom Horizon Wave */}
+        {/* Sweeping Bottom Horizon Wave */}
         <path
           d="M 380,454 C 520,430 650,402 760,392 C 840,384 940,368 1024,386"
           fill="none"
