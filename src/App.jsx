@@ -8,6 +8,7 @@ import WhatWeDoSection from './components/WhatWeDoSection';
 import WorkPortfolioSection from './components/WorkPortfolioSection';
 import ImpactSection from './components/ImpactSection';
 import TestimonialsSection from './components/TestimonialsSection';
+import BriefBlueprintSection from './components/BriefBlueprintSection';
 import CtaBanner from './components/CtaBanner';
 import Footer from './components/Footer';
 import AmplifyAI from './features/amplify-ai/AmplifyAI';
@@ -37,6 +38,7 @@ function App() {
             <WorkPortfolioSection />
             <ImpactSection />
             <TestimonialsSection />
+            <BriefBlueprintSection />
             <CtaBanner />
             <Footer />
           </div>

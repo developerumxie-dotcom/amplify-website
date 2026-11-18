@@ -36,6 +36,21 @@ export default function AmplifyAI() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
+  // Support custom dispatch to open the chatbot with a prompt
+  useEffect(() => {
+    const handleCustomOpen = (e) => {
+      setIsOpen(true);
+      mascot.setMascotState(MASCOT_STATES.EXPLAINING);
+      if (e.detail?.query && chat?.sendMessage) {
+        setTimeout(() => {
+          chat.sendMessage(e.detail.query);
+        }, 350);
+      }
+    };
+    window.addEventListener('amplify:open-chat', handleCustomOpen);
+    return () => window.removeEventListener('amplify:open-chat', handleCustomOpen);
+  }, [chat, mascot]);
+
   return (
     <>
       {/* Floating Mascot Launcher */}
