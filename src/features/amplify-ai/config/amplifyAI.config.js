@@ -24,6 +24,6 @@ export const AMPLIFY_AI_CONFIG = {
   contact: {
     whatsappUrl: 'https://wa.me/917879964770?text=Hello%20Amplify%20Digital%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project',
     phone: '+91 7879964770',
-    email: 'support@amplifydigitalservices.com'
+    email: 'aditya@amplifydigitalservices.com'
   }
 };

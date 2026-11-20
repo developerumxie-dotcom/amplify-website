@@ -1,0 +1,132 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  animation: overlayFadeIn 0.25s ease-out forwards;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    background-color: rgba(3, 2, 10, 0);
+  }
+  to {
+    background-color: rgba(3, 2, 10, 0.78);
+  }
+}
+
+.modalBackdropBlur {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  pointer-events: none;
+}
+
+/* ── The Master Glassmorphic Frame (Neon Gradient Outer Rim) ──────────── */
+.modalCardFrame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1020px;
+  max-height: 92vh;
+  margin: auto;
+  padding: 2px;
+  border-radius: 22px;
+  /* Glowing gradient border matching the attached reference image */
+  background: linear-gradient(135deg, #FF8A00 0%, #FF3366 35%, #C026D3 75%, #7928CA 100%);
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.8),
+              0 0 45px -5px rgba(224, 38, 150, 0.35),
+              0 0 35px -5px rgba(255, 122, 0, 0.3);
+  animation: modalSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Close Button */
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.08);
+}
+
+/* Modal Inner Chassis */
+.modalChassis {
+  position: relative;
+  background: rgba(12, 8, 26, 0.94);
+  border-radius: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(92vh - 4px);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(224, 38, 150, 0.4) transparent;
+}
+
+.modalChassis::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modalChassis::-webkit-scrollbar-thumb {
+  background: rgba(224, 38, 150, 0.4);
+  border-radius: 9999px;
+}
+
+/* 2-Column Desktop Layout */
+.twoColLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 580px;
+}
+
+@media (min-width: 900px) {
+  .twoColLayout {
+    grid-template-columns: 340px 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  .twoColLayout {
+    grid-template-columns: 370px 1fr;
+  }
+}
+
+.leftCol {
+  height: 100%;
+}
+
+.rightCol {
+  height: 100%;
+}

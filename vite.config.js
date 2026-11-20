@@ -13,8 +13,17 @@ export default defineConfig(({ command, mode }) => ({
       name: 'serve-dev-html',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url === '/' || req.url === '/index.html') {
-            req.url = '/index.dev.html'
+          if (req.url) {
+            // Strip /amplify-website/ prefix in dev mode if browser requests it from cache
+            if (req.url.startsWith('/amplify-website/')) {
+              req.url = req.url.replace('/amplify-website/', '/')
+            } else if (req.url === '/amplify-website') {
+              req.url = '/'
+            }
+
+            if (req.url === '/' || req.url === '/index.html') {
+              req.url = '/index.dev.html'
+            }
           }
           next()
         })

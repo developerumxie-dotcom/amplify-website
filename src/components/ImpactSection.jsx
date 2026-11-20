@@ -1,10 +1,12 @@
 import React from 'react';
 import { ArrowRight, Rocket, Award, Users } from 'lucide-react';
 import RealisticGlassSurface from './RealisticGlassSurface';
+import { useContactModal } from '../features/contact/context/ContactContext';
 import { getAssetUrl } from '../utils/assetUrl';
 import styles from './ImpactSection.module.css';
 
 export default function ImpactSection() {
+  const { openContactModal } = useContactModal();
   return (
     <section id="about" className={styles.impactSection}>
       <div className={styles.container}>
@@ -65,6 +67,10 @@ export default function ImpactSection() {
               {/* Button */}
               <a
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openContactModal({ source: 'Impact — Partner With Us', intent: 'partnership' });
+                }}
                 className={`glass-btn-luminous ${styles.partnerBtn}`}
               >
                 {/* Specular Top Cut-Glass Refraction Line */}

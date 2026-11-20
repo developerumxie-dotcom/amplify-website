@@ -1,0 +1,339 @@
+.formContainer {
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+@media (max-width: 640px) {
+  .formContainer {
+    padding: 22px 16px;
+  }
+}
+
+.inputsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px 14px;
+}
+
+@media (min-width: 640px) {
+  .inputsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fieldCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldLabel {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.requiredAsterisk {
+  color: #FF385C;
+  font-weight: 800;
+}
+
+.labelIcon {
+  color: #C084FC;
+}
+
+/* Standard Input Wrapper with Icon */
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 0 12px;
+  transition: all 0.2s ease;
+}
+
+.inputWrapper:focus-within {
+  border-color: rgba(224, 38, 150, 0.8);
+  box-shadow: 0 0 16px rgba(224, 38, 150, 0.3);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.inputError {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.35) !important;
+}
+
+.inputIcon {
+  color: rgba(148, 163, 184, 0.7);
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.inputField {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  padding: 10px 0;
+  font-weight: 500;
+}
+
+.inputField::placeholder {
+  color: rgba(148, 163, 184, 0.55);
+}
+
+.selectField {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  padding: 10px 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.selectField option {
+  background: #120D24;
+  color: #ffffff;
+}
+
+/* Phone Input Split (Country Code + Number) */
+.phoneInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 0 10px;
+  transition: all 0.2s ease;
+}
+
+.phoneInputWrapper:focus-within {
+  border-color: rgba(224, 38, 150, 0.8);
+  box-shadow: 0 0 16px rgba(224, 38, 150, 0.3);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.countryCodeSelectWrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  padding-right: 8px;
+  margin-right: 8px;
+}
+
+.phoneIconLeading {
+  color: rgba(148, 163, 184, 0.7);
+}
+
+.countryCodeSelect {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.countryCodeSelect option {
+  background: #120D24;
+  color: #ffffff;
+}
+
+.phoneInputField {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  padding: 10px 0;
+  font-weight: 500;
+}
+
+.phoneInputField::placeholder {
+  color: rgba(148, 163, 184, 0.55);
+}
+
+.errorMessage {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: #F87171;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Service Field Row */
+.serviceFieldRow {
+  margin-top: 14px;
+}
+
+/* Textarea Block */
+.textareaBlock {
+  margin-top: 14px;
+}
+
+.textareaWrapper {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+
+.textareaWrapper:focus-within {
+  border-color: rgba(224, 38, 150, 0.8);
+  box-shadow: 0 0 16px rgba(224, 38, 150, 0.3);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.textareaField {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 70px;
+  font-weight: 500;
+}
+
+.textareaField::placeholder {
+  color: rgba(148, 163, 184, 0.55);
+}
+
+/* Consent Checkbox */
+.consentRow {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkboxInput {
+  margin-top: 3px;
+  accent-color: #E02696;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.consentText {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  color: rgba(203, 213, 225, 0.8);
+  line-height: 1.45;
+}
+
+.privacyLink {
+  color: #FF7A00;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.consentError {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: #F87171;
+  margin-top: 4px;
+}
+
+/* Error Banner */
+.errorBanner {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #FCA5A5;
+  font-size: 12.5px;
+}
+
+/* Submit Button */
+.submitRow {
+  margin-top: 18px;
+}
+
+.submitBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, #FF7A00 0%, #FF385C 50%, #DE28A5 100%);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  box-shadow: 0 8px 25px -4px rgba(255, 106, 0, 0.55),
+              0 0 20px -2px rgba(224, 38, 150, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -4px rgba(255, 106, 0, 0.7),
+              0 0 28px -2px rgba(224, 38, 150, 0.55);
+}
+
+.submitBtnDisabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.spinnerIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.btnCalendarIcon {
+  color: #FFF275;
+}
+
+.btnArrowIcon {
+  transition: transform 0.2s ease;
+}
+
+.submitBtn:hover .btnArrowIcon {
+  transform: translateX(3px);
+}

@@ -13,7 +13,7 @@ export const companyInfo = {
   contact: {
     phone: '+91 7879964770',
     phoneFormatted: '+91 7879964770',
-    email: 'support@amplifydigitalservices.com',
+    email: 'aditya@amplifydigitalservices.com',
     website: 'amplifydigitalservices.com',
     address: 'Raipur, Chhattisgarh, India',
     whatsappUrl: 'https://wa.me/917879964770?text=Hello%20Amplify%20Digital%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project',

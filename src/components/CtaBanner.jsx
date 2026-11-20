@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { companyInfo } from '../data/websiteContent';
 import RealisticGlassSurface from './RealisticGlassSurface';
+import { useContactModal } from '../features/contact/context/ContactContext';
 import { getAssetUrl } from '../utils/assetUrl';
 import styles from './CtaBanner.module.css';
 
@@ -19,6 +20,7 @@ export default function CtaBanner() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const { openContactModal } = useContactModal();
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -137,9 +139,11 @@ export default function CtaBanner() {
               <div className={styles.orangeHaloGlow} />
 
               <a
-                href={companyInfo.contact.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openContactModal({ source: 'Final CTA — Book a Strategy Call', intent: 'strategy-call' });
+                }}
                 className={`glass-btn-luminous ${styles.strategyBtn}`}
               >
                 {/* Specular Top Cut-Glass Refraction Line */}

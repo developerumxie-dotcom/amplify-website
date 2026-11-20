@@ -347,7 +347,9 @@ export default function BriefBlueprintSection() {
 
   // Pre-filled WhatsApp link
   const getWhatsAppLink = () => {
-    const text = briefInput ? `Hello Amplify Team! I generated a blueprint for: "${briefInput}". Let's discuss starting this project.` : companyInfo.contact.whatsappUrl;
+    const text = briefInput
+      ? `🚀 *PROJECT BLUEPRINT ENQUIRY — AMPLIFY DIGITAL*\n──────────────────────────────\n💬 *Requirement:* ${briefInput}\n──────────────────────────────\nI generated this project blueprint on amplifydigitalservices.com. Let's discuss starting this project!`
+      : `🚀 *PROJECT INQUIRY — AMPLIFY DIGITAL*\n──────────────────────────────\nHi Amplify Digital Team! I'd like to discuss a custom digital marketing & development roadmap for my brand.`;
     return `https://wa.me/917879964770?text=${encodeURIComponent(text)}`;
   };
 

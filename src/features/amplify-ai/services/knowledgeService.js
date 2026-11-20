@@ -492,7 +492,7 @@ Brand: Amplify Digital Services
 Tagline: STRATEGIZE. INNOVATE. AMPLIFY.
 Positioning: A 360° creative, digital, marketing and growth studio for ambitious brands and businesses.
 Hero Claim: "We Turn Ideas Into Impact."
-Contact: support@amplifydigitalservices.com, +91 7879964770, Raipur, Chhattisgarh, India.
+Contact: aditya@amplifydigitalservices.com, +91 7879964770, Raipur, Chhattisgarh, India.
 
 DEVELOPER & CREATOR ATTRIBUTION:
 Website Developer: Muhammed Umair (UMXIE)

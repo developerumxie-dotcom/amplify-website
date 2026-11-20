@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import HeroBirdVisual from './HeroBirdVisual';
+import { useContactModal } from '../features/contact/context/ContactContext';
 import styles from './HeroSection.module.css';
 
 /**
@@ -11,6 +12,7 @@ import styles from './HeroSection.module.css';
  */
 
 export default function HeroSection() {
+  const { openContactModal } = useContactModal();
   return (
     <section id="home" className={styles.heroSection}>
 
@@ -165,6 +167,10 @@ export default function HeroSection() {
               {/* Secondary CTA: Book a Strategy Call with circle icon */}
               <a
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openContactModal({ source: 'Hero — Book a Strategy Call', intent: 'strategy-call' });
+                }}
                 className={`glass-btn-clear ${styles.btnSecondary}`}
               >
                 {/* Specular Top Cut-Glass Refraction Line */}

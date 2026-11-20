@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { getAssetUrl } from '../utils/assetUrl';
+import { useContactModal } from '../features/contact/context/ContactContext';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { openContactModal } = useContactModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,7 +109,10 @@ export default function Navbar() {
         <div className={styles.ctaWrap}>
           <a 
             href="#contact" 
-            onClick={(e) => scrollToSection(e, 'contact')} 
+            onClick={(e) => {
+              e.preventDefault();
+              openContactModal({ source: "Navbar — Let's Talk", intent: 'general' });
+            }} 
             className={`glass-btn-clear ${styles.letstalkBtn}`}
           >
             {/* Specular Top Cut-Glass Refraction Line */}
@@ -172,7 +177,11 @@ export default function Navbar() {
           <div className={styles.mobileCtaRow}>
             <a
               href="#contact"
-              onClick={(e) => scrollToSection(e, 'contact')}
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+                openContactModal({ source: "Navbar Mobile — Let's Talk", intent: 'general' });
+              }}
               className={styles.mobileCtaBtn}
             >
               <span>Let's Talk</span>

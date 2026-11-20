@@ -12,18 +12,15 @@ const distModels = path.join(distDir, 'models');
 const rootModels = path.join(__dirname, 'models');
 const publicModels = path.join(__dirname, 'public', 'models');
 
-// 1. Ensure dist/index.html exists from dist/index.dev.html
+// 1. Ensure dist/index.html and dist/404.html exist from dist/index.dev.html
 const distDevHtml = path.join(distDir, 'index.dev.html');
 const distHtml = path.join(distDir, 'index.html');
-const rootHtml = path.join(__dirname, 'index.html');
+const dist404 = path.join(distDir, '404.html');
 
 if (fs.existsSync(distDevHtml)) {
   fs.copyFileSync(distDevHtml, distHtml);
-  fs.copyFileSync(distDevHtml, rootHtml);
-  console.log('✓ Updated root index.html and dist/index.html with production bundle!');
-} else if (fs.existsSync(distHtml)) {
-  fs.copyFileSync(distHtml, rootHtml);
-  console.log('✓ Updated root index.html with dist/index.html!');
+  fs.copyFileSync(distDevHtml, dist404);
+  console.log('✓ Created dist/index.html and dist/404.html for GitHub Pages deployment!');
 }
 
 // 2. Ensure root assets folder exists
@@ -50,4 +47,4 @@ if (fs.existsSync(publicModels)) {
   console.log('✓ Synced public/models into root and dist models folders!');
 }
 
-console.log('★ GitHub Pages root and dist build synchronized successfully!');
+console.log('★ GitHub Pages dist build synchronized successfully!');
